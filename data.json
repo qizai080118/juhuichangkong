@@ -1,0 +1,50 @@
+{
+  "header": {
+    "logoText": "剧绘长空",
+    "navList": [
+      {"text": "项目介绍", "link": "#intro"},
+      {"text": "剧目展演", "link": "#drama"},
+      {"text": "航空课堂", "link": "#aviation"},
+      {"text": "校园传承", "link": "#campus"},
+      {"text": "建设成果", "link": "#achievement"},
+      {"text": "成果排行", "link": "#rank"},
+      {"text": "加入我们", "link": "#join"}
+    ],
+    "btnText": "登录/注册"
+  },
+  "cardList": [
+    {
+      "title": "项目介绍",
+      "items": [
+        {
+          "subtitle": "项目概况",
+          "desc": "航空长空教育项目概况，遵照对照明确理念，规划校园戏剧演出，提供按剧导演演熏陶性的概念。"
+        },
+        {
+          "subtitle": "核心理念",
+          "desc": "校园教育的核心的观念、大于核心心理的终生选播，而层级到挖掘的创新理念。"
+        }
+      ]
+    },
+    {
+      "title": "戏剧演出",
+      "works": [
+        {"name": "《天空之城》"},
+        {"name": "《天空之城》"},
+        {"name": "《云端舞者》"},
+        {"name": "《云端舞者》"}
+      ]
+    },
+    {
+      "title": "航空科普",
+      "content": "飞机是如何飞行的\n飞机是如何飞行\n差下行的\n\n飞机是如何飞行的\n飞机是如何飞机如何飞行的"
+    },
+    {
+      "title": "校园活动"
+    },
+    {
+      "title": "成果展示",
+      "subTitleList": ["作品集锦", "荣誉榜"]
+    }
+  ]
+}
