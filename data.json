@@ -5,30 +5,34 @@
       "items": [
         {
           "subtitle": "项目概况",
-          "desc": "航空戏剧教育项目，以戏剧为载体，在校园中播撒航空报国的种子。"
+          "desc": "航空教育项目，以戏剧为载体，在校园中播撒航空报国的种子。",
+          "image": "https://via.placeholder.com/400x200/165299/ffffff?text=航空+教育"
         },
         {
           "subtitle": "核心理念",
-          "desc": "通过沉浸式戏剧体验，激发青少年对航空科技的热爱与探索精神。"
+          "desc": "通过沉浸式戏剧体验，激发青少年对航空科技的热爱与探索精神。",
+          "image": "https://via.placeholder.com/400x200/e64340/ffffff?text=沉浸+体验"
         }
       ]
     },
     {
       "title": "戏剧演出",
       "works": [
-        { "name": "《逐梦飞翔》" },
-        { "name": "《云裳之上》" },
-        { "name": "《银翼少年》" },
-        { "name": "《星河入梦》" }
+        { "name": "《逐梦蓝天》", "image": "https://via.placeholder.com/400x150/2980d8/ffffff?text=逐梦蓝天" },
+        { "name": "《云裳之上》", "image": "https://via.placeholder.com/400x150/27ae60/ffffff?text=云裳之上" },
+        { "name": "《银翼少年》", "image": "https://via.placeholder.com/400x150/f39c12/ffffff?text=银翼少年" },
+        { "name": "《星河入梦》", "image": "https://via.placeholder.com/400x150/8e44ad/ffffff?text=星河入梦" }
       ]
     },
     {
       "title": "航空科普",
-      "content": "✈ 飞行升力原理\n✈ 航空气象常识\n✈ 飞行器发展简史\n✈ 无人机与未来"
+      "content": "✈ 飞机升力原理\n✈ 航空气象常识\n✈ 飞行器发展简史\n✈ 无人机与未来",
+      "image": "https://via.placeholder.com/400x200/1a6b63/ffffff?text=航空+科普"
     },
     {
       "title": "校园活动",
-      "content": "🎯 校园戏剧节\n🎯 航空主题日\n🎯 飞行员面对面\n🎯 模拟飞行体验"
+      "content": "🎯 校园戏剧节\n🎯 航空主题日\n🎯 飞行员面对面\n🎯 模拟飞行体验",
+      "image": "https://via.placeholder.com/400x200/a87a2e/ffffff?text=校园+活动"
     },
     {
       "title": "成果展示",
@@ -37,7 +41,8 @@
         "📚 原创剧本集《长空》出版",
         "🌍 国际文化交流展演",
         "🎬 微电影《逐梦》获奖"
-      ]
+      ],
+      "image": "https://via.placeholder.com/400x200/5e3a7a/ffffff?text=成果+展示"
     }
   ]
 }
