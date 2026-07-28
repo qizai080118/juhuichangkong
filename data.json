@@ -10,7 +10,7 @@
       {"text": "成果排行", "link": "#rank"},
       {"text": "加入我们", "link": "#join"}
     ],
-    "btnText": "登录/注册"
+    "btnText": "登录"
   },
 
   "cardList": [
