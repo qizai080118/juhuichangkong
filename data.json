@@ -1,77 +1,42 @@
 {
-  "header": {
-    "logoText": "剧绘长空",
-    "navList": [
-      {"text": "项目介绍", "link": "#intro"},
-      {"text": "剧目展演", "link": "#drama"},
-      {"text": "航天课堂", "link": "#aviation"},
-      {"text": "校园传承", "link": "#campus"},
-      {"text": "建设成果", "link": "#achievement"},
-      {"text": "成果排行", "link": "#rank"},
-      {"text": "加入我们", "link": "#join"}
-    ],
-    "btnText": "登录"
-  },
-
   "cardList": [
     {
       "title": "项目介绍",
       "items": [
         {
           "subtitle": "项目概况",
-          "desc": "航空长空教育项目概况，遵照对照明确理念，规划校园戏剧演出，提供按剧导演演熏陶性的概念。",
-          "image": "images/project_overview.png"   // 🖼️ 新增：项目概况配图
+          "desc": "航空空教育项目，以戏剧为载体，在校园中播撒航空报国的种子。"
         },
         {
           "subtitle": "核心理念",
-          "desc": "校园教育的核心的观念、大于核心心理的终生选播，而层级到挖掘的创新理念。",
-          "image": "images/core_idea.png"          // 🖼️ 新增：核心理念配图
+          "desc": "通过沉浸式戏剧体验，激发青少年对航空科技的热爱与探索精神。"
         }
       ]
     },
-
     {
       "title": "戏剧演出",
       "works": [
-        {
-          "name": "《天空之城》",
-          "image": "images/drama_sky_city.jpg"     // 🖼️ 新增：剧目海报
-        },
-        {
-          "name": "《云端舞者》",
-          "image": "images/drama_cloud_dancer.jpg" // 🖼️ 新增：剧目海报
-        }
-        // 可以继续添加更多剧目
+        { "name": "《逐梦蓝天》" },
+        { "name": "《云裳之上》" },
+        { "name": "《银翼少年》" },
+        { "name": "《星河入梦》" }
       ]
     },
-
     {
       "title": "航空科普",
-      "content": "飞机是如何飞行的\n飞机是如何飞行\n差下行的\n\n飞机是如何飞行的\n飞机是如何飞机如何飞行的",
-      "image": "images/aviation_knowledge.jpg"    // 🖼️ 新增：科普主图
+      "content": "✈ 飞机升力原理\n✈ 航空气象常识\n✈ 飞行器发展简史\n✈ 无人机与未来"
     },
-
     {
       "title": "校园活动",
-      "content": "后续活动内容在线配置",               // 您可改成具体活动描述
-      "images": [                                 // 🖼️ 新增：多图数组（活动照片集）
-        "images/activity_1.jpg",
-        "images/activity_2.jpg",
-        "images/activity_3.jpg"
-      ]
+      "content": "🎯 校园戏剧节\n🎯 航空主题日\n🎯 飞行员面对面\n🎯 模拟飞行体验"
     },
-
     {
       "title": "成果展示",
       "subTitleList": [
-        {
-          "name": "作品集锦",
-          "image": "images/achievement_works.jpg"  // 🖼️ 新增：作品集锦封面
-        },
-        {
-          "name": "荣誉榜",
-          "image": "images/achievement_honor.jpg"  // 🖼️ 新增：荣誉榜图片
-        }
+        "🏅 全国青少年戏剧展演金奖",
+        "📚 原创剧本集《长空》出版",
+        "🌍 国际文化交流展演",
+        "🎬 微电影《逐梦》获奖"
       ]
     }
   ]
