@@ -6,35 +6,37 @@
 <title>剧绘长空</title>
 <style>
 *{margin:0;padding:0;box-sizing:border-box;font-family:"Microsoft Yahei","PingFang SC",sans-serif}
-body{background:#f8fafc;padding:10px}
-.header-nav{display:flex;align-items:center;background:#fff;padding:12px 30px;box-shadow:0 2px 12px rgba(0,0,0,0.08);border-radius:16px;margin-bottom:16px;flex-wrap:wrap;gap:6px 12px}
-.logo-text{font-size:26px;font-weight:700;color:#165299;margin-right:28px;letter-spacing:1px;white-space:nowrap}
-.header-nav a{text-decoration:none;color:#333;font-size:16px;padding:6px 12px;border-radius:8px;transition:background .2s;white-space:nowrap}
+body{background:#f8fafc;padding:10px;font-size:14px}  /* 全局字体缩小 */
+.header-nav{display:flex;align-items:center;background:#fff;padding:10px 24px;box-shadow:0 2px 12px rgba(0,0,0,0.08);border-radius:16px;margin-bottom:16px;flex-wrap:wrap;gap:6px 12px}
+.logo-text{font-size:22px;font-weight:700;color:#165299;margin-right:24px;letter-spacing:1px;white-space:nowrap} /* Logo略缩小 */
+.header-nav a{text-decoration:none;color:#333;font-size:14px;padding:4px 10px;border-radius:8px;transition:background .2s;white-space:nowrap}
 .header-nav a:hover{background:#eef4ff;color:#165299}
 .header-nav a.active{color:#2980d8;background:#e3edfc;font-weight:600}
-.login-btn{margin-left:auto;background:#e64340;color:#fff;border:none;font-size:16px;padding:8px 26px;border-radius:30px;cursor:pointer;font-weight:500}
+.login-btn{margin-left:auto;background:#e64340;color:#fff;border:none;font-size:14px;padding:6px 20px;border-radius:30px;cursor:pointer;font-weight:500}
 .login-btn:hover{background:#cf2e2b}
-.banner{height:280px;background:linear-gradient(135deg,#7bbdf2,#c7e3fc);border-radius:16px;margin-bottom:20px;display:flex;align-items:center;justify-content:center;color:#1a3a5c;font-size:32px;font-weight:600;letter-spacing:4px;position:relative;overflow:hidden}
-.banner::after{content:"✈ 让航空戏剧点亮校园 ✈";font-size:clamp(20px,4vw,42px);opacity:.9;text-shadow:0 2px 12px rgba(255,255,255,0.3)}
-.card-wrap{display:grid;grid-template-columns:repeat(5,1fr);gap:16px}
-.card{border-radius:20px;padding:24px 20px 28px;box-shadow:0 4px 16px rgba(0,0,0,0.05);background:#fff;display:flex;flex-direction:column}
+.banner{height:240px;background:linear-gradient(135deg,#7bbdf2,#c7e3fc);border-radius:16px;margin-bottom:20px;display:flex;align-items:center;justify-content:center;color:#1a3a5c;font-size:28px;font-weight:600;letter-spacing:4px;position:relative;overflow:hidden}
+.banner::after{content:"✈ 让航空戏剧点亮校园 ✈";font-size:clamp(18px,3vw,36px);opacity:.9;text-shadow:0 2px 12px rgba(255,255,255,0.3)}
+.card-wrap{display:grid;grid-template-columns:repeat(5,1fr);gap:14px}
+.card{border-radius:20px;padding:18px 16px 22px;box-shadow:0 4px 16px rgba(0,0,0,0.05);background:#fff;display:flex;flex-direction:column}
 .card:hover{transform:translateY(-4px);box-shadow:0 10px 28px rgba(0,0,0,0.08)}
-.card h2{font-size:22px;margin-bottom:14px;display:flex;align-items:center;gap:6px;font-weight:700;color:#1a2e4a}
-.card p,.card li,.card div{font-size:14px;line-height:1.8;color:#2c3e50}
+.card h2{font-size:18px;margin-bottom:12px;display:flex;align-items:center;gap:6px;font-weight:700;color:#1a2e4a}
+.card p,.card li,.card div{font-size:13px;line-height:1.7;color:#2c3e50} /* 正文缩小 */
 .card ul{list-style:none;padding:0}
-.card ul li{padding:4px 0 4px 20px;position:relative}
+.card ul li{padding:3px 0 3px 18px;position:relative}
 .card ul li::before{content:"•";position:absolute;left:2px;color:#2980d8;font-weight:700}
 .card1{background:#e2edfc}.card1 h2{color:#1a4a7a}
 .card2{background:#fff3f3}.card2 h2{color:#b13e3e}
 .card3{background:#d6efec}.card3 h2{color:#1a6b63}
 .card4{background:#fff2dc}.card4 h2{color:#a87a2e}
 .card5{background:linear-gradient(135deg,#e8cff8,#ffdfb8)}.card5 h2{color:#5e3a7a}
-.card .sub-item{margin-top:10px;padding-top:10px;border-top:1px solid rgba(0,0,0,0.06)}
+.card .sub-item{margin-top:8px;padding-top:8px;border-top:1px solid rgba(0,0,0,0.06)}
 .card .sub-item:first-of-type{border-top:none;margin-top:0;padding-top:0}
-.card .sub-item strong{display:block;font-size:15px;color:#1a2e4a;margin-bottom:2px}
+.card .sub-item strong{display:block;font-size:14px;color:#1a2e4a;margin-bottom:2px}
 .card .sub-item p{margin:0}
+/* 图片样式 */
+.card img{width:100%;height:auto;border-radius:8px;margin-top:8px;display:block}
 @media (max-width:1024px){.card-wrap{grid-template-columns:repeat(3,1fr)}}
-@media (max-width:720px){.header-nav{padding:10px 16px}.logo-text{font-size:22px}.header-nav a{font-size:14px;padding:4px 8px}.login-btn{font-size:14px;padding:6px 16px}.card-wrap{grid-template-columns:repeat(2,1fr)}.banner{height:180px}.banner::after{font-size:18px}}
+@media (max-width:720px){.header-nav{padding:8px 12px}.logo-text{font-size:20px}.header-nav a{font-size:13px;padding:4px 6px}.login-btn{font-size:13px;padding:4px 14px}.card-wrap{grid-template-columns:repeat(2,1fr)}.banner{height:160px}.banner::after{font-size:16px}}
 @media (max-width:480px){.card-wrap{grid-template-columns:1fr}}
 </style>
 </head>
@@ -61,9 +63,9 @@ body{background:#f8fafc;padding:10px}
 
 <script>
 // =============================================================
-//  同源请求 data.json（与页面在同一域名下，无跨域问题）
+//  强制实时更新：每次请求都带最新时间戳
 // =============================================================
-const DATA_URL = "data.json?v=" + Date.now();  // 加时间戳强制刷新
+const DATA_URL = "data.json?v=" + Date.now();
 
 const c1 = document.getElementById('card1');
 const c2 = document.getElementById('card2');
@@ -71,32 +73,78 @@ const c3 = document.getElementById('card3');
 const c4 = document.getElementById('card4');
 const c5 = document.getElementById('card5');
 
+// 辅助函数：生成带图片的HTML块
+function renderWithImage(item, textHtml) {
+    let html = textHtml;
+    if (item.image) {
+        html += `<img src="${item.image}" alt="${item.subtitle || item.name || '图片'}" loading="lazy">`;
+    }
+    return html;
+}
+
 function render(data) {
     if (!data || !data.cardList || data.cardList.length < 5) {
-        throw new Error("数据格式无效：cardList 缺失或长度不足");
+        throw new Error("数据格式无效");
     }
     const list = data.cardList;
 
-    // 项目介绍
-    c1.innerHTML = (list[0].items || []).map(i => 
-        `<div class="sub-item"><strong>● ${i.subtitle}</strong><p>${i.desc}</p></div>`
-    ).join('') || '暂无内容';
+    // ---- 卡片1：项目介绍 ----
+    let html1 = '';
+    (list[0].items || []).forEach(item => {
+        let text = `<div class="sub-item"><strong>● ${item.subtitle}</strong><p>${item.desc}</p>`;
+        text += item.image ? `<img src="${item.image}" alt="${item.subtitle}" loading="lazy">` : '';
+        text += `</div>`;
+        html1 += text;
+    });
+    c1.innerHTML = html1 || '暂无内容';
 
-    // 戏剧演出
+    // ---- 卡片2：戏剧演出（作品列表，每个作品可配图） ----
     const works = list[1].works || [];
-    c2.innerHTML = works.length ? 
-        '<ul>' + works.map(w => `<li>${w.name}</li>`).join('') + '</ul>' : '暂无剧目';
+    let html2 = '';
+    if (works.length) {
+        html2 = '<ul>';
+        works.forEach(w => {
+            let li = `<li>${w.name}`;
+            if (w.image) li += `<br><img src="${w.image}" alt="${w.name}" style="max-width:100%;border-radius:6px;margin-top:4px;">`;
+            li += `</li>`;
+            html2 += li;
+        });
+        html2 += '</ul>';
+    } else {
+        html2 = '暂无剧目';
+    }
+    c2.innerHTML = html2;
 
-    // 航空科普
-    c3.innerHTML = (list[2].content || '').replace(/\n/g, '<br>') || '暂无科普';
+    // ---- 卡片3：航空科普 ----
+    const c3Data = list[2] || {};
+    let html3 = (c3Data.content || '').replace(/\n/g, '<br>');
+    if (c3Data.image) html3 += `<img src="${c3Data.image}" alt="航空科普" loading="lazy" style="margin-top:8px;">`;
+    c3.innerHTML = html3 || '暂无科普';
 
-    // 校园活动
-    c4.innerHTML = (list[3].content || '').replace(/\n/g, '<br>') || '暂无活动';
+    // ---- 卡片4：校园活动 ----
+    const c4Data = list[3] || {};
+    let html4 = (c4Data.content || '').replace(/\n/g, '<br>');
+    if (c4Data.image) html4 += `<img src="${c4Data.image}" alt="校园活动" loading="lazy" style="margin-top:8px;">`;
+    c4.innerHTML = html4 || '暂无活动';
 
-    // 成果展示
-    const sub = list[4].subTitleList || [];
-    c5.innerHTML = sub.length ? 
-        '<ul>' + sub.map(s => `<li>${s}</li>`).join('') + '</ul>' : '暂无成果';
+    // ---- 卡片5：成果展示 ----
+    const c5Data = list[4] || {};
+    const sub = c5Data.subTitleList || [];
+    let html5 = '';
+    if (sub.length) {
+        html5 = '<ul>';
+        sub.forEach(s => {
+            let li = `<li>${s}`;
+            // 如果子项带有图片（这里扩展为每个子项可配图，但为了简单，我们使用卡片级图片）
+            li += `</li>`;
+            html5 += li;
+        });
+        html5 += '</ul>';
+    } else {
+        html5 = '暂无成果';
+    }
+    if (c5Data.image) html5 += `<img src="${c5Data.image}" alt="成果展示" loading="lazy" style="margin-top:8px;">`;
+    c5.innerHTML = html5;
 }
 
 function showError(msg) {
@@ -106,16 +154,16 @@ function showError(msg) {
 
 fetch(DATA_URL)
     .then(res => {
-        if (!res.ok) throw new Error(`HTTP ${res.status} — ${res.statusText}`);
+        if (!res.ok) throw new Error(`HTTP ${res.status}`);
         return res.json();
     })
     .then(json => {
-        console.log("✅ 数据加载成功:", json);
+        console.log("✅ 数据加载成功，时间戳:", new Date().toLocaleTimeString());
         render(json);
     })
     .catch(err => {
         console.error("❌ 加载失败:", err);
-        showError(`加载失败: ${err.message}。请确保 data.json 在仓库根目录。`);
+        showError(`加载失败: ${err.message}`);
     });
 </script>
 </body>
