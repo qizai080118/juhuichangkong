@@ -7,11 +7,9 @@
     <link rel="stylesheet" href="assets/css/style.css">
 </head>
 <body>
-    <!-- 导航栏容器 -->
     <nav class="navbar" id="navbar-wrap"></nav>
 
-    <!-- 横幅区域 -->
-    <section class="banner" id="class-banner">
+    <section class="banner">
         <img id="banner-img" src="" alt="banner">
         <div class="banner-text">
             <h1 id="main-title"></h1>
@@ -26,28 +24,28 @@
 
     <script src="assets/js/main.js"></script>
     <script>
-        initPage("data/aviation-class.json", function(data){
-            // 横幅赋值
-            document.getElementById("banner-img").src = data.banner_bg;
-            document.getElementById("main-title").innerText = data.slogan_main;
-            document.getElementById("sub-title").innerText = data.slogan_sub;
+        document.addEventListener('DOMContentLoaded', () => {
+            initPage("data/aviation-class.json", function(data){
+                document.getElementById("banner-img").src = data.banner_bg;
+                document.getElementById("main-title").innerText = data.slogan_main;
+                document.getElementById("sub-title").innerText = data.slogan_sub;
 
-            // 渲染课程列表
-            const listWrap = document.querySelector("#class-list");
-            let html = "";
-            data.hot_courses.forEach(item=>{
-                html += `
-                <div class="item-card">
-                    <img src="${item.cover}" alt="${item.title}">
-                    <div class="item-info">
-                        <h3>${item.title}</h3>
-                        <p>${item.desc}</p>
-                        <p>${item.age} | ${item.class_num}</p>
+                const listWrap = document.querySelector("#class-list");
+                let html = "";
+                data.hot_courses.forEach(item=>{
+                    html += `
+                    <div class="item-card">
+                        <img src="${item.cover}" alt="${item.title}">
+                        <div class="item-info">
+                            <h3>${item.title}</h3>
+                            <p>${item.desc}</p>
+                            <p>${item.age} | ${item.class_num}</p>
+                        </div>
                     </div>
-                </div>
-                `
+                    `
+                })
+                listWrap.innerHTML = html;
             })
-            listWrap.innerHTML = html;
         })
     </script>
 </body>
