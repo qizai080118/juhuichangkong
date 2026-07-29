@@ -1,170 +1,45 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>剧绘长空</title>
-<style>
-*{margin:0;padding:0;box-sizing:border-box;font-family:"Microsoft Yahei","PingFang SC",sans-serif}
-body{background:#f8fafc;padding:10px;font-size:14px}  /* 全局字体缩小 */
-.header-nav{display:flex;align-items:center;background:#fff;padding:10px 24px;box-shadow:0 2px 12px rgba(0,0,0,0.08);border-radius:16px;margin-bottom:16px;flex-wrap:wrap;gap:6px 12px}
-.logo-text{font-size:22px;font-weight:700;color:#165299;margin-right:24px;letter-spacing:1px;white-space:nowrap} /* Logo略缩小 */
-.header-nav a{text-decoration:none;color:#333;font-size:14px;padding:4px 10px;border-radius:8px;transition:background .2s;white-space:nowrap}
-.header-nav a:hover{background:#eef4ff;color:#165299}
-.header-nav a.active{color:#2980d8;background:#e3edfc;font-weight:600}
-.login-btn{margin-left:auto;background:#e64340;color:#fff;border:none;font-size:14px;padding:6px 20px;border-radius:30px;cursor:pointer;font-weight:500}
-.login-btn:hover{background:#cf2e2b}
-.banner{height:240px;background:linear-gradient(135deg,#7bbdf2,#c7e3fc);border-radius:16px;margin-bottom:20px;display:flex;align-items:center;justify-content:center;color:#1a3a5c;font-size:28px;font-weight:600;letter-spacing:4px;position:relative;overflow:hidden}
-.banner::after{content:"✈ 让航空戏剧点亮校园 ✈";font-size:clamp(18px,3vw,36px);opacity:.9;text-shadow:0 2px 12px rgba(255,255,255,0.3)}
-.card-wrap{display:grid;grid-template-columns:repeat(5,1fr);gap:14px}
-.card{border-radius:20px;padding:18px 16px 22px;box-shadow:0 4px 16px rgba(0,0,0,0.05);background:#fff;display:flex;flex-direction:column}
-.card:hover{transform:translateY(-4px);box-shadow:0 10px 28px rgba(0,0,0,0.08)}
-.card h2{font-size:18px;margin-bottom:12px;display:flex;align-items:center;gap:6px;font-weight:700;color:#1a2e4a}
-.card p,.card li,.card div{font-size:13px;line-height:1.7;color:#2c3e50} /* 正文缩小 */
-.card ul{list-style:none;padding:0}
-.card ul li{padding:3px 0 3px 18px;position:relative}
-.card ul li::before{content:"•";position:absolute;left:2px;color:#2980d8;font-weight:700}
-.card1{background:#e2edfc}.card1 h2{color:#1a4a7a}
-.card2{background:#fff3f3}.card2 h2{color:#b13e3e}
-.card3{background:#d6efec}.card3 h2{color:#1a6b63}
-.card4{background:#fff2dc}.card4 h2{color:#a87a2e}
-.card5{background:linear-gradient(135deg,#e8cff8,#ffdfb8)}.card5 h2{color:#5e3a7a}
-.card .sub-item{margin-top:8px;padding-top:8px;border-top:1px solid rgba(0,0,0,0.06)}
-.card .sub-item:first-of-type{border-top:none;margin-top:0;padding-top:0}
-.card .sub-item strong{display:block;font-size:14px;color:#1a2e4a;margin-bottom:2px}
-.card .sub-item p{margin:0}
-/* 图片样式 */
-.card img{width:100%;height:auto;border-radius:8px;margin-top:8px;display:block}
-@media (max-width:1024px){.card-wrap{grid-template-columns:repeat(3,1fr)}}
-@media (max-width:720px){.header-nav{padding:8px 12px}.logo-text{font-size:20px}.header-nav a{font-size:13px;padding:4px 6px}.login-btn{font-size:13px;padding:4px 14px}.card-wrap{grid-template-columns:repeat(2,1fr)}.banner{height:160px}.banner::after{font-size:16px}}
-@media (max-width:480px){.card-wrap{grid-template-columns:1fr}}
-</style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>剧绘长空 | 首页</title>
+  <link rel="stylesheet" href="assets/css/style.css">
 </head>
 <body>
-<div class="header-nav">
-    <div class="logo-text">剧绘长空</div>
-    <a href="#" class="active">项目介绍</a>
-    <a href="#">剧目展演</a>
-    <a href="#">航空课堂</a>
-    <a href="#">校园传承</a>
-    <a href="#">建设成果</a>
-    <a href="#">成果排行</a>
-    <a href="#">加入我们</a>
-    <button class="login-btn">登录/注册</button>
-</div>
-<div class="banner"></div>
-<div class="card-wrap">
-    <div class="card card1"><h2>📖 项目介绍</h2><div id="card1">⏳ 加载中…</div></div>
-    <div class="card card2"><h2>🎭 戏剧演出</h2><div id="card2">⏳ 加载中…</div></div>
-    <div class="card card3"><h2>✈️ 航空科普</h2><div id="card3">⏳ 加载中…</div></div>
-    <div class="card card4"><h2>🏫 校园活动</h2><div id="card4">⏳ 加载中…</div></div>
-    <div class="card card5"><h2>🏆 成果展示</h2><div id="card5">⏳ 加载中…</div></div>
-</div>
+  <!-- 导航栏容器 -->
+  <header class="top-nav" id="navbar-container"></header>
 
+  <!-- 顶部大图Banner -->
+  <section class="page-banner">
+    <img class="banner-bg-img" id="home-banner-image">
+  </section>
+
+  <!-- 五大功能模块区域 -->
+  <div class="container">
+    <div class="home-module-row" id="home-modules-wrap">
+      <!-- JS动态渲染5个模块卡片 -->
+    </div>
+  </div>
+
+<script src="assets/js/main.js"></script>
 <script>
-// =============================================================
-//  强制实时更新：每次请求都带最新时间戳
-// =============================================================
-const DATA_URL = "data.json?v=" + Date.now();
-
-const c1 = document.getElementById('card1');
-const c2 = document.getElementById('card2');
-const c3 = document.getElementById('card3');
-const c4 = document.getElementById('card4');
-const c5 = document.getElementById('card5');
-
-// 辅助函数：生成带图片的HTML块
-function renderWithImage(item, textHtml) {
-    let html = textHtml;
-    if (item.image) {
-        html += `<img src="${item.image}" alt="${item.subtitle || item.name || '图片'}" loading="lazy">`;
-    }
-    return html;
-}
-
-function render(data) {
-    if (!data || !data.cardList || data.cardList.length < 5) {
-        throw new Error("数据格式无效");
-    }
-    const list = data.cardList;
-
-    // ---- 卡片1：项目介绍 ----
-    let html1 = '';
-    (list[0].items || []).forEach(item => {
-        let text = `<div class="sub-item"><strong>● ${item.subtitle}</strong><p>${item.desc}</p>`;
-        text += item.image ? `<img src="${item.image}" alt="${item.subtitle}" loading="lazy">` : '';
-        text += `</div>`;
-        html1 += text;
-    });
-    c1.innerHTML = html1 || '暂无内容';
-
-    // ---- 卡片2：戏剧演出（作品列表，每个作品可配图） ----
-    const works = list[1].works || [];
-    let html2 = '';
-    if (works.length) {
-        html2 = '<ul>';
-        works.forEach(w => {
-            let li = `<li>${w.name}`;
-            if (w.image) li += `<br><img src="${w.image}" alt="${w.name}" style="max-width:100%;border-radius:6px;margin-top:4px;">`;
-            li += `</li>`;
-            html2 += li;
-        });
-        html2 += '</ul>';
-    } else {
-        html2 = '暂无剧目';
-    }
-    c2.innerHTML = html2;
-
-    // ---- 卡片3：航空科普 ----
-    const c3Data = list[2] || {};
-    let html3 = (c3Data.content || '').replace(/\n/g, '<br>');
-    if (c3Data.image) html3 += `<img src="${c3Data.image}" alt="航空科普" loading="lazy" style="margin-top:8px;">`;
-    c3.innerHTML = html3 || '暂无科普';
-
-    // ---- 卡片4：校园活动 ----
-    const c4Data = list[3] || {};
-    let html4 = (c4Data.content || '').replace(/\n/g, '<br>');
-    if (c4Data.image) html4 += `<img src="${c4Data.image}" alt="校园活动" loading="lazy" style="margin-top:8px;">`;
-    c4.innerHTML = html4 || '暂无活动';
-
-    // ---- 卡片5：成果展示 ----
-    const c5Data = list[4] || {};
-    const sub = c5Data.subTitleList || [];
-    let html5 = '';
-    if (sub.length) {
-        html5 = '<ul>';
-        sub.forEach(s => {
-            let li = `<li>${s}`;
-            // 如果子项带有图片（这里扩展为每个子项可配图，但为了简单，我们使用卡片级图片）
-            li += `</li>`;
-            html5 += li;
-        });
-        html5 += '</ul>';
-    } else {
-        html5 = '暂无成果';
-    }
-    if (c5Data.image) html5 += `<img src="${c5Data.image}" alt="成果展示" loading="lazy" style="margin-top:8px;">`;
-    c5.innerHTML = html5;
-}
-
-function showError(msg) {
-    const err = `<span style="color:#c0392b;">❌ ${msg}</span>`;
-    [c1, c2, c3, c4, c5].forEach(el => el.innerHTML = err);
-}
-
-fetch(DATA_URL)
-    .then(res => {
-        if (!res.ok) throw new Error(`HTTP ${res.status}`);
-        return res.json();
-    })
-    .then(json => {
-        console.log("✅ 数据加载成功，时间戳:", new Date().toLocaleTimeString());
-        render(json);
-    })
-    .catch(err => {
-        console.error("❌ 加载失败:", err);
-        showError(`加载失败: ${err.message}`);
-    });
+// 首页渲染逻辑
+initPage("data/home.json", function(data){
+  // 设置banner背景图
+  document.querySelector("#home-banner-image").src = data.banner.bg_image;
+  const moduleWrap = document.querySelector("#home-modules-wrap");
+  let html = "";
+  data.modules.forEach(module=>{
+    html += `
+    <div class="home-module-card">
+      <h2>${module.title}</h2>
+      <p>${module.summary || ""}</p>
+    </div>
+    `
+  })
+  moduleWrap.innerHTML = html;
+})
 </script>
 </body>
 </html>
