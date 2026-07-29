@@ -1,0 +1,11 @@
+{
+  "navbar": {
+    "menu": [
+      {"name": "首页", "link": "index.html", "isButton": false},
+      {"name": "科技漫剧", "link": "tech-drama.html", "isButton": false},
+      {"name": "航空课堂", "link": "aviation-class.html", "isButton": false},
+      {"name": "课程商城", "link": "course-shop.html", "isButton": false},
+      {"name": "登录/注册", "link": "#login", "isButton": true}
+    ]
+  }
+}
