@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>课程商城</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+    <!-- 导航栏容器 -->
+    <nav class="navbar" id="navbar-wrap"></nav>
+
+    <!-- 横幅区域 -->
+    <section class="banner" id="shop-banner">
+        <img id="banner-img" src="" alt="banner">
+        <div class="banner-text">
+            <h1 id="main-title"></h1>
+            <p id="sub-title"></p>
+        </div>
+    </section>
+
+    <div class="page-container">
+        <a href="index.html" class="back-home">← 返回首页</a>
+        <div class="card-list" id="shop-list"></div>
+    </div>
+
+    <script src="assets/js/main.js"></script>
+    <script>
+        initPage("data/course-shop.json", function(data){
+            // 横幅赋值
+            document.getElementById("banner-img").src = data.banner_bg;
+            document.getElementById("main-title").innerText = data.slogan_main;
+            document.getElementById("sub-title").innerText = data.slogan_sub;
+
+            // 渲染商品列表
+            const listWrap = document.querySelector("#shop-list");
+            let html = "";
+            data.hot_courses.forEach(item=>{
+                html += `
+                <div class="item-card">
+                    <img src="${item.cover}" alt="${item.title}">
+                    <div class="item-info">
+                        <h3>${item.title}</h3>
+                        <p>${item.desc}</p>
+                        <p>${item.age} | ${item.class_num}</p>
+                    </div>
+                </div>
+                `
+            })
+            listWrap.innerHTML = html;
+        })
+    </script>
+</body>
+</html>
