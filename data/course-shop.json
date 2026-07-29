@@ -1,0 +1,40 @@
+{
+  "banner_bg": "assets/images/banner_shop.jpg",
+  "page_title": "课程商城",
+  "slogan_main": "学习资源商城",
+  "slogan_sub": "配套教材、教具资源",
+  "search_placeholder": "搜索教具/教材",
+  "category_list": [
+    {
+      "icon": "assets/images/icon_all.png",
+      "name": "全部商品",
+      "desc": "全部学习资源"
+    },
+    {
+      "icon": "assets/images/icon_book.png",
+      "name": "科普书籍",
+      "desc": "航空科普读物"
+    },
+    {
+      "icon": "assets/images/icon_toy.png",
+      "name": "航模套件",
+      "desc": "拼装航模材料包"
+    }
+  ],
+  "hot_courses": [
+    {
+      "cover": "assets/images/shop01.jpg",
+      "title": "航空科普绘本套装",
+      "desc": "少儿航空启蒙绘本",
+      "age": "适合5-12岁",
+      "class_num": "全套6册"
+    },
+    {
+      "cover": "assets/images/shop02.jpg",
+      "title": "滑翔机拼装套件",
+      "desc": "橡皮筋动力滑翔机",
+      "age": "适合8岁以上",
+      "class_num": "DIY手工包"
+    }
+  ]
+}
