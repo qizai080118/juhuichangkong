@@ -1,0 +1,40 @@
+{
+  "banner_bg": "assets/images/banner_class.jpg",
+  "page_title": "航空课堂",
+  "slogan_main": "航空科普课堂",
+  "slogan_sub": "系统化航空学习课程",
+  "search_placeholder": "搜索课程名称",
+  "category_list": [
+    {
+      "icon": "assets/images/icon_all.png",
+      "name": "全部课程",
+      "desc": "所有航空课程"
+    },
+    {
+      "icon": "assets/images/icon_aero.png",
+      "name": "空气动力学",
+      "desc": "飞行基础理论"
+    },
+    {
+      "icon": "assets/images/icon_model.png",
+      "name": "航模制作",
+      "desc": "手工航模实操"
+    }
+  ],
+  "hot_courses": [
+    {
+      "cover": "assets/images/class01.jpg",
+      "title": "初识航空",
+      "desc": "航空入门基础课程",
+      "age": "适合6-10岁",
+      "class_num": "共8课时"
+    },
+    {
+      "cover": "assets/images/class02.jpg",
+      "title": "航模组装入门",
+      "desc": "动手制作固定翼航模",
+      "age": "适合9-15岁",
+      "class_num": "共10课时"
+    }
+  ]
+}
