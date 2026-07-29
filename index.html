@@ -7,34 +7,33 @@
     <link rel="stylesheet" href="assets/css/style.css">
 </head>
 <body>
-    <!-- 导航栏容器 -->
     <nav class="navbar" id="navbar-wrap"></nav>
 
-    <!-- 首页横幅 -->
     <section class="banner">
         <img id="home-banner-image" src="" alt="首页横幅">
     </section>
 
-    <!-- 功能模块卡片区域 -->
     <div id="home-modules-wrap"></div>
 
     <script src="assets/js/main.js"></script>
     <script>
-        initPage("data/home.json", function(data){
-            document.querySelector("#home-banner-image").src = data.banner.bg_image;
-            const moduleWrap = document.querySelector("#home-modules-wrap");
-            let html = "";
-            data.modules.forEach(module=>{
-                html += `
-                <a href="${module.link}">
-                    <div class="home-module-card">
-                        <h2>${module.title}</h2>
-                        <p>${module.summary || ""}</p>
-                    </div>
-                </a>
-                `
+        document.addEventListener('DOMContentLoaded', () => {
+            initPage("data/home.json", function(data){
+                document.querySelector("#home-banner-image").src = data.banner.bg_image;
+                const moduleWrap = document.querySelector("#home-modules-wrap");
+                let html = "";
+                data.modules.forEach(module=>{
+                    html += `
+                    <a href="${module.link}">
+                        <div class="home-module-card">
+                            <h2>${module.title}</h2>
+                            <p>${module.summary}</p>
+                        </div>
+                    </a>
+                    `
+                })
+                moduleWrap.innerHTML = html;
             })
-            moduleWrap.innerHTML = html;
         })
     </script>
 </body>
