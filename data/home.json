@@ -1,0 +1,22 @@
+{
+  "banner": {
+    "bg_image": "assets/images/banner_home.jpg"
+  },
+  "modules": [
+    {
+      "title": "科技漫剧",
+      "summary": "观看航空主题科普短剧",
+      "link": "tech-drama.html"
+    },
+    {
+      "title": "航空课堂",
+      "summary": "系列航空科普课程",
+      "link": "aviation-class.html"
+    },
+    {
+      "title": "课程商城",
+      "summary": "配套学习资源",
+      "link": "course-shop.html"
+    }
+  ]
+}
