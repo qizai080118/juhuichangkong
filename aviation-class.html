@@ -1,67 +1,54 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>航空课堂 | 剧绘长空</title>
-  <link rel="stylesheet" href="assets/css/style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>航空课堂</title>
+    <link rel="stylesheet" href="assets/css/style.css">
 </head>
 <body>
-  <header class="top-nav" id="navbar-container"></header>
+    <!-- 导航栏容器 -->
+    <nav class="navbar" id="navbar-wrap"></nav>
 
-  <section class="page-banner">
-    <img class="banner-bg-img" id="banner-image">
-    <div class="search-bar">
-      <span id="search-placeholder"></span>
+    <!-- 横幅区域 -->
+    <section class="banner" id="class-banner">
+        <img id="banner-img" src="" alt="banner">
+        <div class="banner-text">
+            <h1 id="main-title"></h1>
+            <p id="sub-title"></p>
+        </div>
+    </section>
+
+    <div class="page-container">
+        <a href="index.html" class="back-home">← 返回首页</a>
+        <div class="card-list" id="class-list"></div>
     </div>
-    <h1 id="banner-title"></h1>
-    <p id="banner-subtitle"></p>
-  </section>
 
-  <div class="category-wrap" id="category-container"></div>
+    <script src="assets/js/main.js"></script>
+    <script>
+        initPage("data/aviation-class.json", function(data){
+            // 横幅赋值
+            document.getElementById("banner-img").src = data.banner_bg;
+            document.getElementById("main-title").innerText = data.slogan_main;
+            document.getElementById("sub-title").innerText = data.slogan_sub;
 
-  <div class="container">
-    <h2>热门课程</h2>
-    <div class="card-row" id="course-container"></div>
-  </div>
-
-<script src="assets/js/main.js"></script>
-<script>
-initPage("data/aviation-class.json", function(d){
-  document.getElementById("banner-image").src = d.banner_bg;
-  document.getElementById("banner-title").innerText = d.page_title + " — " + d.slogan_main;
-  document.getElementById("banner-subtitle").innerText = d.slogan_sub;
-  document.getElementById("search-placeholder").innerText = d.search_placeholder;
-
-  let catHtml = "";
-  d.category_list.forEach(cat=>{
-    catHtml += `
-    <div class="category-item">
-      <img src="${cat.icon}" width="40"/>
-      <div>
-        <div>${cat.name}</div>
-        <small>${cat.desc}</small>
-      </div>
-    </div>
-    `
-  })
-  document.getElementById("category-container").innerHTML = catHtml;
-
-  let courseHtml = "";
-  d.hot_courses.forEach(c=>{
-    courseHtml += `
-    <div class="card-item">
-      <img class="card-img" src="${c.cover}">
-      <div class="card-text">
-        <h4>${c.title}</h4>
-        <p>${c.desc}</p>
-        <span>${c.age} | ${c.class_num}</span>
-      </div>
-    </div>
-    `
-  })
-  document.getElementById("course-container").innerHTML = courseHtml;
-})
-</script>
+            // 渲染课程列表
+            const listWrap = document.querySelector("#class-list");
+            let html = "";
+            data.hot_courses.forEach(item=>{
+                html += `
+                <div class="item-card">
+                    <img src="${item.cover}" alt="${item.title}">
+                    <div class="item-info">
+                        <h3>${item.title}</h3>
+                        <p>${item.desc}</p>
+                        <p>${item.age} | ${item.class_num}</p>
+                    </div>
+                </div>
+                `
+            })
+            listWrap.innerHTML = html;
+        })
+    </script>
 </body>
 </html>
