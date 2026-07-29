@@ -1,1 +1,40 @@
-
+{
+  "banner_bg": "assets/images/banner_drama.jpg",
+  "page_title": "科技漫剧",
+  "slogan_main": "航空科普短剧",
+  "slogan_sub": "用动画读懂航空知识",
+  "search_placeholder": "搜索剧目名称",
+  "category_list": [
+    {
+      "icon": "assets/images/icon_all.png",
+      "name": "全部剧目",
+      "desc": "所有科普剧集"
+    },
+    {
+      "icon": "assets/images/icon_plane.png",
+      "name": "飞行器科普",
+      "desc": "飞机结构与原理"
+    },
+    {
+      "icon": "assets/images/icon_sky.png",
+      "name": "航空历史",
+      "desc": "航空发展故事"
+    }
+  ],
+  "hot_courses": [
+    {
+      "cover": "assets/images/drama01.jpg",
+      "title": "飞机如何飞上蓝天",
+      "desc": "讲解升力基础原理",
+      "age": "适合8-14岁",
+      "class_num": "共6集"
+    },
+    {
+      "cover": "assets/images/drama02.jpg",
+      "title": "认识民航客机",
+      "desc": "客机各个部件功能",
+      "age": "适合7-12岁",
+      "class_num": "共5集"
+    }
+  ]
+}
