@@ -1,45 +1,41 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>剧绘长空 | 首页</title>
-  <link rel="stylesheet" href="assets/css/style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>剧绘长空 - 航空科普</title>
+    <link rel="stylesheet" href="assets/css/style.css">
 </head>
 <body>
-  <!-- 导航栏容器 -->
-  <header class="top-nav" id="navbar-container"></header>
+    <!-- 导航栏容器 -->
+    <nav class="navbar" id="navbar-wrap"></nav>
 
-  <!-- 顶部大图Banner -->
-  <section class="page-banner">
-    <img class="banner-bg-img" id="home-banner-image">
-  </section>
+    <!-- 首页横幅 -->
+    <section class="banner">
+        <img id="home-banner-image" src="" alt="首页横幅">
+    </section>
 
-  <!-- 五大功能模块区域 -->
-  <div class="container">
-    <div class="home-module-row" id="home-modules-wrap">
-      <!-- JS动态渲染5个模块卡片 -->
-    </div>
-  </div>
+    <!-- 功能模块卡片区域 -->
+    <div id="home-modules-wrap"></div>
 
-<script src="assets/js/main.js"></script>
-<script>
-// 首页渲染逻辑
-initPage("data/home.json", function(data){
-  // 设置banner背景图
-  document.querySelector("#home-banner-image").src = data.banner.bg_image;
-  const moduleWrap = document.querySelector("#home-modules-wrap");
-  let html = "";
-  data.modules.forEach(module=>{
-    html += `
-    <div class="home-module-card">
-      <h2>${module.title}</h2>
-      <p>${module.summary || ""}</p>
-    </div>
-    `
-  })
-  moduleWrap.innerHTML = html;
-})
-</script>
+    <script src="assets/js/main.js"></script>
+    <script>
+        initPage("data/home.json", function(data){
+            document.querySelector("#home-banner-image").src = data.banner.bg_image;
+            const moduleWrap = document.querySelector("#home-modules-wrap");
+            let html = "";
+            data.modules.forEach(module=>{
+                html += `
+                <a href="${module.link}">
+                    <div class="home-module-card">
+                        <h2>${module.title}</h2>
+                        <p>${module.summary || ""}</p>
+                    </div>
+                </a>
+                `
+            })
+            moduleWrap.innerHTML = html;
+        })
+    </script>
 </body>
 </html>
