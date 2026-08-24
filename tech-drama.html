@@ -1,141 +1,142 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html lang="zh‑CN">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF‑8">
+    <meta name="viewport" content="width=device‑width, initial‑scale=1.0">
     <title>科技漫剧｜绘鉴长空</title>
     <link rel="stylesheet" href="assets/css/style.css">
 </head>
 <body>
-    <!--导航栏-->
+    <!-- 导航栏，和首页完全一致 -->
     <nav class="navbar">
-        <div class="nav-container">
+        <div class="nav‑container">
             <a href="index.html" class="logo">绘鉴长空</a>
-            <div class="nav-menu">
+            <div class="nav‑menu">
                 <a href="index.html">首页</a>
-                <a href="tech-drama.html" class="active">科技漫剧</a>
-                <a href="aviation-class.html">航空课堂</a>
+                <a href="tech‑drama.html" class="active">科技漫剧</a>
+                <a href="aviation‑class.html">航空课堂</a>
             </div>
         </div>
     </nav>
 
-    <!--顶部大Banner-->
-    <section class="drama-banner">
-        <div class="banner-text">
+    <main class="page‑container">
+        <!-- 顶部大横幅（横版banner） -->
+        <div class="drama‑top‑banner">
             <h1>科技漫剧</h1>
             <p>用故事点亮科学梦想</p>
         </div>
-    </section>
 
-    <div class="page-wrap">
-        <!--主内容区-->
-        <main class="page-main">
-            <!--分类标签栏-->
-            <div class="tab-bar">
-                <span class="tab-item active">全部漫剧</span>
-                <span class="tab-item">科幻冒险</span>
-                <span class="tab-item">航空航天</span>
-                <span class="tab-item">未来科技</span>
-                <span class="tab-item">成长励志</span>
-                <span class="tab-item">知识科普</span>
-                <span class="tab-item">轻松搞笑</span>
-            </div>
+        <!-- 分类标签栏 -->
+        <div class="tag‑bar">
+            <span class="tag‑item active">全部漫剧</span>
+            <span class="tag‑item">科幻冒险</span>
+            <span class="tag‑item">航空航天</span>
+            <span class="tag‑item">未来科技</span>
+            <span class="tag‑item">成长励志</span>
+            <span class="tag‑item">知识科普</span>
+            <span class="tag‑item">轻松搞笑</span>
+        </div>
 
-            <!--热门推荐 横向卡片-->
-            <section class="hot-recommend">
-                <div class="section-title">
+        <!-- 主内容：左侧内容区 + 右侧侧边栏 横版双栏布局 -->
+        <div class="two‑column‑wrap">
+            <!-- 左边主区域 -->
+            <div class="main‑content">
+                <!-- 热门推荐 横向滚动卡片 -->
+                <div class="block‑title">
                     <h2>热门推荐</h2>
-                    <a href="#" class="more">更多 ></a>
+                    <a href="#" class="more‑link">更多 ></a>
                 </div>
-                <div class="card-scroll-wrap" id="hotList">
-                    <!--js渲染热门卡片-->
-                </div>
-            </section>
+                <div class="hot‑scroll‑box" id="hotList"></div>
 
-            <!--漫剧连载专区-->
-            <section class="serial-area">
-                <div class="section-title">
+                <!-- 漫剧连载专区 -->
+                <div class="block‑title">
                     <h2>漫剧连载专区</h2>
-                    <a href="#" class="more">更多 ></a>
+                    <a href="#" class="more‑link">更多 ></a>
                 </div>
-                <div class="card-grid-wrap" id="serialList">
-                    <!--js渲染连载卡片-->
-                </div>
-            </section>
-        </main>
+                <div class="serial‑grid‑box" id="serialList"></div>
+            </div>
 
-        <!--右侧侧边栏-->
-        <aside class="page-sidebar">
-            <div class="side-card">
-                <div class="side-title">今日更新 <a class="more">更多></a></div>
-                <div id="todayUpdate"></div>
+            <!-- 右边侧边栏 -->
+            <div class="side‑bar">
+                <div class="side‑block">
+                    <div class="side‑block‑title">今日更新 <a class="more‑link">更多></a></div>
+                    <div id="todayUpdate"></div>
+                </div>
+                <div class="side‑block">
+                    <div class="side‑block‑title">人气角色 <a class="more‑link">更多></a></div>
+                    <div id="roleList"></div>
+                </div>
+                <div class="side‑block check‑block">
+                    <div class="side‑block‑title">学习打卡</div>
+                    <button class="check‑btn">去打卡</button>
+                </div>
             </div>
-            <div class="side-card">
-                <div class="side-title">人气角色 <a class="more">更多></a></div>
-                <div id="roleList"></div>
-            </div>
-            <div class="side-card check-card">
-                <div class="side-title">学习打卡</div>
-                <button class="check-btn">去打卡</button>
-            </div>
-        </aside>
-    </div>
+        </div>
+    </main>
 
     <footer class="footer">
         <p>© 2025‑2026 绘鉴长空 航空科普</p>
     </footer>
 
     <script>
-        fetch("data/tech-drama.json")
-        .then(res=>res.json())
-        .then(data=>{
-            //热门推荐
+        // 和原有项目一致，读取data下json
+        fetch("data/tech‑drama.json")
+        .then(res => res.json())
+        .then(data => {
+            // 热门推荐横向卡片
             const hotWrap = document.getElementById("hotList");
-            data.hot.forEach(item=>{
+            data.hot.forEach(item => {
                 hotWrap.innerHTML += `
-                <div class="drama-card">
-                    <div class="card-img"><img src="${item.img}" alt="${item.title}"></div>
+                <div class="drama‑card">
+                    <div class="card‑img">
+                        <img src="${item.img}" alt="${item.title}">
+                    </div>
                     <h4>${item.title}</h4>
                     <p>${item.subtitle}</p>
-                </div>`
-            })
-            //连载专区
+                </div>`;
+            });
+
+            // 连载专区网格卡片
             const serialWrap = document.getElementById("serialList");
-            data.serial.forEach(item=>{
+            data.serial.forEach(item => {
                 serialWrap.innerHTML += `
-                <div class="drama-card-small">
-                    <div class="card-img"><img src="${item.img}" alt="${item.title}"></div>
-                    <div>
+                <div class="drama‑card‑small">
+                    <div class="card‑img">
+                        <img src="${item.img}" alt="${item.title}">
+                    </div>
+                    <div class="card‑info">
                         <h4>${item.title}</h4>
                         <p>${item.info}</p>
                     </div>
-                </div>`
-            })
-            //今日更新
+                </div>`;
+            });
+
+            // 今日更新侧边栏
             const updateWrap = document.getElementById("todayUpdate");
-            data.todayUpdate.forEach(item=>{
+            data.todayUpdate.forEach(item => {
                 updateWrap.innerHTML += `
-                <div class="side-item">
+                <div class="side‑item">
                     <img src="${item.img}">
-                    <div>
+                    <div class="item‑text">
                         <div>${item.title}</div>
                         <small>${item.desc}</small>
                     </div>
-                </div>`
-            })
-            //人气角色
+                </div>`;
+            });
+
+            // 人气角色侧边栏
             const roleWrap = document.getElementById("roleList");
-            data.roles.forEach(item=>{
+            data.roles.forEach(item => {
                 roleWrap.innerHTML += `
-                <div class="role-item">
+                <div class="role‑item">
                     <img src="${item.img}">
-                    <div>
+                    <div class="item‑text">
                         <div>${item.name}</div>
                         <small>${item.intro}</small>
                     </div>
-                </div>`
-            })
-        })
+                </div>`;
+            });
+        });
     </script>
 </body>
 </html>
