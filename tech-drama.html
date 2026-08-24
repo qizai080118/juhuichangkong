@@ -1,77 +1,32 @@
 <!DOCTYPE html>
 <html lang="zh‑CN">
 <head>
-<meta charset="UTF‑8">
-<meta name="viewport" content="width=device‑width, initial‑scale=1.0">
-<title>科技漫剧</title>
-<style>
-*{margin:0;padding:0;box‑sizing:border‑box;}
-body{padding:40px 20px;font‑family:system‑ui;}
-#pageTitle{margin‑bottom:24px;}
-.card‑wrap{display:grid;grid‑template‑columns:1fr 1fr;gap:16px;}
-.drama‑card{
-  border:1px solid #ccc;
-  border‑radius:12px;
-  padding:32px 16px;
-  text‑align:center;
-  background:#f5f7fa;
-  cursor:pointer;
-  font‑size:16px;
-}
-#tip{
-  text‑align:center;
-  font‑size:18px;
-  color:#666;
-  margin‑top:80px;
-}
-.error{
-  color:red !important;
-}
-</style>
+    <meta charset="UTF‑8">
+    <title>科技漫剧</title>
 </head>
 <body>
-<h2 id="pageTitle"></h2>
-<div id="tip">加载中...</div>
-<div class="card‑wrap" id="cardWrap"></div>
+    <div id="drama‑wrap"></div>
 
-<script>
-async function initHome(){
-  const tipDom = document.getElementById('tip');
-  try{
-    // json位于data文件夹
-    const res = await fetch('./data/tech‑drama.json');
-    if(!res.ok){
-      throw new Error("json文件获取失败");
-    }
-    const list = await res.json();
-
-    tipDom.style.display = "none";
-    document.getElementById('pageTitle').innerText = "科技漫剧";
-    const map = new Map();
-    list.forEach(item=>{
-      if(!map.has(item.plateId)){
-        map.set(item.plateId, item.plateName);
-      }
-    })
-    const plates = Array.from(map.entries());
-    const wrapDom = document.getElementById('cardWrap');
-    wrapDom.innerHTML = '';
-    plates.forEach(([pid,pname])=>{
-      const div = document.createElement('div');
-      div.className = "drama‑card";
-      div.innerText = pname;
-      div.onclick = ()=>{
-        location.href = `player.html?plateId=${pid}`;
-      }
-      wrapDom.appendChild(div);
-    })
-  }catch(err){
-    console.error(err);
-    tipDom.className = "error";
-    tipDom.innerText = "数据加载失败，请检查json文件";
-  }
-}
-initHome();
-</script>
+    <!-- 引入项目公共js，和首页保持一致 -->
+    <script src="assets/js/main.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // 和首页一模一样，调用 initPage，读取 data/tech‑drama.json
+            initPage("data/tech‑drama.json", function(data){
+                const wrap = document.querySelector("#drama‑wrap");
+                let html = "";
+                // data就是json数组，循环渲染板块卡片
+                data.forEach(item=>{
+                    html += `
+                    <div>
+                        <h3>${item.plateName}</h3>
+                        <a href="player.html?plateId=${item.plateId}">${item.title}</a>
+                    </div>
+                    `
+                })
+                wrap.innerHTML = html;
+            })
+        })
+    </script>
 </body>
 </html>
