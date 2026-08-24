@@ -1,31 +1,48 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
-<head>
-    <meta charset="UTF-8">
-    <title>科技漫剧</title>
+<html lang="zh‑CN">
+<head>    
+<meta charset="UTF‑8">    
+<meta name="viewport" content="width=device-width, initial-scale=1.0">    
+<title>科技漫剧</title>    
+<link rel="stylesheet" href="assets/css/style.css">
 </head>
-<body>
-    <div class="card-list" id="drama-list"></div>
-
-    <script src="assets/js/main.js"></script>
-    <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            initPage("data/tech-drama.json", function(data){
-                const listWrap = document.getElementById("drama-list");
-                let html = "";
-                data.list.forEach(item=>{
-                    html += `
+<body>    
+<nav class="navbar" id="navbar-wrap"></nav>
+    <section class="banner">        
+<img id="banner-img" src="" alt="banner">        
+<div class="banner-text">            
+<h1 id="main-title"></h1>            
+<p id="sub-title"></p>        
+</div>    
+</section>
+    <div class="page-container">        
+<a href="index.html" class="back-home">← 返回首页</a>        
+<div class="card-list" id="drama-list"></div>    
+</div>
+    <script src="assets/js/main.js"></script>    
+<script>        
+document.addEventListener('DOMContentLoaded', () => {            
+initPage("data/tech‑drama.json", function(data){                
+document.getElementById("banner-img").src = data.banner_bg;                
+document.getElementById("main-title").innerText = data.slogan_main;                
+document.getElementById("sub-title").innerText = data.slogan_sub;
+                const listWrap = document.querySelector("#drama-list");                
+let html = "";                
+data.list.forEach(item=>{                    
+html += `
                     <div class="item-card">
-                        <h3>${item.plateName}</h3>
-                        <a href="player.html?plateId=${item.plateId}">${item.title}</a>
-                        <p>${item.desc}</p>
-                        <p>点赞：${item.like}｜收藏：${item.collect}</p>
+                        <img src="${item.cover}" alt="${item.title}">
+                        <div class="item-info">
+                            <h3>${item.title}</h3>
+                            <p>${item.desc}</p>
+                            <p>${item.plateName}｜点赞${item.like}｜收藏${item.collect}</p>
+                        </div>
                     </div>
-                    `
-                })
-                listWrap.innerHTML = html;
-            })
-        })
-    </script>
+                    `                
+})                
+listWrap.innerHTML = html;            
+})        
+})    
+</script>
 </body>
 </html>
