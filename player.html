@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="zh‑CN">
+<head>
+<meta charset="UTF‑8">
+<meta name="viewport" content="width=device‑width, initial‑scale=1.0">
+<title>播放页</title>
+<style>
+*{margin:0;padding:0;box‑sizing:border‑box;}
+body{background:#000;color:#fff;overflow:hidden;}
+.back{
+  position:absolute;top:16px;left:16px;z‑index:10;
+  background:rgba(255,255,255,.2);padding:6px 12px;border‑radius:6px;
+  cursor:pointer;
+}
+.plate‑title{
+  position:absolute;top:16px;left:50%;transform:translateX(-50%);z‑index:9;
+}
+.wrap{height:100vh;overflow‑y:scroll;scroll‑snap‑type:y mandatory;}
+.item{height:100vh;scroll‑snap‑align:start;
+  display:flex;flex‑direction:column;align‑items:center;justify‑content:center;
+  padding:20px;
+}
+video{max‑width:100%;max‑height:60vh;}
+.info{margin‑top:12px;text‑align:center;}
+</style>
+</head>
+<body>
+<div class="back" onclick="location.href='tech‑drama.html'">← 返回</div>
+<div class="plate‑title" id="plateTitle"></div>
+<div class="wrap" id="wrap"></div>
+
+<script>
+let dramaList = [];
+let filterList = [];
+const wrap = document.getElementById('wrap');
+const plateTitleDom = document.getElementById('plateTitle');
+
+function getUrlParam(name){
+  const params = new URLSearchParams(location.search);
+  return Number(params.get(name));
+}
+const selectPlateId = getUrlParam('plateId');
+
+async function loadData(){
+  const res = await fetch('./tech‑drama.json');
+  dramaList = await res.json();
+  filterList = dramaList.filter(item=>item.plateId === selectPlateId);
+  plateTitleDom.innerText = filterList[0].plateName;
+  render();
+}
+
+function render(){
+  wrap.innerHTML = '';
+  filterList.forEach((item,idx)=>{
+    const div = document.createElement('div');
+    div.className = 'item';
+    div.innerHTML = `
+      <video src="${item.videoUrl}" controls ${idx===0?"autoplay":""}></video>
+      <div class="info">
+        <h3>${item.title}</h3>
+        <p>${item.desc}</p>
+        <p>点赞：${item.like} &nbsp;收藏：${item.collect}</p>
+      </div>
+    `;
+    wrap.appendChild(div);
+  })
+}
+loadData();
+</script>
+</body>
+</html>
