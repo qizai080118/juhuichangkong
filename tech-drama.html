@@ -1,52 +1,139 @@
 <!DOCTYPE html>
-<html lang="zh‑CN">
+<html lang="zh-CN">
 <head>
-    <meta charset="UTF‑8">
-    <meta name="viewport" content="width=device‑width, initial‑scale=1.0">
-    <title>科技短剧｜绘鉴长空</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>科技漫剧｜绘鉴长空</title>
     <link rel="stylesheet" href="assets/css/style.css">
 </head>
 <body>
     <!--导航栏-->
     <nav class="navbar">
-        <div class="nav‑container">
-            绘鉴长空
-            <div class="nav‑menu">
-                首页
-                科技短剧
-                航空课堂
+        <div class="nav-container">
+            <a href="index.html" class="logo">绘鉴长空</a>
+            <div class="nav-menu">
+                <a href="index.html">首页</a>
+                <a href="tech-drama.html" class="active">科技漫剧</a>
+                <a href="aviation-class.html">航空课堂</a>
             </div>
         </div>
     </nav>
 
-    <main class="page‑container">
-        <h1>科技短剧</h1>
-        <p class="subtitle">观看航空主题科普短剧</p >
-
-        <div class="card‑list" id="dramaList">
-            <!--内容由 data/tech‑drama.json 动态渲染-->
+    <!--顶部大Banner-->
+    <section class="drama-banner">
+        <div class="banner-text">
+            <h1>科技漫剧</h1>
+            <p>用故事点亮科学梦想</p>
         </div>
-    </main>
+    </section>
+
+    <div class="page-wrap">
+        <!--主内容区-->
+        <main class="page-main">
+            <!--分类标签栏-->
+            <div class="tab-bar">
+                <span class="tab-item active">全部漫剧</span>
+                <span class="tab-item">科幻冒险</span>
+                <span class="tab-item">航空航天</span>
+                <span class="tab-item">未来科技</span>
+                <span class="tab-item">成长励志</span>
+                <span class="tab-item">知识科普</span>
+                <span class="tab-item">轻松搞笑</span>
+            </div>
+
+            <!--热门推荐 横向卡片-->
+            <section class="hot-recommend">
+                <div class="section-title">
+                    <h2>热门推荐</h2>
+                    <a href="#" class="more">更多 ></a>
+                </div>
+                <div class="card-scroll-wrap" id="hotList">
+                    <!--js渲染热门卡片-->
+                </div>
+            </section>
+
+            <!--漫剧连载专区-->
+            <section class="serial-area">
+                <div class="section-title">
+                    <h2>漫剧连载专区</h2>
+                    <a href="#" class="more">更多 ></a>
+                </div>
+                <div class="card-grid-wrap" id="serialList">
+                    <!--js渲染连载卡片-->
+                </div>
+            </section>
+        </main>
+
+        <!--右侧侧边栏-->
+        <aside class="page-sidebar">
+            <div class="side-card">
+                <div class="side-title">今日更新 <a class="more">更多></a></div>
+                <div id="todayUpdate"></div>
+            </div>
+            <div class="side-card">
+                <div class="side-title">人气角色 <a class="more">更多></a></div>
+                <div id="roleList"></div>
+            </div>
+            <div class="side-card check-card">
+                <div class="side-title">学习打卡</div>
+                <button class="check-btn">去打卡</button>
+            </div>
+        </aside>
+    </div>
 
     <footer class="footer">
-        <p>© 2025‑2026 绘鉴长空 航空科普</p >
+        <p>© 2025‑2026 绘鉴长空 航空科普</p>
     </footer>
 
     <script>
-        //读取json数据渲染页面
-        fetch("data/tech‑drama.json")
+        fetch("data/tech-drama.json")
         .then(res=>res.json())
         .then(data=>{
-            const wrap = document.getElementById("dramaList");
-            data.items.forEach(item=>{
-                const div = document.createElement("div");
-                div.className = "card‑item";
-                div.innerHTML = `
-                    <h3>${item.title}</h3>
-                    <p>${item.desc}</p >
-                    ${item.video ? `观看视频`:""}
-                `;
-                wrap.appendChild(div);
+            //热门推荐
+            const hotWrap = document.getElementById("hotList");
+            data.hot.forEach(item=>{
+                hotWrap.innerHTML += `
+                <div class="drama-card">
+                    <div class="card-img"><img src="${item.img}" alt="${item.title}"></div>
+                    <h4>${item.title}</h4>
+                    <p>${item.subtitle}</p>
+                </div>`
+            })
+            //连载专区
+            const serialWrap = document.getElementById("serialList");
+            data.serial.forEach(item=>{
+                serialWrap.innerHTML += `
+                <div class="drama-card-small">
+                    <div class="card-img"><img src="${item.img}" alt="${item.title}"></div>
+                    <div>
+                        <h4>${item.title}</h4>
+                        <p>${item.info}</p>
+                    </div>
+                </div>`
+            })
+            //今日更新
+            const updateWrap = document.getElementById("todayUpdate");
+            data.todayUpdate.forEach(item=>{
+                updateWrap.innerHTML += `
+                <div class="side-item">
+                    <img src="${item.img}">
+                    <div>
+                        <div>${item.title}</div>
+                        <small>${item.desc}</small>
+                    </div>
+                </div>`
+            })
+            //人气角色
+            const roleWrap = document.getElementById("roleList");
+            data.roles.forEach(item=>{
+                roleWrap.innerHTML += `
+                <div class="role-item">
+                    <img src="${item.img}">
+                    <div>
+                        <div>${item.name}</div>
+                        <small>${item.intro}</small>
+                    </div>
+                </div>`
             })
         })
     </script>
