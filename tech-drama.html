@@ -1,21 +1,21 @@
 <!DOCTYPE html>
-<html lang="zh‑CN">
+<html lang="zh-CN">
 <head>
-    <meta charset="UTF‑8">
+    <meta charset="UTF-8">
     <title>科技漫剧</title>
 </head>
 <body>
-    <div class="card‑list" id="drama‑list"></div>
+    <div class="card-list" id="drama-list"></div>
 
     <script src="assets/js/main.js"></script>
     <script>
         document.addEventListener('DOMContentLoaded', () => {
-            initPage("data/tech‑drama.json", function(data){
-                const listWrap = document.getElementById("drama‑list");
+            initPage("data/tech-drama.json", function(data){
+                const listWrap = document.getElementById("drama-list");
                 let html = "";
-                data.forEach(item=>{
+                data.list.forEach(item=>{
                     html += `
-                    <div class="item‑card">
+                    <div class="item-card">
                         <h3>${item.plateName}</h3>
                         <a href="player.html?plateId=${item.plateId}">${item.title}</a>
                         <p>${item.desc}</p>
