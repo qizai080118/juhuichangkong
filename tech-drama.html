@@ -1,50 +1,52 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html lang="zh‑CN">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>科技漫剧</title>
+    <meta charset="UTF‑8">
+    <meta name="viewport" content="width=device‑width, initial‑scale=1.0">
+    <title>科技短剧｜绘鉴长空</title>
     <link rel="stylesheet" href="assets/css/style.css">
 </head>
 <body>
-    <nav class="navbar" id="navbar-wrap"></nav>
-
-    <section class="banner">
-        <img id="banner-img" src="" alt="banner">
-        <div class="banner-text">
-            <h1 id="main-title"></h1>
-            <p id="sub-title"></p>
+    <!--导航栏-->
+    <nav class="navbar">
+        <div class="nav‑container">
+            绘鉴长空
+            <div class="nav‑menu">
+                首页
+                科技短剧
+                航空课堂
+            </div>
         </div>
-    </section>
+    </nav>
 
-    <div class="page-container">
-        <a href="index.html" class="back-home">← 返回首页</a>
-        <div class="card-list" id="drama-list"></div>
-    </div>
+    <main class="page‑container">
+        <h1>科技短剧</h1>
+        <p class="subtitle">观看航空主题科普短剧</p >
 
-    <script src="assets/js/main.js"></script>
+        <div class="card‑list" id="dramaList">
+            <!--内容由 data/tech‑drama.json 动态渲染-->
+        </div>
+    </main>
+
+    <footer class="footer">
+        <p>© 2025‑2026 绘鉴长空 航空科普</p >
+    </footer>
+
     <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            initPage("data/tech-drama.json", function(data){
-                document.getElementById("banner-img").src = data.banner_bg;
-                document.getElementById("main-title").innerText = data.slogan_main;
-                document.getElementById("sub-title").innerText = data.slogan_sub;
-
-                const listWrap = document.querySelector("#drama-list");
-                let html = "";
-                data.hot_courses.forEach(item=>{
-                    html += `
-                    <div class="item-card">
-                        <img src="${item.cover}" alt="${item.title}">
-                        <div class="item-info">
-                            <h3>${item.title}</h3>
-                            <p>${item.desc}</p>
-                            <p>${item.age} | ${item.class_num}</p>
-                        </div>
-                    </div>
-                    `
-                })
-                listWrap.innerHTML = html;
+        //读取json数据渲染页面
+        fetch("data/tech‑drama.json")
+        .then(res=>res.json())
+        .then(data=>{
+            const wrap = document.getElementById("dramaList");
+            data.items.forEach(item=>{
+                const div = document.createElement("div");
+                div.className = "card‑item";
+                div.innerHTML = `
+                    <h3>${item.title}</h3>
+                    <p>${item.desc}</p >
+                    ${item.video ? `观看视频`:""}
+                `;
+                wrap.appendChild(div);
             })
         })
     </script>
