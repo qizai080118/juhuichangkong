@@ -23,14 +23,14 @@
   ],
   "hot_courses": [
     {
-      "cover": "assets/images/drama01.jpg",
+      "cover": "assets/images/drama01.png",
       "title": "飞机如何飞上蓝天",
       "desc": "讲解升力基础原理",
       "age": "适合5-18岁",
       "class_num": "共6集"
     },
     {
-      "cover": "assets/images/drama02.jpg",
+      "cover": "assets/images/drama02.png",
       "title": "认识民航客机",
       "desc": "客机各个部件功能",
       "age": "适合7-12岁",
