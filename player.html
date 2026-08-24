@@ -1,39 +1,56 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
-<head>
-    <meta charset="UTF-8">
-    <title>播放页</title>
+<html lang="zh‑CN">
+<head>    
+<meta charset="UTF‑8">    
+<meta name="viewport" content="width=device-width, initial-scale=1.0">    
+<title>剧集播放</title>    
+<link rel="stylesheet" href="assets/css/style.css">
 </head>
-<body>
-    <div class="card-list" id="player-list"></div>
+<body>    
+<nav class="navbar" id="navbar-wrap"></nav>
+    <section class="banner">        
+<img id="banner-img" src="" alt="banner">        
+<div class="banner-text">            
+<h1 id="main-title"></h1>            
+<p id="sub-title"></p>        
+</div>    
+</section>
+    <div class="page-container">        
+<a href="tech‑drama.html" class="back-home">← 返回科技漫剧列表</a>        
+<div class="card-list" id="player-list"></div>    
+</div>
+    <script src="assets/js/main.js"></script>    
+<script>        
+document.addEventListener('DOMContentLoaded', () => {            
+const params = new URLSearchParams(location.search);
+const plateId = Number(params.get('plateId'));
 
-    <script src="assets/js/main.js"></script>
-    <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            const params = new URLSearchParams(location.search);
-            const plateId = Number(params.get('plateId'));
-
-            initPage("data/tech-drama.json", function(data){
-                const listWrap = document.getElementById("player-list");
-                const list = data.list.filter(item => item.plateId === plateId);
-                let html = "";
-                if(list.length === 0){
-                    html = "<p>没有找到该剧集</p>";
-                }else{
-                    list.forEach(ep => {
-                        html += `
-                        <div class="item-card">
-                            <h3>${ep.title}</h3>
-                            <p>${ep.desc}</p>
-                            <video controls src="${ep.videoUrl}" style="width:100%;max-width:800px;"></video>
-                            <p>点赞：${ep.like}｜收藏：${ep.collect}</p>
+initPage("data/tech‑drama.json", function(data){                
+document.getElementById("banner-img").src = data.banner_bg;                
+document.getElementById("main-title").innerText = data.slogan_main;                
+document.getElementById("sub-title").innerText = data.slogan_sub;
+                const listWrap = document.querySelector("#player-list");                
+let html = "";                
+const filterList = data.list.filter(item=>item.plateId === plateId);
+if(filterList.length === 0){
+    html = "<p>未找到对应剧集</p>";
+}else{
+filterList.forEach(item=>{                    
+html += `
+                    <div class="item-card">
+                        <div class="item-info">
+                            <h3>${item.title}</h3>
+                            <p>${item.desc}</p>
+                            <video controls src="${item.videoUrl}" style="width:100%;max‑width:800px;"></video>
+                            <p>${item.plateName}｜点赞${item.like}｜收藏${item.collect}</p>
                         </div>
-                        `
-                    })
-                }
-                listWrap.innerHTML = html;
-            })
-        })
-    </script>
+                    </div>
+                    `                
+})
+}
+listWrap.innerHTML = html;            
+})        
+})    
+</script>
 </body>
 </html>
