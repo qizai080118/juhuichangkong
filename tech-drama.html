@@ -5,26 +5,25 @@
     <title>科技漫剧</title>
 </head>
 <body>
-    <div id="drama‑wrap"></div>
+    <div class="card‑list" id="drama‑list"></div>
 
-    <!-- 引入项目公共js，和首页保持一致 -->
     <script src="assets/js/main.js"></script>
     <script>
         document.addEventListener('DOMContentLoaded', () => {
-            // 和首页一模一样，调用 initPage，读取 data/tech‑drama.json
             initPage("data/tech‑drama.json", function(data){
-                const wrap = document.querySelector("#drama‑wrap");
+                const listWrap = document.getElementById("drama‑list");
                 let html = "";
-                // data就是json数组，循环渲染板块卡片
                 data.forEach(item=>{
                     html += `
-                    <div>
+                    <div class="item‑card">
                         <h3>${item.plateName}</h3>
                         <a href="player.html?plateId=${item.plateId}">${item.title}</a>
+                        <p>${item.desc}</p>
+                        <p>点赞：${item.like}｜收藏：${item.collect}</p>
                     </div>
                     `
                 })
-                wrap.innerHTML = html;
+                listWrap.innerHTML = html;
             })
         })
     </script>
