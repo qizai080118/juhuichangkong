@@ -1,14 +1,40 @@
 {
-  "items":[
+  "hot": [
     {
-      "title":"航空科普短剧第一集",
-      "desc":"了解飞机起飞升力原理",
-      "video":"https://xxx你的视频链接"
+      "title":"太空电梯的秘密",
+      "subtitle":"第12话·太空之旅",
+      "img":"assets/images/drama1.jpg"
     },
     {
-      "title":"航空科普短剧第二集",
-      "desc":"机翼与空气动力学小知识",
-      "video":""
+      "title":"未来飞行器",
+      "subtitle":"第8话·翱翔天际",
+      "img":"assets/images/drama2.jpg"
+    },
+    {
+      "title":"人工智能小宇宙",
+      "subtitle":"第15话·机器人伙伴",
+      "img":"assets/images/drama3.jpg"
+    }
+  ],
+  "serial":[
+    {
+      "title":"时光飞船计划",
+      "info":"更新至14话｜立即追更",
+      "img":"assets/images/ser1.jpg"
+    }
+  ],
+  "todayUpdate":[
+    {
+      "title":"太空电梯的秘密",
+      "desc":"第12话·太空之旅",
+      "img":"assets/images/drama1.jpg"
+    }
+  ],
+  "roles":[
+    {
+      "name":"小航",
+      "intro":"勇敢好奇的少年飞行员",
+      "img":"assets/images/role1.jpg"
     }
   ]
 }
