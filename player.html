@@ -1,11 +1,11 @@
 <!DOCTYPE html>
-<html lang="zh‑CN">
+<html lang="zh-CN">
 <head>
-    <meta charset="UTF‑8">
+    <meta charset="UTF-8">
     <title>播放页</title>
 </head>
 <body>
-    <div class="card‑list" id="player‑list"></div>
+    <div class="card-list" id="player-list"></div>
 
     <script src="assets/js/main.js"></script>
     <script>
@@ -13,19 +13,19 @@
             const params = new URLSearchParams(location.search);
             const plateId = Number(params.get('plateId'));
 
-            initPage("data/tech‑drama.json", function(data){
-                const listWrap = document.getElementById("player‑list");
-                const list = data.filter(item => item.plateId === plateId);
+            initPage("data/tech-drama.json", function(data){
+                const listWrap = document.getElementById("player-list");
+                const list = data.list.filter(item => item.plateId === plateId);
                 let html = "";
                 if(list.length === 0){
                     html = "<p>没有找到该剧集</p>";
                 }else{
                     list.forEach(ep => {
                         html += `
-                        <div class="item‑card">
+                        <div class="item-card">
                             <h3>${ep.title}</h3>
                             <p>${ep.desc}</p>
-                            <video controls src="${ep.videoUrl}" style="width:100%;max‑width:800px;"></video>
+                            <video controls src="${ep.videoUrl}" style="width:100%;max-width:800px;"></video>
                             <p>点赞：${ep.like}｜收藏：${ep.collect}</p>
                         </div>
                         `
