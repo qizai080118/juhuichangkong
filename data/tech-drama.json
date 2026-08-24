@@ -1,36 +1,14 @@
 {
-  "banner_bg": "assets/images/banner_drama.jpg",
-  "search_placeholder": "搜索剧目名称",
-  "category_list": 
+  "items":[
     {
-      "icon": "assets/images/icon_all.png",
-      "name": "全部剧目",
-      "desc": "所有科普剧集"
+      "title":"航空科普短剧第一集",
+      "desc":"了解飞机起飞升力原理",
+      "video":"https://xxx你的视频链接"
     },
     {
-      "icon": "assets/images/icon_plane.png",
-      "name": "飞行器科普",
-      "desc": "飞机结构与原理"
-    },
-    {
-      "icon": "assets/images/icon_sky.png",
-      "name": "航空历史",
-      "desc": "航空发展故事"
-    }
-  "hot_courses": [
-    {
-      "cover": "assets/images/drama01.jpg",
-      "title": "飞机如何飞上蓝天",
-      "desc": "讲解升力基础原理",
-      "age": "适合5-18岁",
-      "class_num": "共6集"
-    },
-    {
-      "cover": "assets/images/drama02.jpg",
-      "title": "认识民航客机",
-      "desc": "客机各个部件功能",
-      "age": "适合7-12岁",
-      "class_num": "共5集"
+      "title":"航空科普短剧第二集",
+      "desc":"机翼与空气动力学小知识",
+      "video":""
     }
   ]
 }
