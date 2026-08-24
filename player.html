@@ -5,35 +5,33 @@
     <title>播放页</title>
 </head>
 <body>
-    <div id="player‑wrap"></div>
+    <div class="card‑list" id="player‑list"></div>
 
     <script src="assets/js/main.js"></script>
     <script>
         document.addEventListener('DOMContentLoaded', () => {
-            // 获取url上 ?plateId=xx 参数
             const params = new URLSearchParams(location.search);
             const plateId = Number(params.get('plateId'));
 
             initPage("data/tech‑drama.json", function(data){
-                const wrap = document.querySelector("#player‑wrap");
-                // 根据plateId筛选同系列剧集
+                const listWrap = document.getElementById("player‑list");
                 const list = data.filter(item => item.plateId === plateId);
-                if(list.length === 0){
-                    wrap.innerHTML = "<p>没有找到该剧集</p>";
-                    return;
-                }
                 let html = "";
-                list.forEach(ep => {
-                    html += `
-                    <div class="episode‑item">
-                        <h3>${ep.title}</h3>
-                        <p>${ep.desc}</p>
-                        <video controls src="${ep.videoUrl}" style="width:100%;max‑width:800px;"></video>
-                        <p>点赞：${ep.like}｜收藏：${ep.collect}</p>
-                    </div>
-                    `
-                })
-                wrap.innerHTML = html;
+                if(list.length === 0){
+                    html = "<p>没有找到该剧集</p>";
+                }else{
+                    list.forEach(ep => {
+                        html += `
+                        <div class="item‑card">
+                            <h3>${ep.title}</h3>
+                            <p>${ep.desc}</p>
+                            <video controls src="${ep.videoUrl}" style="width:100%;max‑width:800px;"></video>
+                            <p>点赞：${ep.like}｜收藏：${ep.collect}</p>
+                        </div>
+                        `
+                    })
+                }
+                listWrap.innerHTML = html;
             })
         })
     </script>
