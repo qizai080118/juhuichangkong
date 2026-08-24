@@ -1,7 +1,7 @@
 {
   "banner_bg": "assets/images/banner_drama.jpg",
   "search_placeholder": "搜索剧目名称",
-  "category_list": [
+  "category_list": 
     {
       "icon": "assets/images/icon_all.png",
       "name": "全部剧目",
