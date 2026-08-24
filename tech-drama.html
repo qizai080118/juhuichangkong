@@ -18,37 +18,59 @@ body{padding:40px 20px;font‑family:system‑ui;}
   cursor:pointer;
   font‑size:16px;
 }
+#tip{
+  text‑align:center;
+  font‑size:18px;
+  color:#666;
+  margin‑top:80px;
+}
+.error{
+  color:red !important;
+}
 </style>
 </head>
 <body>
 <h2 id="pageTitle"></h2>
+<div id="tip">加载中...</div>
 <div class="card‑wrap" id="cardWrap"></div>
 
 <script>
 async function initHome(){
-  const res = await fetch('./tech‑drama.json');
-  const list = await res.json();
-  document.getElementById('pageTitle').innerText = "科技漫剧";
-  //去重获取4个板块
-  const map = new Map();
-  list.forEach(item=>{
-    if(!map.has(item.plateId)){
-      map.set(item.plateId, item.plateName);
+  const tipDom = document.getElementById('tip');
+  try{
+    const res = await fetch('./tech‑drama.json');
+    if(!res.ok){
+      //404、403之类网络错误直接抛异常
+      throw new Error("json文件获取失败");
     }
-  })
-  const plates = Array.from(map.entries());
-  const wrapDom = document.getElementById('cardWrap');
-  wrapDom.innerHTML = '';
-  plates.forEach(([pid,pname])=>{
-    const div = document.createElement('div');
-    div.className = "drama‑card";
-    div.innerText = pname;
-    div.onclick = ()=>{
-      //跳转到二级播放页
-      location.href = `player.html?plateId=${pid}`;
-    }
-    wrapDom.appendChild(div);
-  })
+    const list = await res.json();
+
+    tipDom.style.display = "none";
+    document.getElementById('pageTitle').innerText = "科技漫剧";
+    //去重获取4个板块
+    const map = new Map();
+    list.forEach(item=>{
+      if(!map.has(item.plateId)){
+        map.set(item.plateId, item.plateName);
+      }
+    })
+    const plates = Array.from(map.entries());
+    const wrapDom = document.getElementById('cardWrap');
+    wrapDom.innerHTML = '';
+    plates.forEach(([pid,pname])=>{
+      const div = document.createElement('div');
+      div.className = "drama‑card";
+      div.innerText = pname;
+      div.onclick = ()=>{
+        location.href = `player.html?plateId=${pid}`;
+      }
+      wrapDom.appendChild(div);
+    })
+  }catch(err){
+    console.error(err);
+    tipDom.className = "error";
+    tipDom.innerText = "数据加载失败，请检查json文件";
+  }
 }
 initHome();
 </script>
