@@ -54,7 +54,8 @@ const selectPlateId = getUrlParam('plateId');
 
 async function loadData(){
   try{
-    const res = await fetch('./tech‑drama.json');
+    // json在data文件夹
+    const res = await fetch('./data/tech‑drama.json');
     if(!res.ok){
       throw new Error("获取json失败");
     }
