@@ -38,16 +38,15 @@ body{padding:40px 20px;font‑family:system‑ui;}
 async function initHome(){
   const tipDom = document.getElementById('tip');
   try{
-    const res = await fetch('./tech‑drama.json');
+    // json位于data文件夹
+    const res = await fetch('./data/tech‑drama.json');
     if(!res.ok){
-      //404、403之类网络错误直接抛异常
       throw new Error("json文件获取失败");
     }
     const list = await res.json();
 
     tipDom.style.display = "none";
     document.getElementById('pageTitle').innerText = "科技漫剧";
-    //去重获取4个板块
     const map = new Map();
     list.forEach(item=>{
       if(!map.has(item.plateId)){
