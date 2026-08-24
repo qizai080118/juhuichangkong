@@ -1,95 +1,41 @@
 <!DOCTYPE html>
 <html lang="zh‑CN">
 <head>
-<meta charset="UTF‑8">
-<meta name="viewport" content="width=device‑width, initial‑scale=1.0">
-<title>播放页</title>
-<style>
-*{margin:0;padding:0;box‑sizing:border‑box;}
-body{background:#000;color:#fff;overflow:hidden;}
-.back{
-  position:absolute;top:16px;left:16px;z‑index:10;
-  background:rgba(255,255,255,.2);padding:6px 12px;border‑radius:6px;
-  cursor:pointer;
-}
-.plate‑title{
-  position:absolute;top:16px;left:50%;transform:translateX(-50%);z‑index:9;
-}
-.wrap{height:100vh;overflow‑y:scroll;scroll‑snap‑type:y mandatory;}
-.item{height:100vh;scroll‑snap‑align:start;
-  display:flex;flex‑direction:column;align‑items:center;justify‑content:center;
-  padding:20px;
-}
-video{max‑width:100%;max‑height:60vh;}
-.info{margin‑top:12px;text‑align:center;}
-#tip{
-  width:100%;
-  height:100vh;
-  display:flex;
-  align‑items:center;
-  justify‑content:center;
-  font‑size:18px;
-  color:#ff6666;
-}
-</style>
+    <meta charset="UTF‑8">
+    <title>播放页</title>
 </head>
 <body>
-<div class="back" onclick="location.href='tech‑drama.html'">← 返回</div>
-<div class="plate‑title" id="plateTitle"></div>
-<div id="tip">加载中...</div>
-<div class="wrap" id="wrap"></div>
+    <div id="player‑wrap"></div>
 
-<script>
-let dramaList = [];
-let filterList = [];
-const wrap = document.getElementById('wrap');
-const plateTitleDom = document.getElementById('plateTitle');
-const tipDom = document.getElementById('tip');
+    <script src="assets/js/main.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // 获取url上 ?plateId=xx 参数
+            const params = new URLSearchParams(location.search);
+            const plateId = Number(params.get('plateId'));
 
-function getUrlParam(name){
-  const params = new URLSearchParams(location.search);
-  return Number(params.get(name));
-}
-const selectPlateId = getUrlParam('plateId');
-
-async function loadData(){
-  try{
-    // json在data文件夹
-    const res = await fetch('./data/tech‑drama.json');
-    if(!res.ok){
-      throw new Error("获取json失败");
-    }
-    dramaList = await res.json();
-    filterList = dramaList.filter(item=>item.plateId === selectPlateId);
-    if(filterList.length === 0){
-      throw new Error("该板块没有数据");
-    }
-    tipDom.style.display = "none";
-    plateTitleDom.innerText = filterList[0].plateName;
-    render();
-  }catch(err){
-    console.error(err);
-    tipDom.innerText = "加载失败："+ err.message;
-  }
-}
-
-function render(){
-  wrap.innerHTML = '';
-  filterList.forEach((item,idx)=>{
-    const div = document.createElement('div');
-    div.className = 'item';
-    div.innerHTML = `
-      <video src="${item.videoUrl}" controls ${idx===0?"autoplay":""}></video>
-      <div class="info">
-        <h3>${item.title}</h3>
-        <p>${item.desc}</p>
-        <p>点赞：${item.like} &nbsp;收藏：${item.collect}</p>
-      </div>
-    `;
-    wrap.appendChild(div);
-  })
-}
-loadData();
-</script>
+            initPage("data/tech‑drama.json", function(data){
+                const wrap = document.querySelector("#player‑wrap");
+                // 根据plateId筛选同系列剧集
+                const list = data.filter(item => item.plateId === plateId);
+                if(list.length === 0){
+                    wrap.innerHTML = "<p>没有找到该剧集</p>";
+                    return;
+                }
+                let html = "";
+                list.forEach(ep => {
+                    html += `
+                    <div class="episode‑item">
+                        <h3>${ep.title}</h3>
+                        <p>${ep.desc}</p>
+                        <video controls src="${ep.videoUrl}" style="width:100%;max‑width:800px;"></video>
+                        <p>点赞：${ep.like}｜收藏：${ep.collect}</p>
+                    </div>
+                    `
+                })
+                wrap.innerHTML = html;
+            })
+        })
+    </script>
 </body>
 </html>
