@@ -1,56 +1,58 @@
-[
-  {
-    "plateId":1,
-    "plateName":"航空航天冷知识系列",
-    "title":"第1集｜太空中为啥不能哭？",
-    "desc":"在太空中为什么不能哭？太空藏着许多小秘密",
-    "videoUrl":"video/drama1.mp4",
-    "like":1240,
-    "collect":368
-  },
-  {
-    "plateId":1,
-    "plateName":"航空航天冷知识系列",
-    "title":"第4集｜飞机舷窗为什么是椭圆形的？",
-    "desc":"飞机舷窗冷知识科普",
-    "videoUrl":"video/drama2.mp4",
-    "like":980,
-    "collect":221
-  },
-  {
-    "plateId":1,
-    "plateName":"航空航天冷知识系列",
-    "title":"第5集｜飞机飞过，天上那条白线是什么？",
-    "desc":"飞机掠过天际拖着长长的白线原理科普",
-    "videoUrl":"video/drama3.mp4",
-    "like":1560,
-    "collect":410
-  },
-  {
-    "plateId":2,
-    "plateName":"两弹一星科学家传记系列",
-    "title":"第4集｜中国原子能之父郭永怀",
-    "desc":"两弹一星元勋郭永怀生平故事",
-    "videoUrl":"video/drama4.mp4",
-    "like":154,
-    "collect":3
-  },
-  {
-    "plateId":3,
-    "plateName":"钱学森传记专题",
-    "title":"第1集｜两弹一星元勋｜钱学森",
-    "desc":"放弃海外优厚待遇，扎根戈壁荒漠，撑起中国导弹航天事业",
-    "videoUrl":"video/drama5.mp4",
-    "like":2100,
-    "collect":890
-  },
-  {
-    "plateId":4,
-    "plateName":"海防导弹之父‑梁守槃",
-    "title":"梁守槃｜海防导弹之父",
-    "desc":"海防导弹之父梁守槃人物传记",
-    "videoUrl":"video/drama6.mp4",
-    "like":660,
-    "collect":120
-  }
-]
+{
+  "list": [
+    {
+      "plateId": 1,
+      "plateName": "航空航天冷知识系列",
+      "title": "第1集｜太空中为啥不能哭？",
+      "desc": "在太空中为什么不能哭？太空藏着许多小秘密",
+      "videoUrl": "video/drama1.mp4",
+      "like": 1240,
+      "collect": 368
+    },
+    {
+      "plateId": 1,
+      "plateName": "航空航天冷知识系列",
+      "title": "第4集｜飞机舷窗为什么是椭圆形的？",
+      "desc": "飞机舷窗冷知识科普",
+      "videoUrl": "video/drama2.mp4",
+      "like": 980,
+      "collect": 221
+    },
+    {
+      "plateId": 1,
+      "plateName": "航空航天冷知识系列",
+      "title": "第5集｜飞机飞过，天上那条白线是什么？",
+      "desc": "飞机掠过天际拖着长长的白线原理科普",
+      "videoUrl": "video/drama3.mp4",
+      "like": 1560,
+      "collect": 410
+    },
+    {
+      "plateId": 2,
+      "plateName": "两弹一星科学家传记系列",
+      "title": "第4集｜中国原子能之父郭永怀",
+      "desc": "两弹一星元勋郭永怀生平故事",
+      "videoUrl": "video/drama4.mp4",
+      "like": 154,
+      "collect": 3
+    },
+    {
+      "plateId": 3,
+      "plateName": "钱学森传记专题",
+      "title": "第1集｜两弹一星元勋｜钱学森",
+      "desc": "放弃海外优厚待遇，扎根戈壁荒漠，撑起中国导弹航天事业",
+      "videoUrl": "video/drama5.mp4",
+      "like": 2100,
+      "collect": 890
+    },
+    {
+      "plateId": 4,
+      "plateName": "海防导弹之父-梁守槃",
+      "title": "梁守槃｜海防导弹之父",
+      "desc": "海防导弹之父梁守槃人物传记",
+      "videoUrl": "video/drama6.mp4",
+      "like": 660,
+      "collect": 120
+    }
+  ]
+}
