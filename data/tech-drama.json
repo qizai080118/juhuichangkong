@@ -57,15 +57,15 @@
       "plateName": "钱学森传记专题",
       "videoUrl": "video/drama5.mp4"
     },
-    {
-      "cover": "assets/images/class02.jpg",
-      "title": "梁守槃｜海防导弹之父",
-      "desc": "海防导弹之父梁守槃人物传记",
-      "age": "人物传记",
-      "class_num": "点赞660｜收藏120",
-      "plateId": 4,
-      "plateName": "海防导弹之父‑梁守槃",
-      "videoUrl": "video/drama6.mp4"
-    }
+   {
+      "cover": "assets/images/class01.jpg",
+      "title": "第5集｜飞机飞过，天上那条白线是什么？",
+      "desc": "飞机掠过天际拖着长长的白线原理科普",
+      "age": "科普向",
+      "class_num": "点赞1560｜收藏410",
+      "plateId": 1,
+      "plateName": "航空航天冷知识系列",
+      "videoUrl": "video/drama3.mp4"
+    },
   ]
 }
