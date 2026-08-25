@@ -1,4 +1,3 @@
-/* ==========全局重置========== */
 *{
     margin:0;
     padding:0;
@@ -13,7 +12,7 @@ a{
     text-decoration:none;
 }
 
-/* ==========首页入口卡片 航空课堂｜科技漫剧｜课程商场 ========== */
+/* ==========首页入口卡片 ========== */
 .home-entry-wrap {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -56,7 +55,6 @@ a{
     object-fit: cover;
 }
 
-/* 首页响应式 */
 @media (max-width:992px) {
     .home-entry-wrap {
         grid-template-columns: repeat(2,1fr);
@@ -69,7 +67,7 @@ a{
     }
 }
 
-/* ========== 子页面通用banner样式 ========== */
+/* ========== 子页面通用banner ========== */
 .page-banner {
     width:100%;
     height:280px;
@@ -93,7 +91,6 @@ a{
     margin:8px 0 0;
 }
 
-/* 返回按钮 */
 .back-btn {
     display: inline-block;
     margin:20px 30px;
@@ -124,7 +121,7 @@ a{
     height:36px;
 }
 
-/* 卡片列表通用 */
+/* 卡片列表 */
 .card-list {
     display:grid;
     grid-template-columns:repeat(auto-fill,minmax(280px,1fr));
@@ -149,7 +146,7 @@ a{
     text-decoration:none;
 }
 
-/* 视频播放页面player */
+/* 视频播放页 */
 .player-wrap{
     max-width:1000px;
     margin:0 auto;
