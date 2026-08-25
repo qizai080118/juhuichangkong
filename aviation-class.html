@@ -1,52 +1,63 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>航空课堂</title>
-    <link rel="stylesheet" href="assets/css/style.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>航空课堂</title>
+<link rel="stylesheet" href="assets/css/style.css">
 </head>
 <body>
-    <nav class="navbar" id="navbar-wrap"></nav>
-
-    <section class="banner">
-        <img id="banner-img" src="" alt="banner">
-        <div class="banner-text">
-            <h1 id="main-title"></h1>
-            <p id="sub-title"></p>
-        </div>
-    </section>
-
-    <div class="page-container">
-        <a href="index.html" class="back-home">← 返回首页</a>
-        <div class="card-list" id="class-list"></div>
+<a href="index.html" class="back-btn">← 返回首页</a>
+<section class="page-banner" id="page-banner">
+    <div class="page-banner-text">
+        <h1 id="main-title"></h1>
+        <p id="sub-title"></p>
     </div>
+</section>
 
-    <script src="assets/js/main.js"></script>
-    <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            initPage("data/aviation-class.json", function(data){
-                document.getElementById("banner-img").src = data.banner_bg;
-                document.getElementById("main-title").innerText = data.slogan_main;
-                document.getElementById("sub-title").innerText = data.slogan_sub;
+<div class="category-wrap" id="category-wrap"></div>
+<div class="card-list" id="card-list"></div>
 
-                const listWrap = document.querySelector("#class-list");
-                let html = "";
-                data.hot_courses.forEach(item=>{
-                    html += `
-                    <div class="item-card">
-                        <img src="${item.cover}" alt="${item.title}">
-                        <div class="item-info">
-                            <h3>${item.title}</h3>
-                            <p>${item.desc}</p>
-                            <p>${item.age} | ${item.class_num}</p>
-                        </div>
-                    </div>
-                    `
-                })
-                listWrap.innerHTML = html;
-            })
+<script src="assets/js/main.js"></script>
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+    initPage("data/aviation-class.json", function(data){
+        document.getElementById("page-banner").style.backgroundImage = `url(${data.banner_bg})`;
+        document.getElementById("main-title").innerText = data.slogan_main;
+        document.getElementById("sub-title").innerText = data.slogan_sub;
+
+        const catWrap = document.querySelector("#category-wrap");
+        let catHtml = "";
+        data.category_list.forEach(cat=>{
+            catHtml += `
+            <div class="category-item">
+                <img src="${cat.icon}" alt="${cat.name}">
+                <div>
+                    <h4>${cat.name}</h4>
+                    <p>${cat.desc}</p>
+                </div>
+            </div>
+            `
         })
-    </script>
+        catWrap.innerHTML = catHtml;
+
+        const listWrap = document.querySelector("#card-list");
+        let html = "";
+        data.hot_courses.forEach(item=>{
+            html += `
+            <div class="item-card">
+                <img src="${item.cover}" alt="${item.title}">
+                <div class="item-info">
+                    <h3><a href="player.html?plateId=${item.plateId}">${item.title}</a></h3>
+                    <p>${item.desc}</p>
+                    <p>${item.plateName} | ${item.class_num}</p>
+                </div>
+            </div>
+            `
+        })
+        listWrap.innerHTML = html;
+    })
+})
+</script>
 </body>
 </html>
