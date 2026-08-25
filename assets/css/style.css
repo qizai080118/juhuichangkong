@@ -1,60 +1,57 @@
-/* 全局重置 */
-.card-list {    
-display: grid;    
-grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));    
-gap: 28px;    
-margin-top: 30px;
+/* 首页三大入口模块，去掉亲子社区，保留3个卡片 */
+.home-entry-wrap {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+    padding: 30px 20px;
+    max-width: 1200px;
+    margin: 0 auto;
 }
-.item-card {    
-background: white;    
-border-radius: 10px;    
-overflow: hidden;    
-transition: 0.25s;
+
+.home-entry-item {
+    aspect-ratio: 1 / 1;
+    border-radius: 20px;
+    overflow: hidden;
+    position: relative;
+    cursor: pointer;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.12);
+    transition: transform 0.25s ease;
 }
-.item-card:hover {    
-transform: translateY(-5px);    
-box-shadow: 0 6px 20px rgba(0,0,0,0.1);
+
+.home-entry-item:hover {
+    transform: translateY(-6px);
 }
-.item-card img {    
-width: 100%;    
-height: 170px;    
-object-fit: cover;
+
+/* 卡片顶部大标题文字 */
+.home-entry-title {
+    position: absolute;
+    top:12px;
+    left:0;
+    right:0;
+    text-align:center;
+    font-size: 2.4rem;
+    font-weight:bold;
+    color:#223355;
+    text-shadow: 1px 1px 2px #ffffff;
+    z-index: 2;
 }
-.item-info {    
-padding: 16px;
+
+/* 卡片背景插画 */
+.home-entry-bg {
+    width:100%;
+    height:100%;
+    object-fit: cover;
 }
-.item-info h3 {    
-font-size: 17px;    
-margin-bottom: 6px;
+
+/* 响应式适配 */
+@media (max-width:992px) {
+    .home-entry-wrap {
+        grid-template-columns: repeat(2,1fr);
+        gap:18px;
+    }
 }
-.item-info p {    
-font-size: 14px;    
-color: #666;    
-margin-bottom:8px;
-}
-/* 返回首页按钮 */
-.back-home {    
-display: inline-block;    
-color:#3478e8;
-}
-.back-home:hover {    
-text-decoration: underline;
-}
-/* 响应式适配 手机端 */
-@media (max-width:768px){
-    #home-modules-wrap{        
-grid-template-columns: 1fr;    
-}
-    .navbar{        
-padding:0 16px;    
-}
-    .nav-menu{        
-gap:16px;    
-}
-    .banner{        
-height:240px;    
-}
-    .banner-text h1{        
-font-size:28px;    
-}
+@media (max-width:576px) {
+    .home-entry-wrap {
+        grid-template-columns: 1fr;
+    }
 }
