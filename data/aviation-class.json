@@ -5,9 +5,9 @@ loadCallback({
   "slogan_sub": "学习航空航天小知识",
   "search_placeholder": "搜索课程",
   "category_list": [
-    {"icon":"assets/images/icon_aero.png","name":"飞机原理","desc":"认识飞行器构造"},
-    {"icon":"assets/images/icon_model.png","name":"航天知识","desc":"火箭与宇宙探索"},
-    {"icon":"assets/images/icon_all.png","name":"航空历史","desc":"航空发展故事"}
+    {"icon":"assets/images/icon_aero.jpg","name":"飞机原理","desc":"认识飞行器构造"},
+    {"icon":"assets/images/icon_model.jpg","name":"航天知识","desc":"火箭与宇宙探索"},
+    {"icon":"assets/images/icon_all.jpg","name":"航空历史","desc":"航空发展故事"}
   ],
   "hot_courses": [
     {"cover":"assets/images/card01.jpg","title":"飞机的飞行秘密","desc":"了解升力与机翼原理","age":"科普向","class_num":"点赞980｜收藏245","plateId":101,"plateName":"飞机原理系列","videoUrl":"video/aviation1.mp4"},
