@@ -60,7 +60,8 @@ font-size:28px;
 }
 }
 
-/* ==========科技漫剧分类栏========== */
+/* ----------------只在这里的末尾追加下面这一段！！不要删掉上面任何内容---------------- */
+/* 科技漫剧 新增：分类导航栏 + player页面 */
 .category-bar{
   display:flex;
   gap:28px;
@@ -83,8 +84,6 @@ font-size:28px;
   color:#3478e8;
   border-bottom:2px solid #3478e8;
 }
-
-/* ==========player播放页面样式========== */
 .player-wrap{
   max-width:900px;
   margin:30px auto;
@@ -110,8 +109,6 @@ font-size:28px;
   line-height:1.6;
   color:#444;
 }
-
-/* 卡片内链接颜色适配原有主题 */
 .item-info h3 a{
   color:#222;
   text-decoration:none;
