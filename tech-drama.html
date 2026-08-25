@@ -1,70 +1,95 @@
-<!DOCTYPE html>
-<html lang="zh-CN">
-<head>    
-<meta charset="UTF-8">    
-<meta name="viewport" content="width=device-width, initial-scale=1.0">    
-<title>科技漫剧</title>    
-<link rel="stylesheet" href="assets/css/style.css">
-</head>
-<body>    
-<nav class="navbar" id="navbar-wrap"></nav>    
-<section class="banner">        
-<img id="banner-img" src="" alt="banner">        
-<div class="banner-text">            
-<h1 id="main-title"></h1>            
-<p id="sub-title"></p>        
-</div>    
-</section>    
-<div class="page-container">        
-<a href="index.html" class="back-home">← 返回首页</a>        
+---
+layout: default
+---
 
-<!-- 👇这里是分类栏容器，航空课堂页面是有的，你之前删掉了 -->
-<div class="category-wrap" id="category-wrap"></div>
+<div style="margin:16px 0;">
+  <a href="/" style="font-size:17px;text-decoration:none;color:#0066cc;">← 返回首页</a>
+</div>
 
-<div class="card-list" id="drama-list"></div>    
-</div>    
-<script src="assets/js/main.js"></script>    
-<script>        
-document.addEventListener('DOMContentLoaded', () => {            
-initPage("data/tech-drama.json", function(data){                
-document.getElementById("banner-img").src = data.banner_bg;                
-document.getElementById("main-title").innerText = data.slogan_main;                
-document.getElementById("sub-title").innerText = data.slogan_sub;
+<style>
+.category-bar{
+  display:flex;
+  gap:28px;
+  padding:12px 0;
+  margin-bottom:24px;
+  border-bottom:1px solid #cccccc;
+}
+.category-bar span{
+  font-size:18px;
+  color:#222222;
+  padding:6px 4px;
+  border-bottom:2px solid transparent;
+  cursor:pointer;
+}
+.category-bar span.active{
+  color:#0066cc;
+  border-bottom:2px solid #0066cc;
+}
+.category-bar span:hover{
+  color:#0066cc;
+  border-bottom:2px solid #0066cc;
+}
+.card-item{
+  margin-bottom:22px;
+  pointer-events:auto;
+}
+.card-item h3 a{
+  color:#0066cc;
+  text-decoration:none;
+}
+.card-item h3 a:hover{
+  text-decoration:underline;
+}
+</style>
 
-// ========== 渲染分类列表【重点！你之前缺失这部分】 ==========
-const categoryWrap = document.querySelector("#category-wrap");
-let catHtml = "";
-data.category_list.forEach(cat=>{
-    catHtml += `
-    <div class="category-item">
-        <img src="${cat.icon}" alt="${cat.name}">
-        <div>
-            <h4>${cat.name}</h4>
-            <p>${cat.desc}</p>
-        </div>
-    </div>
-    `
+<div class="category-bar">
+  <span data-cat="all" class="active">全部</span>
+  <span data-cat="航空航天冷知识">航空航天冷知识</span>
+  <span data-cat="两弹一星科学家传记系列">两弹一星科学家传记系列</span>
+</div>
+
+<div id="cardContainer"></div>
+
+<script>
+// 保持你原有json路径，不要改动
+const jsonUrl = "/data/tech‑drama.json";
+let allData = [];
+let currentCat = "all";
+
+fetch(jsonUrl)
+.then(res => res.json())
+.then(data => {
+  allData = data;
+  renderList();
+});
+
+function renderList(){
+  const container = document.getElementById("cardContainer");
+  container.innerHTML = "";
+
+  let showList = allData;
+  if(currentCat !== "all"){
+    showList = allData.filter(item => item.categories.includes(currentCat));
+  }
+
+  showList.forEach(post => {
+    const div = document.createElement("div");
+    div.className = "card-item";
+    div.innerHTML = `
+      <h3><a href="${post.url}">${post.title}</a></h3>
+      <p>${post.excerpt}</p>
+    `;
+    container.appendChild(div);
+  })
+}
+
+//分类点击切换
+document.querySelectorAll(".category-bar span").forEach(el => {
+  el.onclick = function(){
+    document.querySelectorAll(".category-bar span").forEach(x=>x.classList.remove("active"));
+    this.classList.add("active");
+    currentCat = this.dataset.cat;
+    renderList();
+  }
 })
-categoryWrap.innerHTML = catHtml;
-// ======================================================
-
-const listWrap = document.querySelector("#drama-list");                
-let html = "";                
-data.hot_courses.forEach(item=>{                    
-html += `
-                    <div class="item-card">
-                        <img src="${item.cover}" alt="${item.title}">
-                        <div class="item-info">
-                            <h3><a href="player.html?plateId=${item.plateId}">${item.title}</a></h3>
-                            <p>${item.desc}</p>
-                            <p>${item.plateName} | ${item.class_num}</p>
-                        </div>
-                    </div>
-                    `                
-})                
-listWrap.innerHTML = html;            
-})        
-})    
 </script>
-</body>
-</html>
