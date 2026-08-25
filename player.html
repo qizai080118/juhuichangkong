@@ -1,58 +1,69 @@
-<!DOCTYPE html>
-<html lang="zh-CN">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>剧集播放</title>
-    <link rel="stylesheet" href="assets/css/style.css">
-</head>
-<body>
-    <nav class="navbar" id="navbar-wrap"></nav>
-    <section class="banner">
-        <img id="banner-img" src="" alt="banner">
-        <div class="banner-text">
-            <h1 id="main-title"></h1>
-            <p id="sub-title"></p>
-        </div>
-    </section>
-    <div class="page-container">
-        <a href="tech-drama.html" class="back-home">← 返回科技漫剧列表</a>
-        <div class="card-list" id="player-list"></div>
-    </div>
-    <script src="assets/js/main.js"></script>
-    <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            const params = new URLSearchParams(location.search);
-            const plateId = Number(params.get('plateId'));
+---
+layout: default
+---
 
-            initPage("data/tech-drama.json", function(data){
-                document.getElementById("banner-img").src = data.banner_bg;
-                document.getElementById("main-title").innerText = data.slogan_main;
-                document.getElementById("sub-title").innerText = data.slogan_sub;
+<div style="margin:16px 0;">
+  <a href="/juhuichangkong/tech‑drama.html" style="font-size:17px;text-decoration:none;color:#0066cc;">← 返回科技漫剧列表</a>
+</div>
 
-                const listWrap = document.querySelector("#player-list");
-                let html = "";
-                const filterList = data.hot_courses.filter(item => item.plateId === plateId);
+<style>
+.player-wrap{
+  max-width:900px;
+  margin:30px auto;
+  padding:0 16px;
+}
+.video-box{
+  width:100%;
+  aspect-ratio:16/9;
+  background:#222;
+  border-radius:8px;
+  margin-bottom:24px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  color:#fff;
+}
+.info-box h1{
+  font-size:26px;
+  margin-bottom:12px;
+}
+.info-box p{
+  font-size:16px;
+  line-height:1.6;
+  color:#444;
+}
+</style>
 
-                if(filterList.length === 0){
-                    html = "<p>未找到对应剧集</p>";
-                }else{
-                    filterList.forEach(item=>{
-                        html += `
-                        <div class="item-card">
-                            <div class="item-info">
-                                <h3>${item.title}</h3>
-                                <p>${item.desc}</p>
-                                <video controls src="${item.videoUrl}" style="width:100%;max-width:800px;"></video>
-                                <p>${item.plateName} | ${item.class_num}</p>
-                            </div>
-                        </div>
-                        `;
-                    })
-                }
-                listWrap.innerHTML = html;
-            })
-        })
-    </script>
-</body>
-</html>
+<div class="player-wrap">
+  <div class="video-box">
+    <!-- 这里后续可以嵌入视频标签 <video src="xxx.mp4" controls></video> -->
+    视频播放区域
+  </div>
+  <div class="info-box">
+    <h1 id="title"></h1>
+    <p id="desc"></p>
+  </div>
+</div>
+
+<script>
+// 读取和tech‑drama.html同一个json文件，路径不变
+const jsonUrl = "/data/tech‑drama.json";
+
+// 获取url里的id参数
+const params = new URLSearchParams(window.location.search);
+const id = Number(params.get("id"));
+
+fetch(jsonUrl)
+.then(res=>res.json())
+.then(data=>{
+  // json数组下标从0开始，id=1对应数组第0项
+  const item = data[id-1];
+  if(item){
+    document.getElementById("title").innerText = item.title;
+    document.getElementById("desc").innerText = item.excerpt;
+  }else{
+    document.getElementById("title").innerText = "内容不存在";
+    document.getElementById("desc").innerText = "找不到该集内容";
+  }
+})
+</script>
