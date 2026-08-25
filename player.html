@@ -3,45 +3,51 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>视频播放</title>
+<title>播放页面</title>
 <link rel="stylesheet" href="assets/css/style.css">
+<script src="assets/js/main.js"></script>
 </head>
 <body>
-<a href="javascript:history.back()" class="back-btn">← 返回上一页</a>
+<a href="index.html" class="back-btn">← 返回首页</a>
+<div class="player-wrap">
+    <h2 id="video-title"></h2>
+    <p id="video-desc"></p>
+    <video id="my-video" controls style="width:100%;max-width:800px;"></video>
+</div>
 
-<div class="player-wrap" id="player-box"></div>
-
-<script src="assets/js/main.js"></script>
 <script>
-document.addEventListener('DOMContentLoaded', () => {
-    const params = new URLSearchParams(location.search);
-    const plateId = Number(params.get("plateId"));
+document.addEventListener('DOMContentLoaded',()=>{
+    let allData = [];
+    let total = 3;
+    let doneCount = 0;
 
-    let jsonPath;
-    if(plateId >=101 && plateId <=199){
-        jsonPath = "data/aviation-class.json";
-    }else if(plateId >=201 && plateId <=299){
-        jsonPath = "data/tech-drama.json";
-    }else if(plateId >=301 && plateId <=399){
-        jsonPath = "data/course‑shop.json";
-    }else{
-        document.getElementById("player-box").innerHTML="<p>找不到对应视频</p>";
-        return;
+    function checkFinish(){
+        doneCount++;
+        if(doneCount === total){
+            const params = new URLSearchParams(location.search);
+            const pid = Number(params.get("plateId"));
+            const findItem = allData.find(d=>d.plateId === pid);
+            if(!findItem){
+                document.body.innerHTML = "<div style='padding:30px;color:red'>未找到该视频</div>";
+            }else{
+                document.getElementById("video-title").innerText = findItem.title;
+                document.getElementById("video-desc").innerText = findItem.desc;
+                document.getElementById("my-video").src = findItem.videoUrl;
+            }
+        }
     }
 
-    initPage(jsonPath, function(data){
-        const res = data.hot_courses.find(item=>item.plateId === plateId);
-        const box = document.getElementById("player-box");
-        if(!res){
-            box.innerHTML="<p>未找到视频</p>";
-            return;
-        }
-        box.innerHTML = `
-            <h2>${res.title}</h2>
-            <p>${res.desc}</p>
-            <video controls src="${res.videoUrl}"></video>
-            <p>${res.plateName} | ${res.class_num}</p>
-        `
+    loadData("data/aviation-class.json", function(err, d){
+        if(!err) allData.push(...d.hot_courses);
+        checkFinish();
+    })
+    loadData("data/tech-drama.json", function(err, d){
+        if(!err) allData.push(...d.hot_courses);
+        checkFinish();
+    })
+    loadData("data/course-shop.json", function(err, d){
+        if(!err) allData.push(...d.hot_courses);
+        checkFinish();
     })
 })
 </script>
