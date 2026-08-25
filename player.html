@@ -32,7 +32,6 @@
 
                 const listWrap = document.querySelector("#player-list");
                 let html = "";
-                // 筛选对应plateId的那一条视频
                 const filterList = data.hot_courses.filter(item => item.plateId === plateId);
 
                 if(filterList.length === 0){
