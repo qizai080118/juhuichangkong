@@ -1,40 +1,51 @@
 {
-  "banner_bg": "assets/images/banner_shop.jpg",
-  "page_title": "课程商城",
-  "slogan_main": "学习资源商城",
-  "slogan_sub": "配套教材、教具资源",
-  "search_placeholder": "搜索教具/教材",
+  "banner_bg": "assets/images/banner_class.jpg",
+  "page_title": "课程商场",
+  "slogan_main": "课程商场",
+  "slogan_sub": "精选科普课程",
+  "search_placeholder": "搜索课程",
   "category_list": [
     {
-      "icon": "assets/images/icon_all.png",
-      "name": "全部商品",
-      "desc": "全部学习资源"
+      "icon": "assets/images/icon_aero.png",
+      "name": "航空课程",
+      "desc": "飞行器系统学习"
     },
     {
-      "icon": "assets/images/icon_book.png",
-      "name": "科普书籍",
-      "desc": "航空科普读物"
-    },
-    {
-      "icon": "assets/images/icon_toy.png",
-      "name": "航模套件",
-      "desc": "拼装航模材料包"
+      "icon": "assets/images/icon_model.png",
+      "name": "航天课程",
+      "desc": "宇宙探索系列"
     }
   ],
   "hot_courses": [
     {
       "cover": "assets/images/shop01.jpg",
-      "title": "航空科普绘本套装",
-      "desc": "少儿航空启蒙绘本",
-      "age": "适合7-18岁",
-      "class_num": "全套6册"
+      "title": "航空模型制作课",
+      "desc": "动手制作飞机模型",
+      "age": "实践课程",
+      "class_num": "报名人数 326",
+      "plateId": 301,
+      "plateName": "航空课程系列",
+      "videoUrl": "video/shop1.mp4"
     },
     {
       "cover": "assets/images/shop02.jpg",
-      "title": "滑翔机拼装套件",
-      "desc": "橡皮筋动力滑翔机",
-      "age": "适合8岁以上",
-      "class_num": "DIY手工包"
+      "title": "航天科普训练营",
+      "desc": "沉浸式航天知识学习",
+      "age": "实践课程",
+      "class_num": "报名人数 218",
+      "plateId": 302,
+      "plateName": "航天课程系列",
+      "videoUrl": "video/shop2.mp4"
+    },
+    {
+      "cover": "assets/images/shop03.jpg",
+      "title": "小小飞行员体验课",
+      "desc": "模拟飞行体验",
+      "age": "实践课程",
+      "class_num": "报名人数 412",
+      "plateId": 303,
+      "plateName": "航空课程系列",
+      "videoUrl": "video/shop3.mp4"
     }
   ]
 }
