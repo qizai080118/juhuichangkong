@@ -5,11 +5,12 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>课程商场</title>
 <link rel="stylesheet" href="assets/css/style.css">
+<script src="assets/js/main.js"></script>
 </head>
 <body>
 <a href="index.html" class="back-btn">← 返回首页</a>
 <section class="page-banner" id="page-banner">
-    <div class="page-banner-text">
+    <div class="banner-text">
         <h1 id="main-title"></h1>
         <p id="sub-title"></p>
     </div>
@@ -18,42 +19,43 @@
 <div class="category-wrap" id="category-wrap"></div>
 <div class="card-list" id="card-list"></div>
 
-<script src="assets/js/main.js"></script>
 <script>
-document.addEventListener('DOMContentLoaded', () => {
-    initPage("data/course‑shop.json", function(data){
-        document.getElementById("page-banner").style.backgroundImage = `url(${data.banner_bg})`;
-        document.getElementById("main-title").innerText = data.slogan_main;
-        document.getElementById("sub-title").innerText = data.slogan_sub;
+document.addEventListener('DOMContentLoaded', ()=>{
+    loadData("data/course-shop.json", function(err, pageData){
+        if(err){
+            document.body.innerHTML += `<div style="color:red;padding:16px">加载异常：${err.message}</div>`;
+            return;
+        }
+        document.getElementById("page-banner").style.backgroundImage = `url(${pageData.banner_bg})`;
+        document.getElementById("main-title").innerText = pageData.slogan_main;
+        document.getElementById("sub-title").innerText = pageData.slogan_sub;
 
         const catWrap = document.querySelector("#category-wrap");
         let catHtml = "";
-        data.category_list.forEach(cat=>{
-            catHtml += `
-            <div class="category-item">
-                <img src="${cat.icon}" alt="${cat.name}">
-                <div>
-                    <h4>${cat.name}</h4>
-                    <p>${cat.desc}</p>
-                </div>
+        pageData.category_list.forEach(cat=>{
+        catHtml += `
+        <div class="category-item">
+            <img src="${cat.icon}" alt="${cat.name}">
+            <div>
+                <h4>${cat.name}</h4>
+                <p>${cat.desc}</p>
             </div>
-            `
+        </div>`;
         })
         catWrap.innerHTML = catHtml;
 
         const listWrap = document.querySelector("#card-list");
         let html = "";
-        data.hot_courses.forEach(item=>{
-            html += `
-            <div class="item-card">
-                <img src="${item.cover}" alt="${item.title}">
-                <div class="item-info">
-                    <h3><a href="player.html?plateId=${item.plateId}">${item.title}</a></h3>
-                    <p>${item.desc}</p>
-                    <p>${item.plateName} | ${item.class_num}</p>
-                </div>
+        pageData.hot_courses.forEach(item=>{
+        html += `
+        <div class="item-card">
+            <img src="${item.cover}" alt="${item.title}">
+            <div class="item-info">
+                <h3><a href="player.html?plateId=${item.plateId}">${item.title}</a></h3>
+                <p>${item.desc}</p>
+                <p>${item.plateName} | ${item.class_num}</p>
             </div>
-            `
+        </div>`;
         })
         listWrap.innerHTML = html;
     })
