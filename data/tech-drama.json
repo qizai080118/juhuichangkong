@@ -1,12 +1,9 @@
 {
-  "banner_bg": "assets/images/banner‑techdrama.jpg",
-  "slogan_main": "科技漫剧",
-  "slogan_sub": "趣味科普与科学家故事",
   "hot_courses": [
     {
       "id": 1,
       "title": "第1集｜太空中为啥不能哭？",
-      "cover": "assets/images/cover‑ep1.jpg",
+      "cover": "assets/images/cover-ep1.jpg",
       "desc": "在太空中为什么不能哭？太空藏着许多小秘密。",
       "age": "全年龄",
       "class_num": "1集",
@@ -15,7 +12,7 @@
     {
       "id": 2,
       "title": "第5集｜飞机飞过，天上那条白线是什么？",
-      "cover": "assets/images/cover‑ep2.jpg",
+      "cover": "assets/images/cover-ep2.jpg",
       "desc": "飞机划过天际留下长长的白色尾迹科普。",
       "age": "全年龄",
       "class_num": "1集",
@@ -24,7 +21,7 @@
     {
       "id": 3,
       "title": "第1集｜两弹一星元勋｜钱学森",
-      "cover": "assets/images/cover‑ep3.jpg",
+      "cover": "assets/images/cover-ep3.jpg",
       "desc": "放弃海外优厚待遇，扎根戈壁荒漠，投身中国导弹航天事业。",
       "age": "全年龄",
       "class_num": "1集",
@@ -33,7 +30,7 @@
     {
       "id": 4,
       "title": "第4集｜中国原子能之父郭永怀",
-      "cover": "assets/images/cover‑ep4.jpg",
+      "cover": "assets/images/cover-ep4.jpg",
       "desc": "两弹一星元勋郭永怀生平故事。",
       "age": "全年龄",
       "class_num": "1集",
