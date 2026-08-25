@@ -15,16 +15,7 @@
       "name": "两弹一星科学家传记",
       "desc": "元勋人物故事"
     },
-    {
-      "icon": "assets/images/icon_all.png",
-      "name": "钱学森传记专题",
-      "desc": "钱学森生平事迹"
-    },
-    {
-      "icon": "assets/images/icon_all.png",
-      "name": "海防导弹之父梁守槃",
-      "desc": "梁守槃科研故事"
-    }
+    
   ],
   "hot_courses": [
     {
