@@ -1,40 +1,17 @@
-<!DOCTYPE html>
-<html lang="zh-CN">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>剧绘长空 - 航空科普</title>
-    <link rel="stylesheet" href="assets/css/style.css">
-</head>
-<body>
-    <nav class="navbar" id="navbar-wrap"></nav>
-
-    <section class="banner">
-        <img id="home-banner-image" src="" alt="首页横幅">
-    </section>
-
-    <div id="home-modules-wrap"></div>
-
-    <script src="assets/js/main.js"></script>
-    <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            initPage("data/home.json", function(data){
-                document.querySelector("#home-banner-image").src = data.banner.bg_image;
-                const moduleWrap = document.querySelector("#home-modules-wrap");
-                let html = "";
-                data.modules.forEach(module=>{
-                    html += `
-                    <a href="${module.link}">
-                        <div class="home-module-card">
-                            <h2>${module.title}</h2>
-                            <p>${module.summary}</p>
-                        </div>
-                    </a>
-                    `
-                })
-                moduleWrap.innerHTML = html;
-            })
-        })
-    </script>
-</body>
-</html>
+<div class="home-entry-wrap">
+    <!-- 航空课堂 -->
+    <div class="home-entry-item" onclick="window.location.href='historical_activity_statement.html'">
+        <div class="home-entry-title">航空课堂</div>
+        <img class="home-entry-bg" src="assets/images/home_card01.jpg" alt="航空课堂">
+    </div>
+    <!-- 科技漫剧 -->
+    <div class="home-entry-item" onclick="window.location.href='tech-drama.html'">
+        <div class="home-entry-title">科技漫剧</div>
+        <img class="home-entry-bg" src="assets/images/home_card02.jpg" alt="科技漫剧">
+    </div>
+    <!-- 课程商场 -->
+    <div class="home-entry-item" onclick="window.location.href='shop.html'">
+        <div class="home-entry-title">课程商场</div>
+        <img class="home-entry-bg" src="assets/images/home_card04.jpg" alt="课程商场">
+    </div>
+</div>
