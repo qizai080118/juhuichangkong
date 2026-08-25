@@ -1,226 +1,121 @@
 /* 全局重置 */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: "Microsoft YaHei", sans-serif;
 }
-
-body {
-    background-color: #f7f9fc;
-    color: #222;
-    line-height: 1.6;
+.card-list {    
+display: grid;    
+grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));    
+gap: 28px;    
+margin-top: 30px;
 }
-
-a {
-    text-decoration: none;
-    color: inherit;
+.item-card {    
+background: white;    
+border-radius: 10px;    
+overflow: hidden;    
+transition: 0.25s;
 }
-
-ul {
-    list-style: none;
+.item-card:hover {    
+transform: translateY(-5px);    
+box-shadow: 0 6px 20px rgba(0,0,0,0.1);
 }
-
-/* ========== 加载动画样式【新增】 ========== */
-.loading-box {
-    position: fixed;
-    inset: 0;
-    background: #ffffff;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    z-index: 9999;
+.item-card img {    
+width: 100%;    
+height: 170px;    
+object-fit: cover;
 }
-.loading-spinner {
-    width: 44px;
-    height: 44px;
-    border: 4px solid #e2e8f0;
-    border-top-color: #163566;
-    border-radius: 50%;
-    animation: spin 0.8s linear infinite;
+.item-info {    
+padding: 16px;
 }
-.loading-text {
-    margin-top:14px;
-    font-size:16px;
-    color:#444;
+.item-info h3 {    
+font-size: 17px;    
+margin-bottom: 6px;
 }
-@keyframes spin {
-    to {transform: rotate(360deg);}
+.item-info p {    
+font-size: 14px;    
+color: #666;    
+margin-bottom:8px;
 }
-.loading-box.hide {
-    display: none;
-}
-
-.error-tip {
-    text-align:center;
-    padding:60px 20px;
-    font-size:16px;
-    color:#c0392b;
-}
-
-/* 导航栏样式 */
-.navbar {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 0 40px;
-    height: 64px;
-    background-color: #163566;
-    color: #fff;
-    position: sticky;
-    top: 0;
-    z-index: 998;
-}
-.navbar-logo {
-    font-size: 22px;
-    font-weight: bold;
-}
-.nav-menu {
-    display: flex;
-    gap: 36px;
-    align-items: center;
-}
-.nav-menu a {
-    font-size: 16px;
-    transition: color 0.2s;
-}
-.nav-menu a:hover {
-    color: #7cb3ff;
-}
-.nav-btn-login {
-    padding: 8px 18px;
-    background-color: #3478e8;
-    border-radius: 6px;
-}
-.nav-btn-login:hover {
-    background-color: #2566cc;
-}
-
-/* 横幅Banner通用 */
-.banner {
-    width: 100%;
-    height: 360px;
-    overflow: hidden;
-    position: relative;
-}
-.banner img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-}
-.banner-text {
-    position: absolute;
-    left: 60px;
-    top: 50%;
-    transform: translateY(-50%);
-    color: #fff;
-}
-.banner-text h1 {
-    font-size: 42px;
-    margin-bottom: 10px;
-}
-.banner-text p {
-    font-size: 18px;
-    opacity: 0.9;
-}
-
-/* 首页模块卡片容器 */
-#home-modules-wrap {
-    max-width: 1200px;
-    margin: 60px auto;
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 30px;
-    padding: 0 20px;
-}
-
-/* 首页功能卡片 */
-.home-module-card {
-    background: #fff;
-    padding: 36px 28px;
-    border-radius: 12px;
-    cursor: pointer;
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
-}
-.home-module-card:hover {
-    transform: translateY(-6px);
-    box-shadow: 0 8px 24px rgba(59, 102, 216, 0.15);
-}
-.home-module-card h2 {
-    font-size: 22px;
-    margin-bottom: 12px;
-    color: #163566;
-}
-.home-module-card p {
-    color: #555;
-    font-size: 15px;
-}
-
-/* 二级页面通用卡片列表（课程/剧目/商品） */
-.page-container {
-    max-width: 1240px;
-    margin: 50px auto;
-    padding: 0 20px;
-}
-.card-list {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
-    gap: 28px;
-    margin-top: 30px;
-}
-.item-card {
-    background: white;
-    border-radius: 10px;
-    overflow: hidden;
-    transition: 0.25s;
-}
-.item-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 6px 20px rgba(0,0,0,0.1);
-}
-.item-card img {
-    width: 100%;
-    height: 170px;
-    object-fit: cover;
-}
-.item-info {
-    padding: 16px;
-}
-.item-info h3 {
-    font-size: 17px;
-    margin-bottom: 6px;
-}
-.item-info p {
-    font-size: 14px;
-    color: #666;
-    margin-bottom:8px;
-}
-
 /* 返回首页按钮 */
-.back-home {
-    display: inline-block;
-    color:#3478e8;
+.back-home {    
+display: inline-block;    
+color:#3478e8;
 }
-.back-home:hover {
-    text-decoration: underline;
+.back-home:hover {    
+text-decoration: underline;
 }
-
 /* 响应式适配 手机端 */
 @media (max-width:768px){
-    #home-modules-wrap{
-        grid-template-columns: 1fr;
-    }
-    .navbar{
-        padding:0 16px;
-    }
-    .nav-menu{
-        gap:16px;
-    }
-    .banner{
-        height:240px;
-    }
-    .banner-text h1{
-        font-size:28px;
-    }
+    #home-modules-wrap{        
+grid-template-columns: 1fr;    
+}
+    .navbar{        
+padding:0 16px;    
+}
+    .nav-menu{        
+gap:16px;    
+}
+    .banner{        
+height:240px;    
+}
+    .banner-text h1{        
+font-size:28px;    
+}
+}
+
+/* ==========科技漫剧分类栏========== */
+.category-bar{
+  display:flex;
+  gap:28px;
+  padding:12px 0;
+  margin-bottom:24px;
+  border-bottom:1px solid #cccccc;
+}
+.category-bar span{
+  font-size:18px;
+  color:#222222;
+  padding:6px 4px;
+  border-bottom:2px solid transparent;
+  cursor:pointer;
+}
+.category-bar span.active{
+  color:#3478e8;
+  border-bottom:2px solid #3478e8;
+}
+.category-bar span:hover{
+  color:#3478e8;
+  border-bottom:2px solid #3478e8;
+}
+
+/* ==========player播放页面样式========== */
+.player-wrap{
+  max-width:900px;
+  margin:30px auto;
+  padding:0 16px;
+}
+.video-box{
+  width:100%;
+  aspect-ratio:16/9;
+  background:#222;
+  border-radius:10px;
+  margin-bottom:24px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  color:#fff;
+}
+.info-box h1{
+  font-size:26px;
+  margin-bottom:12px;
+}
+.info-box p{
+  font-size:16px;
+  line-height:1.6;
+  color:#444;
+}
+
+/* 卡片内链接颜色适配原有主题 */
+.item-info h3 a{
+  color:#222;
+  text-decoration:none;
+}
+.item-info h3 a:hover{
+  color:#3478e8;
 }
