@@ -1,69 +1,57 @@
----
-layout: default
----
+<!DOCTYPE html>
+<html lang="zh‑CN">
+<head>
+<meta charset="UTF‑8">
+<meta name="viewport" content="width=device‑width, initial‑scale=1.0">
+<title>播放页</title>
+<link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+<nav class="navbar" id="navbar‑wrap"></nav>
+<section class="banner">
+<img id="banner‑img" src="" alt="banner">
+<div class="banner‑text">
+<h1 id="main‑title"></h1>
+<p id="sub‑title"></p>
+</div>
+</section>
+<div class="page‑container">
+<a href="tech‑drama.html" class="back‑home">← 返回科技漫剧列表</a>
 
-<div style="margin:16px 0;">
-  <a href="/juhuichangkong/tech‑drama.html" style="font-size:17px;text-decoration:none;color:#0066cc;">← 返回科技漫剧列表</a>
+<div class="player‑wrap">
+    <div class="video‑box">
+        <!-- 视频区域，后续替换为video标签 -->
+        视频播放区域
+    </div>
+    <div class="info‑box">
+        <h1 id="title"></h1>
+        <p id="desc"></p>
+    </div>
 </div>
 
-<style>
-.player-wrap{
-  max-width:900px;
-  margin:30px auto;
-  padding:0 16px;
-}
-.video-box{
-  width:100%;
-  aspect-ratio:16/9;
-  background:#222;
-  border-radius:8px;
-  margin-bottom:24px;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  color:#fff;
-}
-.info-box h1{
-  font-size:26px;
-  margin-bottom:12px;
-}
-.info-box p{
-  font-size:16px;
-  line-height:1.6;
-  color:#444;
-}
-</style>
-
-<div class="player-wrap">
-  <div class="video-box">
-    <!-- 这里后续可以嵌入视频标签 <video src="xxx.mp4" controls></video> -->
-    视频播放区域
-  </div>
-  <div class="info-box">
-    <h1 id="title"></h1>
-    <p id="desc"></p>
-  </div>
 </div>
 
+<script src="assets/js/main.js"></script>
 <script>
-// 读取和tech‑drama.html同一个json文件，路径不变
-const jsonUrl = "/data/tech‑drama.json";
+document.addEventListener('DOMContentLoaded', () => {
+    const params = new URLSearchParams(window.location.search);
+    const id = Number(params.get("id"));
 
-// 获取url里的id参数
-const params = new URLSearchParams(window.location.search);
-const id = Number(params.get("id"));
+    initPage("data/tech‑drama.json", function(data){
+        document.getElementById("banner‑img").src = data.banner_bg;
+        document.getElementById("main‑title").innerText = data.slogan_main;
+        document.getElementById("sub‑title").innerText = data.slogan_sub;
 
-fetch(jsonUrl)
-.then(res=>res.json())
-.then(data=>{
-  // json数组下标从0开始，id=1对应数组第0项
-  const item = data[id-1];
-  if(item){
-    document.getElementById("title").innerText = item.title;
-    document.getElementById("desc").innerText = item.excerpt;
-  }else{
-    document.getElementById("title").innerText = "内容不存在";
-    document.getElementById("desc").innerText = "找不到该集内容";
-  }
+        const item = data.hot_courses.find(i => i.id === id);
+        if(item){
+            document.getElementById("title").innerText = item.title;
+            document.getElementById("desc").innerText = item.desc;
+        }else{
+            document.getElementById("title").innerText = "内容不存在";
+            document.getElementById("desc").innerText = "找不到该集内容";
+        }
+    })
 })
 </script>
+</body>
+</html>
