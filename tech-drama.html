@@ -1,92 +1,63 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
-<head>    
-<meta charset="UTF-8">    
-<meta name="viewport" content="width=device-width, initial-scale=1.0">    
-<title>科技漫剧</title>    
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>科技漫剧</title>
 <link rel="stylesheet" href="assets/css/style.css">
 </head>
-<body>    
-<nav class="navbar" id="navbar-wrap"></nav>
-    <section class="banner">        
-<img id="banner-img" src="assets/images/banner-techdrama.jpg" alt="banner">        
-<div class="banner-text">            
-<h1 id="main-title">科技漫剧</h1>            
-<p id="sub-title">趣味科普与科学家故事</p>        
-</div>    
+<body>
+<a href="index.html" class="back-btn">← 返回首页</a>
+<section class="page-banner" id="page-banner">
+    <div class="page-banner-text">
+        <h1 id="main-title"></h1>
+        <p id="sub-title"></p>
+    </div>
 </section>
-    <div class="page-container">        
-<a href="index.html" class="back-home">← 返回首页</a>        
 
-<!-- 全部行内样式，不修改style.css -->
-<div style="display:flex;gap:28px;padding:12px 0;margin-bottom:24px;border-bottom:1px solid #cccccc;">
-  <span data-cat="all" style="font-size:18px;color:#222;padding:6px 4px;border-bottom:2px solid #3478e8;cursor:pointer;" class="cat-item">全部</span>
-  <span data-cat="航空航天冷知识" style="font-size:18px;color:#222;padding:6px 4px;border-bottom:2px solid transparent;cursor:pointer;" class="cat-item">航空航天冷知识</span>
-  <span data-cat="两弹一星科学家传记系列" style="font-size:18px;color:#222;padding:6px 4px;border-bottom:2px solid transparent;cursor:pointer;" class="cat-item">两弹一星科学家传记系列</span>
-</div>
+<div class="category-wrap" id="category-wrap"></div>
+<div class="card-list" id="card-list"></div>
 
-<div class="card-list" id="class-list"></div>    
+<script src="assets/js/main.js"></script>
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+    initPage("data/tech-drama.json", function(data){
+        document.getElementById("page-banner").style.backgroundImage = `url(${data.banner_bg})`;
+        document.getElementById("main-title").innerText = data.slogan_main;
+        document.getElementById("sub-title").innerText = data.slogan_sub;
 
-</div>
-    <script src="assets/js/main.js"></script>    
-<script>        
-document.addEventListener('DOMContentLoaded', () => {  
-  const jsonUrl = "data/tech-drama.json";
-  let allList = [];
-  let currentCat = "all";
-  const listWrap = document.querySelector("#class-list");
-
-  fetch(jsonUrl)
-  .then(res=>{
-    if(!res.ok){
-        throw new Error("加载失败");
-    }
-    return res.json();
-  })
-  .then(data=>{
-      allList = data.hot_courses;
-      render();
-  })
-  .catch(err=>{
-      listWrap.innerHTML = `<p style="color:red;">资源加载失败，请稍后刷新页面</p>`;
-      console.error(err);
-  });
-
-
-  function render(){
-      let showArr = allList;
-      if(currentCat !== "all"){
-          showArr = allList.filter(item => item.categories.includes(currentCat));
-      }
-      let html = "";
-      showArr.forEach(item=>{
-          html += `
-                    <div class="item-card">
-                        <img src="${item.cover}" alt="${item.title}">
-                        <div class="item-info">
-                            <h3><a href="player.html?id=${item.id}" style="color:#222;text-decoration:none;">${item.title}</a></h3>
-                            <p>${item.desc}</p>
-                            <p>${item.age} | ${item.class_num}</p>
-                        </div>
-                    </div>
-                    `
-      })                
-      listWrap.innerHTML = html;
-  }
-
-  //分类点击切换下划线高亮
-  document.querySelectorAll(".cat-item").forEach(el=>{
-    el.onclick = function(){
-        currentCat = this.dataset.cat;
-        document.querySelectorAll(".cat-item").forEach(x=>{
-            x.style.borderBottomColor = "transparent";
+        const catWrap = document.querySelector("#category-wrap");
+        let catHtml = "";
+        data.category_list.forEach(cat=>{
+            catHtml += `
+            <div class="category-item">
+                <img src="${cat.icon}" alt="${cat.name}">
+                <div>
+                    <h4>${cat.name}</h4>
+                    <p>${cat.desc}</p>
+                </div>
+            </div>
+            `
         })
-        this.style.borderBottomColor = "#3478e8";
-        render();
-    }
-  })
+        catWrap.innerHTML = catHtml;
 
-})    
+        const listWrap = document.querySelector("#card-list");
+        let html = "";
+        data.hot_courses.forEach(item=>{
+            html += `
+            <div class="item-card">
+                <img src="${item.cover}" alt="${item.title}">
+                <div class="item-info">
+                    <h3><a href="player.html?plateId=${item.plateId}">${item.title}</a></h3>
+                    <p>${item.desc}</p>
+                    <p>${item.plateName} | ${item.class_num}</p>
+                </div>
+            </div>
+            `
+        })
+        listWrap.innerHTML = html;
+    })
+})
 </script>
 </body>
 </html>
