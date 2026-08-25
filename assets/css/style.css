@@ -1,4 +1,19 @@
-/* 首页三大入口模块，去掉亲子社区，保留3个卡片 */
+/* ==========全局重置========== */
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:"Microsoft Yahei",sans-serif;
+}
+body{
+    background-color:#f7fbff;
+    color:#223355;
+}
+a{
+    text-decoration:none;
+}
+
+/* ==========首页入口卡片 航空课堂｜科技漫剧｜课程商场 ========== */
 .home-entry-wrap {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -22,7 +37,6 @@
     transform: translateY(-6px);
 }
 
-/* 卡片顶部大标题文字 */
 .home-entry-title {
     position: absolute;
     top:12px;
@@ -36,14 +50,13 @@
     z-index: 2;
 }
 
-/* 卡片背景插画 */
 .home-entry-bg {
     width:100%;
     height:100%;
     object-fit: cover;
 }
 
-/* 响应式适配 */
+/* 首页响应式 */
 @media (max-width:992px) {
     .home-entry-wrap {
         grid-template-columns: repeat(2,1fr);
@@ -54,4 +67,95 @@
     .home-entry-wrap {
         grid-template-columns: 1fr;
     }
+}
+
+/* ========== 子页面通用banner样式 ========== */
+.page-banner {
+    width:100%;
+    height:280px;
+    background-size: cover;
+    background-position: center;
+    position: relative;
+}
+.page-banner-text {
+    position:absolute;
+    bottom:30px;
+    left:40px;
+    color:#fff;
+}
+.page-banner-text h1 {
+    font-size:3rem;
+    margin:0;
+    text-shadow: 2px 2px 4px #0004;
+}
+.page-banner-text p {
+    font-size:1.2rem;
+    margin:8px 0 0;
+}
+
+/* 返回按钮 */
+.back-btn {
+    display: inline-block;
+    margin:20px 30px;
+    padding:8px 16px;
+    background:#4080dd;
+    color:#fff;
+    border-radius:8px;
+    text-decoration:none;
+}
+
+/* 分类栏 */
+.category-wrap {
+    display:flex;
+    gap:16px;
+    padding:0 30px 20px;
+    flex-wrap:wrap;
+}
+.category-item {
+    padding:12px 20px;
+    background:#f0f6ff;
+    border-radius:12px;
+    display:flex;
+    align-items:center;
+    gap:10px;
+}
+.category-item img {
+    width:36px;
+    height:36px;
+}
+
+/* 卡片列表通用 */
+.card-list {
+    display:grid;
+    grid-template-columns:repeat(auto-fill,minmax(280px,1fr));
+    gap:24px;
+    padding:0 30px 40px;
+}
+.item-card {
+    border-radius:16px;
+    overflow:hidden;
+    box-shadow:0 3px 10px #00000015;
+}
+.item-card img {
+    width:100%;
+    aspect-ratio:16/9;
+    object-fit:cover;
+}
+.item-info {
+    padding:16px;
+}
+.item-info h3 a {
+    color:#223355;
+    text-decoration:none;
+}
+
+/* 视频播放页面player */
+.player-wrap{
+    max-width:1000px;
+    margin:0 auto;
+    padding:20px;
+}
+video{
+    width:100%;
+    border-radius:12px;
 }
