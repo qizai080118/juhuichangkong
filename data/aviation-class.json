@@ -1,8 +1,8 @@
 loadCallback({
   "banner_bg": "assets/images/banner_class3.jpg",
-  "page_title": "",
+  "page_title": "航空课堂",
   "slogan_main": "",
-  "slogan_sub": "学习航空航天小知识",
+  "slogan_sub": "",
   "search_placeholder": "搜索课程",
   "category_list": [
     {"icon":"assets/images/icon_aero.jpg","name":"飞机原理","desc":"认识飞行器构造"},
