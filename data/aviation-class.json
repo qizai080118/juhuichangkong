@@ -1,7 +1,7 @@
 loadCallback({
   "banner_bg": "assets/images/banner_class3.jpg",
-  "page_title": "航空课堂",
-  "slogan_main": "航空课堂",
+  "page_title": "",
+  "slogan_main": "",
   "slogan_sub": "学习航空航天小知识",
   "search_placeholder": "搜索课程",
   "category_list": [
