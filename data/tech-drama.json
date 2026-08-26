@@ -1,8 +1,8 @@
 loadCallback({
   "banner_bg": "assets/images/banner_class.jpg",
   "page_title": "科技漫剧",
-  "slogan_main": "科技漫剧",
-  "slogan_sub": "探索科学与人物故事",
+  "slogan_main": "",
+  "slogan_sub": "",
   "search_placeholder": "搜索剧集",
   "category_list": [
     {"icon":"assets/images/icon_aero.jpg","name":"航空航天冷知识","desc":"航天趣味科普"},
