@@ -6,7 +6,7 @@ loadCallback({
   "search_placeholder": "搜索剧集",
   "category_list": [
     {"icon":"assets/images/icon_aero.jpg","name":"航空航天冷知识","desc":"航天趣味科普"},
-    {"icon":"assets/images/icon_model.jpj","name":"两弹一星科学家传记","desc":"元勋人物故事"},
+    {"icon":"assets/images/icon_model.jpg","name":"两弹一星科学家传记","desc":"元勋人物故事"},
   ],
   "hot_courses": [
     {"cover":"assets/images/class01.jpg","title":"第1集｜太空中为什么不能哭？","desc":"太空中有趣的物理现象","age":"科普向","class_num":"点赞1240｜收藏368","plateId":201,"plateName":"航空航天冷知识系列","videoUrl":"video/drama1.mp4"},
