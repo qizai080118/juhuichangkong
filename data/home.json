@@ -1,22 +1,25 @@
-{
-  "banner": {
-    "bg_image": "assets/images/banner_home.jpg"
-  },
-  "modules": [
+loadCallback({
+  "banner_bg":"assets/images/home_banner.jpg",
+  "main_title":"少年航空科普",
+  "sub_title":"探索蓝天，追逐航天梦想",
+  "entry_list":[
     {
-      "title": "科技漫剧",
-      "summary": "观看航空主题短剧",
-      "link": "tech-drama.html"
+      "title":"航空课堂",
+      "link":"aviation-class.html",
+      "img":"assets/images/home_card01.jpg",
+      "alt":"航空课堂"
     },
     {
-      "title": "航空课堂",
-      "summary": "系列航空科普课程",
-      "link": "aviation-class.html"
+      "title":"科技漫剧",
+      "link":"tech-drama.html",
+      "img":"assets/images/home_card02.jpg",
+      "alt":"科技漫剧"
     },
     {
-      "title": "课程商城",
-      "summary": "配套学习资源",
-      "link": "course-shop.html"
+      "title":"课程商城",
+      "link":"course-shop.html",
+      "img":"assets/images/home_card04.jpg",
+      "alt":"课程商城"
     }
   ]
-}
+});
