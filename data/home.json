@@ -1,7 +1,7 @@
 loadCallback({
   "banner_bg":"assets/images/home_banner.jpg",
-  "main_title":" ",
-  "sub_title":" ",
+  "main_title":"",
+  "sub_title":"",
   "entry_list":[
     {
       "title":"航空课堂",
