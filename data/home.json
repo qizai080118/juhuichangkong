@@ -1,7 +1,6 @@
 loadCallback({
   "banner_bg":"assets/images/banner_home.jpg",
-  "main_title":"少年航空科普",
-  "sub_title":"探索蓝天，追逐航天梦想",
+  
   "entry_list":[
     {
       "title":"航空课堂",
