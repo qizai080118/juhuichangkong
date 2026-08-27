@@ -5,27 +5,43 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>少年航空科普</title>
 <link rel="stylesheet" href="assets/css/style.css">
+<script src="assets/js/main.js"></script>
 </head>
 <body>
-<section class="page-banner" style="background-image:url('assets/images/home_banner.jpg')">
+<section class="page-banner" id="home-banner">
     <div class="page-banner-text">
-        <h1>剧绘长空</h1>
-        <p>探索蓝天，追逐航天梦想</p>
+        <h1 id="h-home-title"></h1>
+        <p id="h-home-desc"></p>
     </div>
 </section>
-<div class="home-entry-wrap">
-    <div class="home-entry-item" onclick="window.location.href='aviation-class.html'">
-        <div class="home-entry-title">航空课堂</div>
-        <img class="home-entry-bg" src="assets/images/home_card01.jpg" alt="航空课堂">
-    </div>
-    <div class="home-entry-item" onclick="window.location.href='tech-drama.html'">
-        <div class="home-entry-title">科技漫剧</div>
-        <img class="home-entry-bg" src="assets/images/home_card02.jpg" alt="科技漫剧">
-    </div>
-    <div class="home-entry-item" onclick="window.location.href='course-shop.html'">
-        <div class="home-entry-title">课程商城</div>
-        <img class="home-entry-bg" src="assets/images/home_card04.jpg" alt="课程商城">
-    </div>
+<div class="home-entry-wrap" id="entry-container">
 </div>
+
+<script>
+document.addEventListener('DOMContentLoaded', ()=>{
+    loadData("data/home.json", function(err, data){
+        if(err){
+            document.body.innerHTML += `<div style="color:red;padding:16px">首页数据加载失败：${err.message}</div>`;
+            return;
+        }
+        // 设置横幅背景与文字
+        document.getElementById("home-banner").style.backgroundImage = `url(${data.banner_bg})`;
+        document.getElementById("h-home-title").innerText = data.main_title;
+        document.getElementById("h-home-desc").innerText = data.sub_title;
+
+        // 渲染三个入口卡片
+        const wrap = document.getElementById("entry-container");
+        let html = "";
+        data.entry_list.forEach(item=>{
+            html += `
+<div class="home-entry-item" onclick="window.location.href='${item.link}'">
+    <div class="home-entry-title">${item.title}</div>
+    <img class="home-entry-bg" src="${item.img}" alt="${item.alt}">
+</div>`;
+        });
+        wrap.innerHTML = html;
+    })
+})
+</script>
 </body>
 </html>
