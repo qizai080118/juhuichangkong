@@ -1,5 +1,5 @@
 loadCallback({
-  "banner_bg":"assets/images/home_banner.jpg",
+  "banner_bg":"assets/images/banner_home.jpg",
   "main_title":"",
   "sub_title":"",
   "entry_list":[
