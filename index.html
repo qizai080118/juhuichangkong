@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>少年航空科普</title>
+<title>首页</title>
 <link rel="stylesheet" href="assets/css/style.css">
 <script src="assets/js/main.js"></script>
 </head>
@@ -24,12 +24,21 @@ document.addEventListener('DOMContentLoaded', ()=>{
             document.body.innerHTML += `<div style="color:red;padding:16px">首页数据加载失败：${err.message}</div>`;
             return;
         }
-        // 设置横幅背景与文字
         document.getElementById("home-banner").style.backgroundImage = `url(${data.banner_bg})`;
-        document.getElementById("h-home-title").innerText = data.main_title;
-        document.getElementById("h-home-desc").innerText = data.sub_title;
+        const titleDom = document.getElementById("h-home-title");
+        const descDom = document.getElementById("h-home-desc");
+        // 文本为空直接隐藏元素，消除空白高度
+        if(data.main_title.trim() !== ""){
+            titleDom.innerText = data.main_title;
+        }else{
+            titleDom.style.display = "none";
+        }
+        if(data.sub_title.trim() !== ""){
+            descDom.innerText = data.sub_title;
+        }else{
+            descDom.style.display = "none";
+        }
 
-        // 渲染三个入口卡片
         const wrap = document.getElementById("entry-container");
         let html = "";
         data.entry_list.forEach(item=>{
