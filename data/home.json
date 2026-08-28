@@ -4,19 +4,19 @@ loadCallback({
   "sub_title":"",
   "entry_list":[
     {
-      "title":"航空课堂",
+      "title":"",
       "link":"aviation-class.html",
       "img":"assets/images/home_card01.jpg",
       "alt":"航空课堂"
     },
     {
-      "title":"科技漫剧",
+      "title":"",
       "link":"tech-drama.html",
       "img":"assets/images/home_card02.jpg",
       "alt":"科技漫剧"
     },
     {
-      "title":"课程商城",
+      "title":"",
       "link":"course-shop.html",
       "img":"assets/images/home_card04.jpg",
       "alt":"课程商城"
