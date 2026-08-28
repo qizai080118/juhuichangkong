@@ -5,8 +5,8 @@ loadCallback({
   "slogan_sub": "",
   "search_placeholder": "搜索课程",
   "category_list": [
-    {"icon":"assets/images/icon_aero.png","name":"航空课程","desc":"飞行器系统学习"},
-    {"icon":"assets/images/icon_model.png","name":"航天课程","desc":"宇宙探索系列"}
+    {"icon":"assets/images/icon_aero2.jpg","name":"航空课程","desc":"飞行器系统学习"},
+    {"icon":"assets/images/icon_model.jpg","name":"航天课程","desc":"宇宙探索系列"}
   ],
   "hot_courses": [
     {"cover":"assets/images/shop01.jpg","title":"航空模型制作课","desc":"动手组装飞机模型","age":"实践课程","class_num":"报名人数 326","plateId":301,"plateName":"航空课程系列","videoUrl":"video/shop1.mp4"},
