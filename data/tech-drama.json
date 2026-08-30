@@ -11,7 +11,7 @@ loadCallback({
   "hot_courses": [
     {"cover":"assets/images/class01.jpg","title":"第1集｜太空中为什么不能哭？","desc":"太空中有趣的物理现象","age":"科普向","class_num":"点赞1240｜收藏368","plateId":201,"plateName":"航空航天冷知识系列","videoUrl":"video/drama1.mp4"},
     {"cover":"assets/images/class02.jpg","title":"第4集｜两弹元勋郭永怀","desc":"两弹一星元勋郭永怀生平故事","age":"人物传记","class_num":"点赞154｜收藏3","plateId":202,"plateName":"两弹一星科学家传记系列","videoUrl":"video/drama4.mp4"},
-    {"cover":"assets/images/class01.jpg","title":"第1集｜两弹一星元勋｜钱学森","desc":"放弃海外优厚条件，投身祖国导弹事业","age":"人物传记","class_num":"点赞2100｜收藏890","plateId":203,"plateName":"钱学森传记专题","videoUrl":"video/drama5.mp4"},
+    {"cover":"assets/images/class02.jpg","title":"第1集｜两弹一星元勋｜钱学森","desc":"放弃海外优厚条件，投身祖国导弹事业","age":"人物传记","class_num":"点赞2100｜收藏890","plateId":203,"plateName":"钱学森传记专题","videoUrl":"video/drama5.mp4"},
     {"cover":"assets/images/class01.jpg","title":"第5集｜飞机尾迹云是什么","desc":"飞机划过天空白色尾迹科普","age":"科普向","class_num":"点赞1560｜收藏410","plateId":204,"plateName":"航空航天冷知识系列","videoUrl":"video/drama3.mp4"}
   ]
 });
