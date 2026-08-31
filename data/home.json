@@ -4,18 +4,15 @@ loadback({
   },
   "modules": [
     {
-      "title": "",
-      "summary": "",
+      "cover":"assets/images/home_card01.jpg",
       "link": "tech-drama.html"
     },
     {
-      "title": ",
-      "summary": "",
+      "cover":"assets/images/home_card02.jpg",
       "link": "aviation-class.html"
     },
     {
-      "title": "",
-      "summary": "",
+      "cover":"assets/images/home_card04.jpg",
       "link": "course-shop.html"
     }
   ]
