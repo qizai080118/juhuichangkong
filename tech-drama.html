@@ -5,55 +5,61 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>科技漫剧</title>
 <link rel="stylesheet" href="assets/css/style.css">
+<script src="assets/js/main.js"></script>
 </head>
 <body>
-<a href="index.html" class="back-home">← 返回首页</a>
-<section class="banner">
-  <img id="drama-banner-img" src="" alt="科技漫剧横幅">
+← 返回首页
+<section class="page-banner" id="page-banner">
+    <div class="banner-text">
+        <h1 id="main-title"></h1>
+        <p id="sub-title"></p >
+    </div>
 </section>
+
 <div class="category-wrap" id="category-wrap"></div>
 <div class="card-list" id="card-list"></div>
 
 <script>
-function loadJsonCallback(pageData){
-  console.log("✅回调执行，获取数据", pageData);
-  const bannerImg = document.querySelector("#drama-banner-img");
-  bannerImg.src = pageData.banner_bg;
-  bannerImg.onerror = function(){
-    console.error("❌Banner图片失败，路径：", pageData.banner_bg);
-  };
+document.addEventListener('DOMContentLoaded', ()=>{
+    loadData("data/tech-drama.json", function(err, pageData){
+        if(err){
+            document.body.innerHTML += `<div style="color:red;padding:16px">加载异常：${err.message}</div>`;
+            return;
+        }
+        document.getElementById("page-banner").style.backgroundImage = `url(${pageData.banner_bg})`;
+        document.getElementById("main-title").innerText = pageData.slogan_main;
+        document.getElementById("sub-title").innerText = pageData.slogan_sub;
 
-  let catHtml = "";
-  pageData.category_list.forEach(function(cat){
-    catHtml += `<div class="category-item">
-      <img src="${cat.icon}" alt="${cat.name}" onerror="console.error('❌分类图标失败：','${cat.icon}')">
-      <div>
-        <h4>${cat.name}</h4>
-        <p>${cat.desc}</p>
-      </div>
-    </div>`;
-  });
-  document.querySelector("#category-wrap").innerHTML = catHtml;
+        const catWrap = document.querySelector("#category-wrap");
+        let catHtml = "";
+        pageData.category_list.forEach(cat=>{
+        catHtml += `
+        <div class="category-item">
+            < img src="${cat.icon}" alt="${cat.name}">
+            <div>
+                <h4>${cat.name}</h4>
+                <p>${cat.desc}</p >
+            </div>
+        </div>`;
+        })
+        catWrap.innerHTML = catHtml;
 
-  let cardHtml = "";
-  pageData.hot_courses.forEach(function(item, idx){
-    cardHtml += `<div class="item-card" onclick="location.href='player.html?index=${idx}&page=tech-drama'">
-      <img src="${item.cover}" alt="${item.title}" onerror="console.error('❌卡片封面失败：','${item.cover}')">
-      <div class="item-info">
-        <h4>${item.title}</h4>
-        <p>${item.desc}</p>
-      </div>
-    </div>`;
-  });
-  document.querySelector("#card-list").innerHTML = cardHtml;
-}
-
-const script = document.createElement('script');
-script.src = "data/tech-drama.json";
-script.onerror = function(){
-  alert("❌JSONP加载失败，请检查tech‑drama.json外壳、文件名大小写");
-};
-document.body.appendChild(script);
+        const listWrap = document.querySelector("#card-list");
+        let html = "";
+        pageData.hot_courses.forEach(item=>{
+        html += `
+        <div class="item-card">
+            < img src="${item.cover}" alt="${item.title}">
+            <div class="item-info">
+                <h3>${item.title}</h3>
+                <p>${item.desc}</p >
+                <p>${item.plateName} | ${item.class_num}</p >
+            </div>
+        </div>`;
+        })
+        listWrap.innerHTML = html;
+    })
+})
 </script>
 </body>
 </html>
