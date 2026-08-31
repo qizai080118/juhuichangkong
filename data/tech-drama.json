@@ -1,61 +1,38 @@
-loadCallback({
-  "banner_bg": "assets/images/banner_class.jpg",
-  "page_title": "科技漫剧",
-  "slogan_main": "",
-  "slogan_sub": "",
-  "search_placeholder": "搜索剧集",
-  "category_list": [
-    {
-      "icon": "assets/images/icon_aero3.png",
-      "name": "航空航天冷知识",
-      "desc": "航天趣味科普"
-    },
-    {
-      "icon": "assets/images/icon_model2.png",
-      "name": "两弹一星科学家传记",
-      "desc": "元勋人物故事"
-    }
-  ],
-  "hot_courses": [
-    {
-      "cover": "assets/images/class01.jpg",
-      "title": "第1集｜太空中为什么不能哭？",
-      "desc": "太空中有趣的物理现象",
-      "age": "科普向",
-      "class_num": "点赞1240｜收藏368",
-      "plateId": 201,
-      "plateName": "航空航天冷知识系列",
-      "bvid": "BV1GJ411x7h7"
-    },
-    {
-      "cover": "assets/images/class02.jpg",
-      "title": "第2集｜两弹元勋郭永怀",
-      "desc": "两弹一星元勋郭永怀生平故事",
-      "age": "人物传记",
-      "class_num": "点赞154｜收藏3",
-      "plateId": 202,
-      "plateName": "两弹一星科学家传记系列",
-      "bvid": "BV1xxxxxxxxx"
-    },
-    {
-      "cover": "assets/images/class01.jpg",
-      "title": "第3集｜飞机尾迹云是什么",
-      "desc": "飞机划过天空白色尾迹科普",
-      "age": "科普向",
-      "class_num": "点赞1560｜收藏410",
-      "plateId": 204,
-      "plateName": "航空航天冷知识系列",
-      "bvid": "BV1xxxxxxxxx"
-    },
-    {
-      "cover": "assets/images/class02.jpg",
-      "title": "第4集｜两弹一星元勋｜钱学森",
-      "desc": "放弃海外优厚条件，投身祖国导弹事业",
-      "age": "人物传记",
-      "class_num": "点赞2100｜收藏890",
-      "plateId": 203,
-      "plateName": "钱学森传记专题",
-      "bvid": "BV1xxxxxxxxx"
-    }
-  ]
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>科技漫剧</title>
+<link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+<a href="index.html" class="back-home">← 返回首页</a>
+<section class="banner">
+  <img id="drama-banner-img" src="" alt="科技漫剧横幅">
+</section>
+<div class="category-wrap" id="category-wrap"></div>
+<div class="card-list" id="card-list"></div>
+
+<script src="assets/js/main.js"></script>
+<script>
+loadJson("data/tech-drama.json", function(err, pageData){
+  if(err){
+    document.body.innerHTML += '<div style="color:red;padding:20px;">' + err.message + '</div>';
+    return;
+  }
+  document.querySelector("#drama-banner-img").src = pageData.banner_bg;
+  let catHtml = "";
+  pageData.category_list.forEach(function(cat){
+    catHtml += '<div class="category-item"><img src="' + cat.icon + '" alt="' + cat.name + '"><div><h4>' + cat.name + '</h4><p>' + cat.desc + '</p></div></div>';
+  });
+  document.querySelector("#category-wrap").innerHTML = catHtml;
+  let cardHtml = "";
+  pageData.hot_courses.forEach(function(item, idx){
+    cardHtml += '<div class="item-card" onclick="location.href=\'player.html?index=' + idx + '&page=tech-drama\'"><img src="' + item.cover + '" alt="' + item.title + '"><div class="item-info"></div></div>';
+  });
+  document.querySelector("#card-list").innerHTML = cardHtml;
 });
+</script>
+</body>
+</html>
