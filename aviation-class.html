@@ -15,44 +15,44 @@
 <div class="card-list" id="card-list"></div>
 
 <script>
-function loadJsonCallback(pageData){
-  console.log("✅回调执行，获取数据", pageData);
-  const bannerImg = document.querySelector("#aviation-banner-img");
-  bannerImg.src = pageData.banner_bg;
-  bannerImg.onerror = function(){
-    console.error("❌Banner图片失败，路径：", pageData.banner_bg);
-  };
+// 这个函数必须是全局，jsonp脚本会调用它
+window.loadJsonCallback = function(pageData){
+  console.log("✅回调被触发，拿到JSON数据",pageData);
+  document.querySelector("#aviation-banner-img").src = pageData.banner_bg;
 
   let catHtml = "";
-  pageData.category_list.forEach(function(cat){
-    catHtml += `<div class="category-item">
-      <img src="${cat.icon}" alt="${cat.name}" onerror="console.error('❌分类图标失败：','${cat.icon}')">
+  pageData.category_list.forEach(cat=>{
+    catHtml += `
+    <div class="category-item">
+      <img src="${cat.icon}" alt="${cat.name}">
       <div>
         <h4>${cat.name}</h4>
         <p>${cat.desc}</p>
       </div>
     </div>`;
-  });
+  })
   document.querySelector("#category-wrap").innerHTML = catHtml;
 
   let cardHtml = "";
-  pageData.hot_courses.forEach(function(item, idx){
-    cardHtml += `<div class="item-card" onclick="location.href='player.html?index=${idx}&page=aviation-class'">
-      <img src="${item.cover}" alt="${item.title}" onerror="console.error('❌卡片封面失败：','${item.cover}')">
+  pageData.hot_courses.forEach((item,idx)=>{
+    cardHtml += `
+    <div class="item-card" onclick="location.href='player.html?index=${idx}&page=aviation-class'">
+      <img src="${item.cover}" alt="${item.title}">
       <div class="item-info">
         <h4>${item.title}</h4>
         <p>${item.desc}</p>
       </div>
     </div>`;
-  });
+  })
   document.querySelector("#card-list").innerHTML = cardHtml;
 }
 
+// 动态加载jsonp脚本
 const script = document.createElement('script');
 script.src = "data/aviation-class.json";
 script.onerror = function(){
-  alert("❌JSONP加载失败，请检查aviation‑class.json外壳、文件名大小写");
-};
+  alert("❌脚本加载失败：检查路径、文件名大小写");
+}
 document.body.appendChild(script);
 </script>
 </body>
