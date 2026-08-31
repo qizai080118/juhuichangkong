@@ -55,31 +55,35 @@
   aspect-ratio:16/9;
   object-fit:cover;
 }
-/* 卡片不再输出文字标题，info区域清空，图片自带文字 */
 .item-info{
   padding:0;
 }
+
+/* ==========首页纯图片卡片布局（新增，不改动其他代码）========== */
 .home-entry-wrap{
-  display:grid;
-  grid-template-columns:repeat(auto-fill,minmax(260px,1fr));
-  gap:24px;
-  padding:30px;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 24px;
+  padding: 30px;
 }
 .home-entry-item{
-  background:#fff;
   border-radius:16px;
-  box-shadow:0 3px 10px #00000012;
-  padding:24px;
+  overflow:hidden;
   cursor:pointer;
+  box-shadow:0 3px 10px rgba(0,0,0,0.12);
 }
-.home-entry-title{
-  font-size:1.4rem;
-  font-weight:bold;
-  margin-bottom:8px;
+.home-entry-item img{
+  width:100%;
+  height:auto;
+  display:block;
 }
-.home-entry-desc{
-  color:#555;
+/* 手机端自动变成一列 */
+@media (max-width:768px){
+  .home-entry-wrap{
+    grid-template-columns:1fr;
+  }
 }
+
 .player-wrap{
   max-width:1000px;
   margin:0 auto;
@@ -89,8 +93,3 @@ video{
   width:100%;
   border-radius:12px;
 }
-.home-entry-item img{
-  width:100%;
-  display:block;
-}
-
