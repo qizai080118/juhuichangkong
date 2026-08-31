@@ -9,37 +9,34 @@
 <body>
 <a id="back-btn" href="tech-drama.html" class="back-home">← 返回</a>
 <div class="player-wrap">
-  <div id="bilibili-box" style="width:100%;aspect‑ratio:16/9;"></div>
+  <div id="bilibili-box" style="width:100%;aspect-ratio:16/9;"></div>
 </div>
 
 <script src="assets/js/main.js"></script>
 <script>
-document.addEventListener('DOMContentLoaded', ()=>{
-  const params = new URLSearchParams(location.search);
-  const indexVal = Number(params.get("index"));
-  const pageType = params.get("page");
+const params = new URLSearchParams(location.search);
+const indexVal = Number(params.get("index"));
+const pageType = params.get("page");
 
-  let backHref = "tech‑drama.html";
-  if(pageType === "aviation‑class") backHref = "aviation‑class.html";
-  if(pageType === "course‑shop") backHref = "course‑shop.html";
-  document.querySelector("#back‑btn").href = backHref;
+let backHref = "tech-drama.html";
+if(pageType === "aviation-class") backHref = "aviation-class.html";
+if(pageType === "course-shop") backHref = "course-shop.html";
+document.querySelector("#back-btn").href = backHref;
 
-  let jsonPath = "data/tech‑drama.json";
-  if(pageType === "aviation‑class") jsonPath = "data/aviation‑class.json";
-  if(pageType === "course‑shop") jsonPath = "data/course‑shop.json";
+let jsonPath = "data/tech-drama.json";
+if(pageType === "aviation-class") jsonPath = "data/aviation-class.json";
+if(pageType === "course-shop") jsonPath = "data/course-shop.json";
 
-  loadJson(jsonPath, function(err, res){
-    if(err){
-      document.querySelector("#bilibili-box").innerText = "视频加载失败";
-      return;
-    }
-    const videoItem = res.hot_courses[indexVal];
-    const bv = videoItem.bvid;
-    //嵌入B站iframe播放器
-    document.querySelector("#bilibili-box").innerHTML =
-    `<iframe src="//player.bilibili.com/player.html?bvid=${bv}&page=1&high_quality=1"
-    style="width:100%;height:100%;border:none;" allowfullscreen></iframe>`;
-  })
+loadJson(jsonPath, function(err, res){
+  if(err){
+    document.querySelector("#bilibili-box").innerText = "视频加载失败";
+    return;
+  }
+  const videoItem = res.hot_courses[indexVal];
+  const bv = videoItem.bvid;
+  document.querySelector("#bilibili-box").innerHTML =
+  `<iframe src="//player.bilibili.com/player.html?bvid=${bv}&page=1&high_quality=1"
+  style="width:100%;height:100%;border:none;" allowfullscreen></iframe>`;
 })
 </script>
 </body>
