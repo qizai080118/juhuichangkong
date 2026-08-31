@@ -16,22 +16,39 @@
 
 <script>
 function loadJsonCallback(pageData){
+  console.log("✅拿到数据", pageData);
   document.querySelector("#shop-banner-img").src = pageData.banner_bg;
+
   let catHtml = "";
   pageData.category_list.forEach(function(cat){
-    catHtml += '<div class="category-item"><img src="' + cat.icon + '" alt="' + cat.name + '"><div><h4>' + cat.name + '</h4><p>' + cat.desc + '</p></div></div>';
+    catHtml += `<div class="category-item">
+      <img src="${cat.icon}" alt="${cat.name}">
+      <div>
+        <h4>${cat.name}</h4>
+        <p>${cat.desc}</p>
+      </div>
+    </div>`;
   });
   document.querySelector("#category-wrap").innerHTML = catHtml;
 
   let cardHtml = "";
   pageData.hot_courses.forEach(function(item, idx){
-    cardHtml += '<div class="item-card" onclick="location.href=\'player.html?index=' + idx + '&page=course-shop\'"><img src="' + item.cover + '" alt="' + item.title + '"><div class="item-info"></div></div>';
+    cardHtml += `<div class="item-card" onclick="location.href='player.html?index=${idx}&page=course-shop'">
+      <img src="${item.cover}" alt="${item.title}">
+      <div class="item-info">
+        <h4>${item.title}</h4>
+        <p>${item.desc}</p>
+      </div>
+    </div>`;
   });
   document.querySelector("#card-list").innerHTML = cardHtml;
 }
 
 const script = document.createElement('script');
 script.src = "data/course-shop.json";
+script.onerror = function(){
+  alert("❌加载失败：检查data/course‑shop.json");
+};
 document.body.appendChild(script);
 </script>
 </body>
