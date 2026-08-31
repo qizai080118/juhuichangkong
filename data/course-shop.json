@@ -9,8 +9,8 @@ loadCallback({
     {"icon":"assets/images/icon_model2.png","name":"航天课程","desc":"宇宙探索系列"}
   ],
   "hot_courses": [
-    {"cover":"assets/images/shop01.jpg","title":"航空模型制作课","desc":"动手组装飞机模型","age":"实践课程","class_num":"报名人数 326","plateId":301,"plateName":"航空课程系列","videoUrl":"video/shop1.mp4"},
-    {"cover":"assets/images/shop02.jpg","title":"航天科普训练营","desc":"沉浸式航天知识学习","age":"实践课程","class_num":"报名人数 218","plateId":302,"plateName":"航天课程系列","videoUrl":"video/shop2.mp4"},
-    {"cover":"assets/images/shop03.jpg","title":"小小飞行员体验课","desc":"模拟飞行体验活动","age":"实践课程","class_num":"报名人数 412","plateId":303,"plateName":"航空课程系列","videoUrl":"video/shop3.mp4"}
+    {"cover":"assets/images/shop01.png","title":"航空模型制作课","desc":"动手组装飞机模型","age":"实践课程","class_num":"报名人数 326","plateId":301,"plateName":"航空课程系列","videoUrl":"video/shop1.mp4"},
+    {"cover":"assets/images/shop02.png","title":"航天科普训练营","desc":"沉浸式航天知识学习","age":"实践课程","class_num":"报名人数 218","plateId":302,"plateName":"航天课程系列","videoUrl":"video/shop2.mp4"},
+    {"cover":"assets/images/shop03.png","title":"小小飞行员体验课","desc":"模拟飞行体验活动","age":"实践课程","class_num":"报名人数 412","plateId":303,"plateName":"航空课程系列","videoUrl":"video/shop3.mp4"}
   ]
 });
