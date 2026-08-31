@@ -27,8 +27,7 @@ document.addEventListener('DOMContentLoaded', ()=>{
     data.modules.forEach(item=>{
       html += `
       <div class="home-entry-item" onclick="location.href='${item.link}'">
-        <div class="home-entry-title">${item.title}</div>
-        <div class="home-entry-desc">${item.summary}</div>
+        <img src="${item.cover}" style="width:100%;border-radius:12px;" alt="">
       </div>`;
     })
     wrap.innerHTML = html;
