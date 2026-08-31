@@ -16,13 +16,17 @@
 
 <script>
 function loadJsonCallback(pageData){
-  console.log("✅拿到数据", pageData);
-  document.querySelector("#aviation-banner-img").src = pageData.banner_bg;
+  console.log("✅回调执行，获取数据", pageData);
+  const bannerImg = document.querySelector("#aviation-banner-img");
+  bannerImg.src = pageData.banner_bg;
+  bannerImg.onerror = function(){
+    console.error("❌Banner图片失败，路径：", pageData.banner_bg);
+  };
 
   let catHtml = "";
   pageData.category_list.forEach(function(cat){
     catHtml += `<div class="category-item">
-      <img src="${cat.icon}" alt="${cat.name}">
+      <img src="${cat.icon}" alt="${cat.name}" onerror="console.error('❌分类图标失败：','${cat.icon}')">
       <div>
         <h4>${cat.name}</h4>
         <p>${cat.desc}</p>
@@ -34,7 +38,7 @@ function loadJsonCallback(pageData){
   let cardHtml = "";
   pageData.hot_courses.forEach(function(item, idx){
     cardHtml += `<div class="item-card" onclick="location.href='player.html?index=${idx}&page=aviation-class'">
-      <img src="${item.cover}" alt="${item.title}">
+      <img src="${item.cover}" alt="${item.title}" onerror="console.error('❌卡片封面失败：','${item.cover}')">
       <div class="item-info">
         <h4>${item.title}</h4>
         <p>${item.desc}</p>
@@ -47,7 +51,7 @@ function loadJsonCallback(pageData){
 const script = document.createElement('script');
 script.src = "data/aviation-class.json";
 script.onerror = function(){
-  alert("❌加载失败：检查data/aviation‑class.json，确认有loadJsonCallback外壳、语法无错、文件名大小写正确");
+  alert("❌JSONP加载失败，请检查aviation‑class.json外壳、文件名大小写");
 };
 document.body.appendChild(script);
 </script>
