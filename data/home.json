@@ -5,11 +5,11 @@ loadback({
   "modules": [
     {
       "cover":"assets/images/home_card01.jpg",
-      "link": "tech-drama.html"
+      "link": "aviation-class.html"
     },
     {
       "cover":"assets/images/home_card02.jpg",
-      "link": "aviation-class.html"
+      "link": "tech-drama.html"
     },
     {
       "cover":"assets/images/home_card04.jpg",
