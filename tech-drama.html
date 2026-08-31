@@ -14,37 +14,25 @@
 <div class="category-wrap" id="category-wrap"></div>
 <div class="card-list" id="card-list"></div>
 
-<script src="assets/js/main.js"></script>
 <script>
-loadJson("data/tech-drama.json", function(err, pageData){
-  if(err){
-    document.body.innerHTML += '<div style="color:red;padding:20px;">' + err.message + '</div>';
-    return;
-  }
-
+function loadJsonCallback(pageData){
   document.querySelector("#drama-banner-img").src = pageData.banner_bg;
-
   let catHtml = "";
   pageData.category_list.forEach(function(cat){
-    catHtml += '<div class="category-item">' +
-      '<img src="' + cat.icon + '" alt="' + cat.name + '">' +
-      '<div>' +
-        '<h4>' + cat.name + '</h4>' +
-        '<p>' + cat.desc + '</p>' +
-      '</div>' +
-    '</div>';
+    catHtml += '<div class="category-item"><img src="' + cat.icon + '" alt="' + cat.name + '"><div><h4>' + cat.name + '</h4><p>' + cat.desc + '</p></div></div>';
   });
   document.querySelector("#category-wrap").innerHTML = catHtml;
 
   let cardHtml = "";
   pageData.hot_courses.forEach(function(item, idx){
-    cardHtml += '<div class="item-card" onclick="location.href=\'player.html?index=' + idx + '&page=tech-drama\'">' +
-      '<img src="' + item.cover + '" alt="' + item.title + '">' +
-      '<div class="item-info"></div>' +
-    '</div>';
+    cardHtml += '<div class="item-card" onclick="location.href=\'player.html?index=' + idx + '&page=tech-drama\'"><img src="' + item.cover + '" alt="' + item.title + '"><div class="item-info"></div></div>';
   });
   document.querySelector("#card-list").innerHTML = cardHtml;
-});
+}
+
+const script = document.createElement('script');
+script.src = "data/tech-drama.json";
+document.body.appendChild(script);
 </script>
 </body>
 </html>
