@@ -13,36 +13,26 @@
 </section>
 <div id="home-modules-wrap"></div>
 
+<script src="assets/js/main.js"></script>
 <script>
-// jsonp加载，回调函数统一为 loadback
-function loadJson(url, callback){
-  window.loadback = function(data){
-    callback(null, data);
-  };
-  const s = document.createElement('script');
-  s.src = url;
-  s.onerror = ()=>callback(new Error("加载失败:"+url),null);
-  document.body.appendChild(s);
-}
-
 document.addEventListener('DOMContentLoaded', ()=>{
-loadJson("data/home.json", function(err, data){
-  if(err){
-    document.body.innerHTML += `<div style="color:red;padding:20px">首页数据加载异常 ${err.message}</div>`;
-    return;
-  }
-  document.querySelector("#home-banner-image").src = data.banner.bg_image;
-  const wrap = document.querySelector("#home-modules-wrap");
-  let html = "";
-  data.modules.forEach(item=>{
-    html += `
-    <div class="home-entry-item" onclick="location.href='${item.link}'">
-      <div class="home-entry-title">${item.title}</div>
-      <div class="home-entry-desc">${item.summary}</div>
-    </div>`;
+  loadJson("data/home.json", function(err, data){
+    if(err){
+      document.body.innerHTML += `<div style="color:red;padding:20px">${err.message}</div>`;
+      return;
+    }
+    document.querySelector("#home-banner-image").src = data.banner.bg_image;
+    const wrap = document.querySelector("#home-modules-wrap");
+    let html = "";
+    data.modules.forEach(item=>{
+      html += `
+      <div class="home-entry-item" onclick="location.href='${item.link}'">
+        <div class="home-entry-title">${item.title}</div>
+        <div class="home-entry-desc">${item.summary}</div>
+      </div>`;
+    })
+    wrap.innerHTML = html;
   })
-  wrap.innerHTML = html;
-})
 })
 </script>
 </body>
