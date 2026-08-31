@@ -3,24 +3,23 @@
   padding:0;
   box-sizing:border-box;
 }
-
-/* 横幅：整张图片直接铺满，图片自带文字，页面不输出任何叠加文字 */
-.banner {
-  width: 100%;
-  height: 260px;
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
+/* 横幅：img标签，整张图片原样展示 */
+.banner{
+  width:100%;
+}
+.banner img{
+  width:100%;
+  display:block;
 }
 
-.back-btn {
-display: inline-block;
-margin:20px 30px;
-padding:8px 16px;
-background:#4080dd;
-color:#fff;
-border-radius:8px;
-text-decoration:none;
+.back-home{
+  display: inline-block;
+  margin:20px 30px;
+  padding:8px 16px;
+  background:#4080dd;
+  color:#fff;
+  border-radius:8px;
+  text-decoration:none;
 }
 
 /* 分类栏 */
@@ -68,7 +67,30 @@ color:#223355;
 text-decoration:none;
 }
 
-/* 视频播放页 */
+/* 首页模块卡片 */
+.home-entry-wrap{
+  display:grid;
+  grid-template-columns:repeat(auto-fill,minmax(260px,1fr));
+  gap:24px;
+  padding:30px;
+}
+.home-entry-item{
+  background:#fff;
+  border-radius:16px;
+  box-shadow:0 3px 10px #00000012;
+  padding:24px;
+  cursor:pointer;
+}
+.home-entry-title{
+  font-size:1.4rem;
+  font-weight:bold;
+  margin-bottom:8px;
+}
+.home-entry-desc{
+  color:#555;
+}
+
+/* 播放页面 */
 .player-wrap {
 max-width:1000px;
 margin:0 auto;
