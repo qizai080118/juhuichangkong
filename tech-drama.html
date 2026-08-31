@@ -14,9 +14,10 @@
 <div class="category-wrap" id="category-wrap"></div>
 <div class="card-list" id="card-list"></div>
 
+<!-- main.js 放最前面，页面脚本写在main.js的后面！！！ -->
 <script src="assets/js/main.js"></script>
 <script>
-document.addEventListener('DOMContentLoaded', ()=>{
+// 不要包 DOMContentLoaded！！首页能跑就是没有套这个
 loadJson("data/tech-drama.json", function(err, pageData){
   if(err){
     document.body.innerHTML += `<div style="color:red;padding:20px">${err.message}</div>`;
@@ -46,7 +47,6 @@ loadJson("data/tech-drama.json", function(err, pageData){
     </div>`;
   })
   document.querySelector("#card-list").innerHTML = cardHtml;
-})
 })
 </script>
 </body>
