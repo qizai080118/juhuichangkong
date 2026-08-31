@@ -1,4 +1,4 @@
-{
+loadJsonCallback({
   "banner_bg": "assets/images/banner_drama.jpg",
   "page_title": "科技漫剧",
   "slogan_main": "",
@@ -50,4 +50,4 @@
       "bvid": "BVxxxxxx"
     }
   ]
-}
+});
