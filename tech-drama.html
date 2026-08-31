@@ -8,31 +8,29 @@
 <script src="assets/js/main.js"></script>
 </head>
 <body>
-<a href="index.html" class="back-btn">← 返回首页</a>
-<section class="page-banner" id="page-banner">
-    <div class="banner-text">
-        <h1 id="main-title"></h1>
-        <p id="sub-title"></p>
-    </div>
+<section>
+<div class="banner" id="page-banner">
+    <h1 id="main-title"></h1>
+    <p id="sub-title"></p>
+</div>
 </section>
-
 <div class="category-wrap" id="category-wrap"></div>
 <div class="card-list" id="card-list"></div>
 
 <script>
 document.addEventListener('DOMContentLoaded', ()=>{
-    loadData("data/tech-drama.json", function(err, pageData){
-        if(err){
-            document.body.innerHTML += `<div style="color:red;padding:16px">加载异常：${err.message}</div>`;
-            return;
-        }
-        document.getElementById("page-banner").style.backgroundImage = `url(${pageData.banner_bg})`;
-        document.getElementById("main-title").innerText = pageData.slogan_main;
-        document.getElementById("sub-title").innerText = pageData.slogan_sub;
+loadData("data/tech-drama.json", function(err, pageData){
+    if(err){
+        document.body.innerHTML += `<div style="color:red;padding:16px">加载异常：${err.message}</div>`;
+        return;
+    }
+    document.getElementById("page-banner").style.backgroundImage = `url(${pageData.banner_bg})`;
+    document.getElementById("main-title").innerText = pageData.slogan_main;
+    document.getElementById("sub-title").innerText = pageData.slogan_sub;
 
-        const catWrap = document.querySelector("#category-wrap");
-        let catHtml = "";
-        pageData.category_list.forEach(cat=>{
+    const catWrap = document.querySelector("#category-wrap");
+    let catHtml = "";
+    pageData.category_list.forEach(cat=>{
         catHtml += `
         <div class="category-item">
             <img src="${cat.icon}" alt="${cat.name}">
@@ -41,24 +39,24 @@ document.addEventListener('DOMContentLoaded', ()=>{
                 <p>${cat.desc}</p>
             </div>
         </div>`;
-        })
-        catWrap.innerHTML = catHtml;
+    })
+    catWrap.innerHTML = catHtml;
 
-        const listWrap = document.querySelector("#card-list");
-        let html = "";
-        pageData.hot_courses.forEach(item=>{
+    const listWrap = document.querySelector("#card-list");
+    let html = "";
+    pageData.hot_courses.forEach((item, index)=>{
         html += `
         <div class="item-card">
             <img src="${item.cover}" alt="${item.title}">
             <div class="item-info">
-                <h3><a href="player.html?plateId=${item.plateId}">${item.title}</a></h3>
+                <h3><a href="player.html?index=${index}">${item.title}</a></h3>
                 <p>${item.desc}</p>
                 <p>${item.plateName} | ${item.class_num}</p>
             </div>
         </div>`;
-        })
-        listWrap.innerHTML = html;
     })
+    listWrap.innerHTML = html;
+})
 })
 </script>
 </body>
