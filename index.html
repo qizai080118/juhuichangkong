@@ -11,7 +11,8 @@
 <section class="banner">
   <img id="home-banner-image" src="" alt="首页横幅">
 </section>
-<div id="home-modules-wrap"></div>
+<!-- 外层容器class改为home-entry-wrap -->
+<div class="home-entry-wrap" id="home-modules-wrap"></div>
 
 <script src="assets/js/main.js"></script>
 <script>
@@ -27,7 +28,7 @@ document.addEventListener('DOMContentLoaded', ()=>{
     data.modules.forEach(item=>{
       html += `
       <div class="home-entry-item" onclick="location.href='${item.link}'">
-        <img src="${item.cover}" style="width:100%;border-radius:12px;" alt="">
+        <img src="${item.cover}" alt="">
       </div>`;
     })
     wrap.innerHTML = html;
