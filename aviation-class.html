@@ -5,55 +5,61 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>航空课堂</title>
 <link rel="stylesheet" href="assets/css/style.css">
+<script src="assets/js/main.js"></script>
 </head>
 <body>
-<a href="index.html" class="back-home">← 返回首页</a>
-<section class="banner">
-  <img id="aviation-banner-img" src="" alt="航空课堂横幅">
+← 返回首页
+<section class="page-banner" id="page-banner">
+    <div class="banner-text">
+        <h1 id="main-title"></h1>
+        <p id="sub-title"></p >
+    </div>
 </section>
+
 <div class="category-wrap" id="category-wrap"></div>
 <div class="card-list" id="card-list"></div>
 
 <script>
-// 这个函数必须是全局，jsonp脚本会调用它
-window.loadJsonCallback = function(pageData){
-  console.log("✅回调被触发，拿到JSON数据",pageData);
-  document.querySelector("#aviation-banner-img").src = pageData.banner_bg;
+document.addEventListener('DOMContentLoaded', ()=>{
+    loadData("data/aviation-class.json", function(err, pageData){
+        if(err){
+            document.body.innerHTML += `<div style="color:red;padding:16px">加载异常：${err.message}</div>`;
+            return;
+        }
+        document.getElementById("page-banner").style.backgroundImage = `url(${pageData.banner_bg})`;
+        document.getElementById("main-title").innerText = pageData.slogan_main;
+        document.getElementById("sub-title").innerText = pageData.slogan_sub;
 
-  let catHtml = "";
-  pageData.category_list.forEach(cat=>{
-    catHtml += `
-    <div class="category-item">
-      <img src="${cat.icon}" alt="${cat.name}">
-      <div>
-        <h4>${cat.name}</h4>
-        <p>${cat.desc}</p>
-      </div>
-    </div>`;
-  })
-  document.querySelector("#category-wrap").innerHTML = catHtml;
+        const catWrap = document.querySelector("#category-wrap");
+        let catHtml = "";
+        pageData.category_list.forEach(cat=>{
+        catHtml += `
+        <div class="category-item">
+            < img src="${cat.icon}" alt="${cat.name}">
+            <div>
+                <h4>${cat.name}</h4>
+                <p>${cat.desc}</p >
+            </div>
+        </div>`;
+        })
+        catWrap.innerHTML = catHtml;
 
-  let cardHtml = "";
-  pageData.hot_courses.forEach((item,idx)=>{
-    cardHtml += `
-    <div class="item-card" onclick="location.href='player.html?index=${idx}&page=aviation-class'">
-      <img src="${item.cover}" alt="${item.title}">
-      <div class="item-info">
-        <h4>${item.title}</h4>
-        <p>${item.desc}</p>
-      </div>
-    </div>`;
-  })
-  document.querySelector("#card-list").innerHTML = cardHtml;
-}
-
-// 动态加载jsonp脚本
-const script = document.createElement('script');
-script.src = "data/aviation-class.json";
-script.onerror = function(){
-  alert("❌脚本加载失败：检查路径、文件名大小写");
-}
-document.body.appendChild(script);
+        const listWrap = document.querySelector("#card-list");
+        let html = "";
+        pageData.hot_courses.forEach(item=>{
+        html += `
+        <div class="item-card">
+            < img src="${item.cover}" alt="${item.title}">
+            <div class="item-info">
+                <h3>${item.title}</h3>
+                <p>${item.desc}</p >
+                <p>${item.plateName} | ${item.class_num}</p >
+            </div>
+        </div>`;
+        })
+        listWrap.innerHTML = html;
+    })
+})
 </script>
 </body>
 </html>
