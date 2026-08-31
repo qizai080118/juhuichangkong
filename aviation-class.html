@@ -16,7 +16,6 @@
 
 <script src="assets/js/main.js"></script>
 <script>
-document.addEventListener('DOMContentLoaded', ()=>{
 loadJson("data/aviation-class.json", function(err, pageData){
   if(err){
     document.body.innerHTML += `<div style="color:red;padding:20px">${err.message}</div>`;
@@ -46,7 +45,6 @@ loadJson("data/aviation-class.json", function(err, pageData){
     </div>`;
   })
   document.querySelector("#card-list").innerHTML = cardHtml;
-})
 })
 </script>
 </body>
