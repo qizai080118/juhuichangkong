@@ -1,8 +1,18 @@
-{
-.page-banner-text p {
-font-size:1.2rem;
-margin:8px 0 0;
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
 }
+
+/* 横幅：整张图片直接铺满，图片自带文字，页面不输出任何叠加文字 */
+.banner {
+  width: 100%;
+  height: 260px;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
 .back-btn {
 display: inline-block;
 margin:20px 30px;
@@ -12,7 +22,8 @@ color:#fff;
 border-radius:8px;
 text-decoration:none;
 }
-/ 分类栏 /
+
+/* 分类栏 */
 .category-wrap {
 display:flex;
 gap:16px;
@@ -31,7 +42,8 @@ gap:10px;
 width:36px;
 height:36px;
 }
-/ 卡片列表 /
+
+/* 卡片列表 */
 .card-list {
 display:grid;
 grid-template-columns:repeat(auto-fill,minmax(280px,1fr));
@@ -55,7 +67,8 @@ padding:16px;
 color:#223355;
 text-decoration:none;
 }
-/ 视频播放页 */
+
+/* 视频播放页 */
 .player-wrap {
 max-width:1000px;
 margin:0 auto;
