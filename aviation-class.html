@@ -18,34 +18,33 @@
 <script>
 loadJson("data/aviation-class.json", function(err, pageData){
   if(err){
-    document.body.innerHTML += `<div style="color:red;padding:20px">${err.message}</div>`;
+    document.body.innerHTML += '<div style="color:red;padding:20px;">' + err.message + '</div>';
     return;
   }
+
   document.querySelector("#aviation-banner-img").src = pageData.banner_bg;
 
   let catHtml = "";
-  pageData.category_list.forEach(cat=>{
-    catHtml += `
-    <div class="category-item">
-      <img src="${cat.icon}" alt="${cat.name}">
-      <div>
-        <h4>${cat.name}</h4>
-        <p>${cat.desc}</p>
-      </div>
-    </div>`;
-  })
+  pageData.category_list.forEach(function(cat){
+    catHtml += '<div class="category-item">' +
+      '<img src="' + cat.icon + '" alt="' + cat.name + '">' +
+      '<div>' +
+        '<h4>' + cat.name + '</h4>' +
+        '<p>' + cat.desc + '</p>' +
+      '</div>' +
+    '</div>';
+  });
   document.querySelector("#category-wrap").innerHTML = catHtml;
 
   let cardHtml = "";
-  pageData.hot_courses.forEach((item, idx)=>{
-    cardHtml += `
-    <div class="item-card" onclick="location.href='player.html?index=${idx}&page=aviation-class'">
-      <img src="${item.cover}" alt="${item.title}">
-      <div class="item-info"></div>
-    </div>`;
-  })
+  pageData.hot_courses.forEach(function(item, idx){
+    cardHtml += '<div class="item-card" onclick="location.href=\'player.html?index=' + idx + '&page=aviation-class\'">' +
+      '<img src="' + item.cover + '" alt="' + item.title + '">' +
+      '<div class="item-info"></div>' +
+    '</div>';
+  });
   document.querySelector("#card-list").innerHTML = cardHtml;
-})
+});
 </script>
 </body>
 </html>
