@@ -18,7 +18,8 @@
 }
 .player-box iframe{
   position:absolute;
-  top:0; left:0;
+  top:0;
+  left:0;
   width:100%;
   height:100%;
   border:none;
@@ -27,81 +28,77 @@
 </head>
 <body>
 <a href="index.html" class="back-btn">← 返回首页</a>
-<div class="player-wrap">    
-<h2 id="video-title"></h2>    
-<p id="video-desc"></p>    
-<div id="playerBox"></div>
+<div class="player-wrap">
+    <h2 id="video-title"></h2>
+    <p id="video-desc"></p>
+    <div id="playerBox"></div>
 </div>
 
 <script>
-document.addEventListener('DOMContentLoaded',()=>{    
-let allData = [];    
-let total = 3;    
-let doneCount = 0;
+document.addEventListener('DOMContentLoaded', function(){
+    const params = new URLSearchParams(location.search);
+    const indexVal = params.get("index");
+    const plateIdVal = params.get("plateId");
 
-    function checkFinish(){        
-doneCount++;        
-if(doneCount === total){            
-const params = new URLSearchParams(location.search);            
-const index = Number(params.get("index"));
-// 来自科技漫剧，B站iframe播放
-if(!isNaN(index)){
-    loadData("data/tech-drama.json", function(err, data){
-        if(err){
-            document.getElementById("playerBox").innerHTML = '<div style="color:#fff;padding:20px">数据加载失败</div>';
-            return;
-        }
-        const list = data.hot_courses;
-        const item = list[index];
-        if(!item || !item.bvid){
-            document.getElementById("playerBox").innerHTML = '<div style="color:#fff;padding:20px">未找到该视频</div>';
-            return;
-        }
-        document.getElementById("video-title").innerText = item.title;
-        document.getElementById("video-desc").innerText = item.desc;
+    // ==========科技漫剧：index模式 B站iframe==========
+    if(indexVal !== null){
+        loadData("data/tech-drama.json", function(err, data){
+            if(err){
+                document.getElementById("playerBox").innerText = "数据加载失败";
+                return;
+            }
+            const idx = Number(indexVal);
+            const item = data.hot_courses[idx];
+            if(!item || !item.bvid){
+                document.getElementById("playerBox").innerText = "未找到该视频";
+                return;
+            }
+            document.getElementById("video-title").innerText = item.title;
+            document.getElementById("video-desc").innerText = item.desc;
+            const iframe = document.createElement("iframe");
+            iframe.src = `https://player.bilibili.com/player.html?bvid=${item.bvid}&page=1&autoplay=0&danmaku=0`;
+            iframe.allowFullscreen = true;
+            document.getElementById("playerBox").className = "player-box";
+            document.getElementById("playerBox").appendChild(iframe);
+        })
+        return;
+    }
 
-        const iframe = document.createElement('iframe');
-        iframe.src = `https://player.bilibili.com/player.html?bvid=${item.bvid}&page=1&autoplay=0&danmaku=0&high_quality=1`;
-        iframe.scrolling="no";
-        iframe.border="0";
-        iframe.frameBorder="no";
-        iframe.frameSpacing="0";
-        iframe.allowFullscreen = true;
-        document.getElementById("playerBox").appendChild(iframe);
+    // ==========航空课堂 /课程商城 plateId模式，本地视频==========
+    let allData = [];
+    let finishCount = 0;
+    function checkOneDone(){
+        finishCount +=1;
+        //三个全部加载完毕
+        if(finishCount >=3){
+            const pid = Number(plateIdVal);
+            const findItem = allData.find(x=>x.plateId === pid);
+            if(!findItem){
+                document.body.innerHTML += `<div style="padding:30px;color:red;font-size:18px;">未找到该视频</div>`;
+                return;
+            }
+            document.getElementById("video-title").innerText = findItem.title;
+            document.getElementById("video-desc").innerText = findItem.desc;
+            const video = document.createElement("video");
+            video.controls = true;
+            video.style.width = "100%";
+            video.src = findItem.videoUrl;
+            document.getElementById("playerBox").appendChild(video);
+        }
+    }
+
+    loadData("data/aviation-class.json", function(err,res){
+        if(!err) allData.push(...res.hot_courses);
+        checkOneDone();
     })
-}else{
-    // 原有旧逻辑，航空/商城板块继续本地video
-    const pid = Number(params.get("plateId"));            
-    const findItem = allData.find(d=>d.plateId === pid);            
-    if(!findItem){                
-        document.body.innerHTML = "<div style='padding:30px;color:red'>未找到该视频</div>";            
-    }else{                
-        document.getElementById("video-title").innerText = findItem.title;                
-        document.getElementById("video-desc").innerText = findItem.desc;                
-        const videoDom = document.createElement("video");
-        videoDom.id = "my-video";
-        videoDom.controls = true;
-        videoDom.style.width = "100%";
-        videoDom.style.maxWidth = "800px";
-        videoDom.src = findItem.videoUrl;
-        document.getElementById("playerBox").appendChild(videoDom);
-    }        
-}        
-}    
-}
-
-    loadData("data/aviation-class.json", function(err, d){        
-if(!err) allData.push(...d.hot_courses);        
-checkFinish();    
-})    
-loadData("data/tech-drama.json", function(err, d){        
-if(!err) allData.push(...d.hot_courses);        
-checkFinish();    
-})    
-loadData("data/course-shop.json", function(err, d){        
-if(!err) allData.push(...d.hot_courses);        
-checkFinish();    
-})
+    loadData("data/tech-drama.json", function(err,res){
+        if(!err) allData.push(...res.hot_courses);
+        checkOneDone();
+    })
+    loadData("data/course-shop.json", function(err,res){
+        if(!err) allData.push(...res.hot_courses);
+        checkOneDone();
+    })
 })
 </script>
 </body>
