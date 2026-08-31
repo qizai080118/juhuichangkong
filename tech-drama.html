@@ -5,75 +5,60 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>科技漫剧</title>
 <link rel="stylesheet" href="assets/css/style.css">
-<script src="assets/js/main.js"></script>
 </head>
 <body>
-<section>
-<div class="banner" id="page-banner">
-    <div class="banner-text">
-        <h1 id="main-title"></h1>
-        <p id="sub-title"></p>
-    </div>
-</div>
+<a href="index.html" class="back-home">← 返回首页</a>
+<section class="banner">
+  <img id="drama-banner-img" src="" alt="科技漫剧横幅">
 </section>
-
 <div class="category-wrap" id="category-wrap"></div>
 <div class="card-list" id="card-list"></div>
 
 <script>
-// 动态script加载jsonp风格，不用fetch，保留回调
-function loadData(jsonPath, callback) {
-    window.loadCallback = function(data) {
-        callback(null, data);
-    };
-    const script = document.createElement('script');
-    script.src = jsonPath;
-    script.onerror = function(){
-        callback(new Error("文件加载失败 " + jsonPath), null);
-    };
-    document.body.appendChild(script);
+function loadJson(url, callback){
+  window.loadback = function(data){
+    callback(null, data);
+  };
+  const s = document.createElement('script');
+  s.src = url;
+  s.onerror = ()=>callback(new Error("加载失败:"+url),null);
+  document.body.appendChild(s);
 }
 
 document.addEventListener('DOMContentLoaded', ()=>{
-loadData("data/tech-drama.json", function(err, pageData){
-    if(err){
-        document.body.innerHTML += `<div style="color:red;padding:16px">加载异常：${err.message}</div>`;
-        return;
-    }
-    // 设置横幅背景图
-    document.getElementById("page-banner").style.backgroundImage = `url(${pageData.banner_bg})`;
-    // 读取json的page_title作为大标题，slogan_sub作为小字
-    document.getElementById("main-title").innerText = pageData.page_title;
-    document.getElementById("sub-title").innerText = pageData.slogan_sub;
+loadJson("data/tech-drama.json", function(err, pageData){
+  if(err){
+    document.body.innerHTML += `<div style="color:red;padding:20px">页面加载失败：${err.message}</div>`;
+    return;
+  }
+  document.querySelector("#drama-banner-img").src = pageData.banner_bg;
 
-    const catWrap = document.querySelector("#category-wrap");
-    let catHtml = "";
-    pageData.category_list.forEach(cat=>{
-        catHtml += `
-        <div class="category-item">
-            <img src="${cat.icon}" alt="${cat.name}">
-            <div>
-                <h4>${cat.name}</h4>
-                <p>${cat.desc}</p>
-            </div>
-        </div>`;
-    })
-    catWrap.innerHTML = catHtml;
+  let catHtml = "";
+  pageData.category_list.forEach(cat=>{
+    catHtml += `
+    <div class="category-item">
+      <img src="${cat.icon}" alt="${cat.name}">
+      <div>
+        <h4>${cat.name}</h4>
+        <p>${cat.desc}</p>
+      </div>
+    </div>`;
+  })
+  document.querySelector("#category-wrap").innerHTML = catHtml;
 
-    const listWrap = document.querySelector("#card-list");
-    let html = "";
-    pageData.hot_courses.forEach((item, index)=>{
-        html += `
-        <div class="item-card">
-            <img src="${item.cover}" alt="${item.title}">
-            <div class="item-info">
-                <h3><a href="player.html?index=${index}">${item.title}</a></h3>
-                <p>${item.desc}</p>
-                <p>${item.plateName} | ${item.class_num}</p>
-            </div>
-        </div>`;
-    })
-    listWrap.innerHTML = html;
+  let cardHtml = "";
+  pageData.hot_courses.forEach((item, idx)=>{
+    cardHtml += `
+    <div class="item-card">
+      <img src="${item.cover}" alt="${item.title}">
+      <div class="item-info">
+        <h3><a href="player.html?index=${idx}">${item.title}</a></h3>
+        <p>${item.desc}</p>
+        <p>${item.plateName}｜${item.class_num}</p>
+      </div>
+    </div>`;
+  })
+  document.querySelector("#card-list").innerHTML = cardHtml;
 })
 })
 </script>
