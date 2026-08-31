@@ -3,17 +3,16 @@
   padding:0;
   box-sizing:border-box;
 }
-/* 横幅：img标签，整张图片原样展示 */
 .banner{
   width:100%;
 }
 .banner img{
   width:100%;
+  height:auto;
   display:block;
 }
-
 .back-home{
-  display: inline-block;
+  display:inline-block;
   margin:20px 30px;
   padding:8px 16px;
   background:#4080dd;
@@ -21,53 +20,47 @@
   border-radius:8px;
   text-decoration:none;
 }
-
-/* 分类栏 */
-.category-wrap {
-display:flex;
-gap:16px;
-padding:0 30px 20px;
-flex-wrap:wrap;
+.category-wrap{
+  display:flex;
+  gap:16px;
+  padding:0 30px 20px;
+  flex-wrap:wrap;
 }
-.category-item {
-padding:12px 20px;
-background:#f0f6ff;
-border-radius:12px;
-display:flex;
-align-items:center;
-gap:10px;
+.category-item{
+  padding:12px 20px;
+  background:#f0f6ff;
+  border-radius:12px;
+  display:flex;
+  align-items:center;
+  gap:10px;
 }
-.category-item img {
-width:36px;
-height:36px;
+.category-item img{
+  width:36px;
+  height:36px;
 }
-
-/* 卡片列表 */
-.card-list {
-display:grid;
-grid-template-columns:repeat(auto-fill,minmax(280px,1fr));
-gap:24px;
-padding:0 30px 40px;
+.card-list{
+  display:grid;
+  grid-template-columns:repeat(auto-fill,minmax(280px,1fr));
+  gap:24px;
+  padding:0 30px 40px;
 }
-.item-card {
-border-radius:16px;
-overflow:hidden;
-box-shadow:0 3px 10px #00000015;
+.item-card{
+  border-radius:16px;
+  overflow:hidden;
+  box-shadow:0 3px 10px #00000015;
 }
-.item-card img {
-width:100%;
-aspect-ratio:16/9;
-object-fit:cover;
+.item-card img{
+  width:100%;
+  aspect-ratio:16/9;
+  object-fit:cover;
 }
-.item-info {
-padding:16px;
+.item-info{
+  padding:16px;
 }
-.item-info h3 a {
-color:#223355;
-text-decoration:none;
+.item-info h3 a{
+  color:#223355;
+  text-decoration:none;
 }
-
-/* 首页模块卡片 */
 .home-entry-wrap{
   display:grid;
   grid-template-columns:repeat(auto-fill,minmax(260px,1fr));
@@ -89,14 +82,12 @@ text-decoration:none;
 .home-entry-desc{
   color:#555;
 }
-
-/* 播放页面 */
-.player-wrap {
-max-width:1000px;
-margin:0 auto;
-padding:20px;
+.player-wrap{
+  max-width:1000px;
+  margin:0 auto;
+  padding:20px;
 }
 video{
-width:100%;
-border-radius:12px;
+  width:100%;
+  border-radius:12px;
 }
