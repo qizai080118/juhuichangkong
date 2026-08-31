@@ -3,53 +3,32 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>首页</title>
+<title>少年航空科普</title>
 <link rel="stylesheet" href="assets/css/style.css">
-<script src="assets/js/main.js"></script>
 </head>
 <body>
-<section class="page-banner" id="home-banner">
-    <div class="page-banner-text">
-        <h1 id="h-home-title"></h1>
-        <p id="h-home-desc"></p>
-    </div>
+<nav class="navbar" id="navbar-wrap"></nav>
+<section class="banner">
+    <img id="home-banner-image" src="" alt="首页横幅">
 </section>
-<div class="home-entry-wrap" id="entry-container">
-</div>
+<div id="home-modules-wrap"></div>
 
+<script src="assets/js/main.js"></script>
 <script>
-document.addEventListener('DOMContentLoaded', ()=>{
-    loadData("data/home.json", function(err, data){
-        if(err){
-            document.body.innerHTML += `<div style="color:red;padding:16px">首页数据加载失败：${err.message}</div>`;
-            return;
-        }
-        document.getElementById("home-banner").style.backgroundImage = `url(${data.banner_bg})`;
-        const titleDom = document.getElementById("h-home-title");
-        const descDom = document.getElementById("h-home-desc");
-        // 文本为空直接隐藏元素，消除空白高度
-        if(data.main_title.trim() !== ""){
-            titleDom.innerText = data.main_title;
-        }else{
-            titleDom.style.display = "none";
-        }
-        if(data.sub_title.trim() !== ""){
-            descDom.innerText = data.sub_title;
-        }else{
-            descDom.style.display = "none";
-        }
-
-        const wrap = document.getElementById("entry-container");
-        let html = "";
-        data.entry_list.forEach(item=>{
-            html += `
-<div class="home-entry-item" onclick="window.location.href='${item.link}'">
-    <div class="home-entry-title">${item.title}</div>
-    <img class="home-entry-bg" src="${item.img}" alt="${item.alt}">
-</div>`;
-        });
-        wrap.innerHTML = html;
+document.addEventListener('DOMContentLoaded', () => {
+initPage("data/home.json", function(data){
+    document.querySelector("#home-banner-image").src = data.banner.bg_image;
+    const moduleWrap = document.querySelector("#home-modules-wrap");
+    let html = "";
+    data.modules.forEach(item=>{
+        html += `
+        <div class="home-entry-item" onclick="window.location.href='${item.link}'">
+            <div class="home-entry-title">${item.title}</div>
+            <div class="home-entry-desc">${item.summary}</div>
+        </div>`;
     })
+    moduleWrap.innerHTML = html;
+})
 })
 </script>
 </body>
