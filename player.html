@@ -7,25 +7,30 @@
 <link rel="stylesheet" href="assets/css/style.css">
 </head>
 <body>
-<a href="tech-drama.html" class="back-home">← 返回科技漫剧</a>
+<a id="back-btn" href="tech-drama.html" class="back-home">← 返回</a>
 <div class="player-wrap">
   <video id="video-player" controls></video>
 </div>
 
+<script src="assets/js/main.js"></script>
 <script>
-function loadJson(url, callback){
-  window.loadback = function(data){
-    callback(null, data);
-  };
-  const s = document.createElement('script');
-  s.src = url;
-  s.onerror = ()=>callback(new Error("加载失败:"+url),null);
-  document.body.appendChild(s);
-}
-
 document.addEventListener('DOMContentLoaded', ()=>{
-  const indexVal = Number(new URLSearchParams(location.search).get("index"));
-  loadJson("data/tech-drama.json", function(err, res){
+  const params = new URLSearchParams(location.search);
+  const indexVal = Number(params.get("index"));
+  const pageType = params.get("page");
+
+  // 动态设置返回链接
+  let backHref = "tech-drama.html";
+  if(pageType === "aviation-class") backHref = "aviation-class.html";
+  if(pageType === "course-shop") backHref = "course-shop.html";
+  document.querySelector("#back-btn").href = backHref;
+
+  // 对应加载不同json
+  let jsonPath = "data/tech-drama.json";
+  if(pageType === "aviation-class") jsonPath = "data/aviation-class.json";
+  if(pageType === "course-shop") jsonPath = "data/course-shop.json";
+
+  loadJson(jsonPath, function(err, res){
     if(err) return;
     const videoItem = res.hot_courses[indexVal];
     document.querySelector("#video-player").src = videoItem.videoUrl;
