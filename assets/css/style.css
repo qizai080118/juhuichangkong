@@ -48,18 +48,16 @@
   border-radius:16px;
   overflow:hidden;
   box-shadow:0 3px 10px #00000015;
+  cursor:pointer;
 }
 .item-card img{
   width:100%;
   aspect-ratio:16/9;
   object-fit:cover;
 }
+/* 卡片不再输出文字标题，info区域清空，图片自带文字 */
 .item-info{
-  padding:16px;
-}
-.item-info h3 a{
-  color:#223355;
-  text-decoration:none;
+  padding:0;
 }
 .home-entry-wrap{
   display:grid;
