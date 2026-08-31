@@ -6,49 +6,102 @@
 <title>播放页面</title>
 <link rel="stylesheet" href="assets/css/style.css">
 <script src="assets/js/main.js"></script>
+<style>
+.player-box{
+  position:relative;
+  width:100%;
+  padding-bottom:56.25%;
+  height:0;
+  overflow:hidden;
+  border-radius:8px;
+  background:#000;
+}
+.player-box iframe{
+  position:absolute;
+  top:0; left:0;
+  width:100%;
+  height:100%;
+  border:none;
+}
+</style>
 </head>
 <body>
 <a href="index.html" class="back-btn">← 返回首页</a>
-<div class="player-wrap">
-    <h2 id="video-title"></h2>
-    <p id="video-desc"></p>
-    <video id="my-video" controls style="width:100%;max-width:800px;"></video>
+<div class="player-wrap">    
+<h2 id="video-title"></h2>    
+<p id="video-desc"></p>    
+<div id="playerBox"></div>
 </div>
 
 <script>
-document.addEventListener('DOMContentLoaded',()=>{
-    let allData = [];
-    let total = 3;
-    let doneCount = 0;
+document.addEventListener('DOMContentLoaded',()=>{    
+let allData = [];    
+let total = 3;    
+let doneCount = 0;
 
-    function checkFinish(){
-        doneCount++;
-        if(doneCount === total){
-            const params = new URLSearchParams(location.search);
-            const pid = Number(params.get("plateId"));
-            const findItem = allData.find(d=>d.plateId === pid);
-            if(!findItem){
-                document.body.innerHTML = "<div style='padding:30px;color:red'>未找到该视频</div>";
-            }else{
-                document.getElementById("video-title").innerText = findItem.title;
-                document.getElementById("video-desc").innerText = findItem.desc;
-                document.getElementById("my-video").src = findItem.videoUrl;
-            }
+    function checkFinish(){        
+doneCount++;        
+if(doneCount === total){            
+const params = new URLSearchParams(location.search);            
+const index = Number(params.get("index"));
+// 来自科技漫剧，B站iframe播放
+if(!isNaN(index)){
+    loadData("data/tech-drama.json", function(err, data){
+        if(err){
+            document.getElementById("playerBox").innerHTML = '<div style="color:#fff;padding:20px">数据加载失败</div>';
+            return;
         }
-    }
+        const list = data.hot_courses;
+        const item = list[index];
+        if(!item || !item.bvid){
+            document.getElementById("playerBox").innerHTML = '<div style="color:#fff;padding:20px">未找到该视频</div>';
+            return;
+        }
+        document.getElementById("video-title").innerText = item.title;
+        document.getElementById("video-desc").innerText = item.desc;
 
-    loadData("data/aviation-class.json", function(err, d){
-        if(!err) allData.push(...d.hot_courses);
-        checkFinish();
+        const iframe = document.createElement('iframe');
+        iframe.src = `https://player.bilibili.com/player.html?bvid=${item.bvid}&page=1&autoplay=0&danmaku=0&high_quality=1`;
+        iframe.scrolling="no";
+        iframe.border="0";
+        iframe.frameBorder="no";
+        iframe.frameSpacing="0";
+        iframe.allowFullscreen = true;
+        document.getElementById("playerBox").appendChild(iframe);
     })
-    loadData("data/tech-drama.json", function(err, d){
-        if(!err) allData.push(...d.hot_courses);
-        checkFinish();
-    })
-    loadData("data/course-shop.json", function(err, d){
-        if(!err) allData.push(...d.hot_courses);
-        checkFinish();
-    })
+}else{
+    // 原有旧逻辑，航空/商城板块继续本地video
+    const pid = Number(params.get("plateId"));            
+    const findItem = allData.find(d=>d.plateId === pid);            
+    if(!findItem){                
+        document.body.innerHTML = "<div style='padding:30px;color:red'>未找到该视频</div>";            
+    }else{                
+        document.getElementById("video-title").innerText = findItem.title;                
+        document.getElementById("video-desc").innerText = findItem.desc;                
+        const videoDom = document.createElement("video");
+        videoDom.id = "my-video";
+        videoDom.controls = true;
+        videoDom.style.width = "100%";
+        videoDom.style.maxWidth = "800px";
+        videoDom.src = findItem.videoUrl;
+        document.getElementById("playerBox").appendChild(videoDom);
+    }        
+}        
+}    
+}
+
+    loadData("data/aviation-class.json", function(err, d){        
+if(!err) allData.push(...d.hot_courses);        
+checkFinish();    
+})    
+loadData("data/tech-drama.json", function(err, d){        
+if(!err) allData.push(...d.hot_courses);        
+checkFinish();    
+})    
+loadData("data/course-shop.json", function(err, d){        
+if(!err) allData.push(...d.hot_courses);        
+checkFinish();    
+})
 })
 </script>
 </body>
