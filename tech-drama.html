@@ -19,21 +19,27 @@
 <div class="card-list" id="card-list"></div>
 
 <script>
+let allCourseData = [];
+let pageDataGlobal = null;
+
 document.addEventListener('DOMContentLoaded', ()=>{
     loadData("data/tech-drama.json", function(err, pageData){
         if(err){
             document.body.innerHTML += `<div style="color:red;padding:16px">加载异常：${err.message}</div>`;
             return;
         }
+        pageDataGlobal = pageData;
         document.getElementById("page-banner").style.backgroundImage = `url(${pageData.banner_bg})`;
         document.getElementById("main-title").innerText = pageData.slogan_main;
         document.getElementById("sub-title").innerText = pageData.slogan_sub;
 
+        allCourseData = pageData.hot_courses;
+
         const catWrap = document.querySelector("#category-wrap");
         let catHtml = "";
-        pageData.category_list.forEach(cat=>{
+        pageData.category_list.forEach((cat,catIndex)=>{
             catHtml += `
-            <div class="category-item">
+            <div class="category-item" onclick="filterByCategory(${catIndex})">
                 <img src="${cat.icon}" alt="${cat.name}">
                 <div>
                     <h4>${cat.name}</h4>
@@ -43,11 +49,27 @@ document.addEventListener('DOMContentLoaded', ()=>{
         })
         catWrap.innerHTML = catHtml;
 
-        const listWrap = document.querySelector("#card-list");
-        let html = "";
-        pageData.hot_courses.forEach((item,idx)=>{
+        renderCards(allCourseData);
+    })
+})
+
+//按分类下标筛选课程
+function filterByCategory(catIdx){
+    const filterList = allCourseData.filter(item=>{
+        return item.category === catIdx;
+    })
+    renderCards(filterList);
+}
+
+//渲染卡片，使用原始数组下标，不会错乱
+function renderCards(courseList){
+    const listWrap = document.querySelector("#card-list");
+    let html = "";
+    courseList.forEach((item)=>{
+        // 找到该条课程在原始全部数组里的真实index
+        const realIndex = allCourseData.findIndex(c => c.bvid === item.bvid);
         html += `
-        <div class="item-card" onclick="location.href='player.html?index=${idx}&page=tech-drama'">
+        <div class="item-card" onclick="location.href='player.html?index=${realIndex}&page=tech-drama'">
             <img src="${item.cover}" alt="${item.title}">
             <div class="item-info">
                 <h3>${item.title}</h3>
@@ -55,10 +77,9 @@ document.addEventListener('DOMContentLoaded', ()=>{
                 <p>${item.age} | ${item.class_num}</p>
             </div>
         </div>`;
-        })
-        listWrap.innerHTML = html;
     })
-})
+    listWrap.innerHTML = html;
+}
 </script>
 </body>
 </html>
