@@ -6,12 +6,12 @@ loadCallback({
   "search_placeholder": "",
   "category_list": [
     {
-      "icon": "assets/images/caed02.jpg",
+      "icon": "assets/images/drama01.jpg",
       "name": "航空航天冷知识",
       "desc": "航天趣味科普"
     },
     {
-      "icon": "assets/images/card01.jpg",
+      "icon": "assets/images/drama02.jpg",
       "name": "两弹一星科学家传记",
       "desc": "元勋人物故事"
     }
