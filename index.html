@@ -3,43 +3,31 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>少年航空科普</title>
+<title>汇聚长空</title>
 <link rel="stylesheet" href="assets/css/style.css">
 <script src="assets/js/main.js"></script>
 </head>
 <body>
-<section class="page-banner" id="home-banner">
-    <div class="page-banner-text">
-        <h1 id="h-home-title"></h1>
-        <p id="h-home-desc"></p >
-    </div>
+<section class="home-entry-wrap" id="home-wrap">
+<!-- 首页卡片由json动态渲染 -->
 </section>
-<div class="home-entry-wrap" id="entry-container">
-</div>
 
 <script>
 document.addEventListener('DOMContentLoaded', ()=>{
-    loadData("data/home.json", function(err, data){
+    loadData("data/index.json", function(err, pageData){
         if(err){
-            document.body.innerHTML += `<div style="color:red;padding:16px">首页数据加载失败：${err.message}</div>`;
+            document.body.innerHTML += `<div style="color:red;padding:16px">加载异常：${err.message}</div>`;
             return;
         }
-        // 设置横幅背景与文字
-        document.getElementById("home-banner").style.backgroundImage = `url(${data.banner_bg})`;
-        document.getElementById("h-home-title").innerText = data.main_title;
-        document.getElementById("h-home-desc").innerText = data.sub_title;
-
-        // 渲染三个入口卡片
-        const wrap = document.getElementById("entry-container");
         let html = "";
-        data.entry_list.forEach(item=>{
+        pageData.home_list.forEach(item=>{
             html += `
-<div class="home-entry-item" onclick="window.location.href='${item.link}'">
-    <div class="home-entry-title">${item.title}</div>
-    < img class="home-entry-bg" src="${item.img}" alt="${item.alt}">
-</div>`;
-        });
-        wrap.innerHTML = html;
+            <div class="home-entry-item" onclick="location.href='${item.link}'">
+                <div class="home-entry-title">${item.title}</div>
+                <img class="home-entry-bg" src="${item.bg_img}" alt="${item.title}">
+            </div>`;
+        })
+        document.querySelector("#home-wrap").innerHTML = html;
     })
 })
 </script>
