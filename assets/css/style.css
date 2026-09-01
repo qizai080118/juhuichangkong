@@ -11,7 +11,6 @@ body{
 a{
     text-decoration:none;
 }
-
 /* ==========首页入口卡片 ========== */
 .home-entry-wrap {
     display: grid;
@@ -21,7 +20,6 @@ a{
     max-width: 1200px;
     margin: 0 auto;
 }
-
 .home-entry-item {
     aspect-ratio: 1 / 1;
     border-radius: 20px;
@@ -31,11 +29,9 @@ a{
     box-shadow: 0 4px 12px rgba(0,0,0,0.12);
     transition: transform 0.25s ease;
 }
-
 .home-entry-item:hover {
     transform: translateY(-6px);
 }
-
 .home-entry-title {
     position: absolute;
     top:12px;
@@ -48,13 +44,11 @@ a{
     text-shadow: 1px 1px 2px #ffffff;
     z-index: 2;
 }
-
 .home-entry-bg {
     width:100%;
     height:100%;
     object-fit: cover;
 }
-
 @media (max-width:992px) {
     .home-entry-wrap {
         grid-template-columns: repeat(2,1fr);
@@ -66,7 +60,6 @@ a{
         grid-template-columns: 1fr;
     }
 }
-
 /* ========== 子页面通用banner ========== */
 .page-banner {
     width:100%;
@@ -90,7 +83,6 @@ a{
     font-size:1.2rem;
     margin:8px 0 0;
 }
-
 .back-btn {
     display: inline-block;
     margin:20px 30px;
@@ -100,7 +92,6 @@ a{
     border-radius:8px;
     text-decoration:none;
 }
-
 /* 分类栏 */
 .category-wrap {
     display:flex;
@@ -120,7 +111,6 @@ a{
     width:36px;
     height:36px;
 }
-
 /* 卡片列表 */
 .card-list {
     display:grid;
@@ -132,6 +122,7 @@ a{
     border-radius:16px;
     overflow:hidden;
     box-shadow:0 3px 10px #00000015;
+    cursor:pointer;
 }
 .item-card img {
     width:100%;
@@ -145,7 +136,6 @@ a{
     color:#223355;
     text-decoration:none;
 }
-
 /* 视频播放页 */
 .player-wrap{
     max-width:1000px;
