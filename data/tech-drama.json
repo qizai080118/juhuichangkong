@@ -1,9 +1,9 @@
-loadJsonCallback({
+loadCallback({
   "banner_bg": "assets/images/banner_drama.jpg",
   "page_title": "科技漫剧",
   "slogan_main": "",
   "slogan_sub": "",
-  "search_placeholder": "搜索漫剧",
+  "search_placeholder": "",
   "category_list": [
     {
       "icon": "assets/images/icon_know.jpg",
