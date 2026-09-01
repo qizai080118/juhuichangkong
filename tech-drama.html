@@ -17,6 +17,7 @@
 </section>
 <div class="category-wrap" id="category-wrap"></div>
 <div class="card-list" id="card-list"></div>
+
 <script>
 document.addEventListener('DOMContentLoaded', ()=>{
     loadData("data/tech-drama.json", function(err, pageData){
@@ -27,19 +28,21 @@ document.addEventListener('DOMContentLoaded', ()=>{
         document.getElementById("page-banner").style.backgroundImage = `url(${pageData.banner_bg})`;
         document.getElementById("main-title").innerText = pageData.slogan_main;
         document.getElementById("sub-title").innerText = pageData.slogan_sub;
+
         const catWrap = document.querySelector("#category-wrap");
         let catHtml = "";
         pageData.category_list.forEach(cat=>{
-        catHtml += `
-        <div class="category-item">
-            <img src="${cat.icon}" alt="${cat.name}">
-            <div>
-                <h4>${cat.name}</h4>
-                <p>${cat.desc}</p>
-            </div>
-        </div>`;
+            catHtml += `
+            <div class="category-item">
+                <img src="${cat.icon}" alt="${cat.name}">
+                <div>
+                    <h4>${cat.name}</h4>
+                    <p>${cat.desc}</p>
+                </div>
+            </div>`;
         })
         catWrap.innerHTML = catHtml;
+
         const listWrap = document.querySelector("#card-list");
         let html = "";
         pageData.hot_courses.forEach((item,idx)=>{
@@ -49,7 +52,7 @@ document.addEventListener('DOMContentLoaded', ()=>{
             <div class="item-info">
                 <h3>${item.title}</h3>
                 <p>${item.desc}</p>
-                <p>${item.plateName} | ${item.class_num}</p>
+                <p>${item.age} | ${item.class_num}</p>
             </div>
         </div>`;
         })
