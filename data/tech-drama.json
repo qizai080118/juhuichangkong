@@ -23,7 +23,8 @@ loadCallback({
       "desc": "太空中有趣的物理现象",
       "age": "科普向",
       "class_num": "点赞1240｜收藏368",
-      "bvid": "BVxxxxxx"
+      "bvid": "BVxxxxxx",
+      "category": 0
     },
     {
       "cover": "assets/images/class02.jpg",
@@ -31,7 +32,8 @@ loadCallback({
       "desc": "两弹一星元勋郭永怀生平故事",
       "age": "科普向",
       "class_num": "点赞154｜收藏3",
-      "bvid": "BVxxxxxx"
+      "bvid": "BVxxxxxx",
+      "category": 1
     },
     {
       "cover": "assets/images/class01.jpg",
@@ -39,7 +41,8 @@ loadCallback({
       "desc": "飞机划过天空白色尾迹科普",
       "age": "科普向",
       "class_num": "点赞1560｜收藏410",
-      "bvid": "BVxxxxxx"
+      "bvid": "BVxxxxxx",
+      "category": 0
     },
     {
       "cover": "assets/images/class02.jpg",
@@ -47,7 +50,8 @@ loadCallback({
       "desc": "放弃海外优厚条件，投身祖国导弹事业",
       "age": "科普向",
       "class_num": "点赞2100｜收藏890",
-      "bvid": "BV1AXta6NEbS"
+      "bvid": "BV1AXta6NEbS",
+      "category": 1
     }
   ]
-});
+})
