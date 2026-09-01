@@ -8,17 +8,15 @@
 <script src="assets/js/main.js"></script>
 </head>
 <body>
-← 返回首页
+<a href="index.html" class="back-btn">← 返回首页</a>
 <section class="page-banner" id="page-banner">
     <div class="banner-text">
         <h1 id="main-title"></h1>
-        <p id="sub-title"></p >
+        <p id="sub-title"></p>
     </div>
 </section>
-
 <div class="category-wrap" id="category-wrap"></div>
 <div class="card-list" id="card-list"></div>
-
 <script>
 document.addEventListener('DOMContentLoaded', ()=>{
     loadData("data/aviation-class.json", function(err, pageData){
@@ -29,31 +27,29 @@ document.addEventListener('DOMContentLoaded', ()=>{
         document.getElementById("page-banner").style.backgroundImage = `url(${pageData.banner_bg})`;
         document.getElementById("main-title").innerText = pageData.slogan_main;
         document.getElementById("sub-title").innerText = pageData.slogan_sub;
-
         const catWrap = document.querySelector("#category-wrap");
         let catHtml = "";
         pageData.category_list.forEach(cat=>{
         catHtml += `
         <div class="category-item">
-            < img src="${cat.icon}" alt="${cat.name}">
+            <img src="${cat.icon}" alt="${cat.name}">
             <div>
                 <h4>${cat.name}</h4>
-                <p>${cat.desc}</p >
+                <p>${cat.desc}</p>
             </div>
         </div>`;
         })
         catWrap.innerHTML = catHtml;
-
         const listWrap = document.querySelector("#card-list");
         let html = "";
-        pageData.hot_courses.forEach(item=>{
+        pageData.hot_courses.forEach((item,idx)=>{
         html += `
-        <div class="item-card">
-            < img src="${item.cover}" alt="${item.title}">
+        <div class="item-card" onclick="location.href='player.html?index=${idx}&page=aviation-class'">
+            <img src="${item.cover}" alt="${item.title}">
             <div class="item-info">
                 <h3>${item.title}</h3>
-                <p>${item.desc}</p >
-                <p>${item.plateName} | ${item.class_num}</p >
+                <p>${item.desc}</p>
+                <p>${item.plateName} | ${item.class_num}</p>
             </div>
         </div>`;
         })
