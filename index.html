@@ -5,34 +5,42 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>少年航空科普</title>
 <link rel="stylesheet" href="assets/css/style.css">
+<script src="assets/js/main.js"></script>
 </head>
 <body>
-<nav class="navbar" id="navbar-wrap"></nav>
-<section class="banner">
-  <img id="home-banner-image" src="" alt="首页横幅">
+<section class="page-banner" id="home-banner">
+    <div class="page-banner-text">
+        <h1 id="h-home-title"></h1>
+        <p id="h-home-desc"></p >
+    </div>
 </section>
-<!-- 外层容器class改为home-entry-wrap -->
-<div class="home-entry-wrap" id="home-modules-wrap"></div>
+<div class="home-entry-wrap" id="entry-container">
+</div>
 
-<script src="assets/js/main.js"></script>
 <script>
 document.addEventListener('DOMContentLoaded', ()=>{
-  loadJson("data/home.json", function(err, data){
-    if(err){
-      document.body.innerHTML += `<div style="color:red;padding:20px">${err.message}</div>`;
-      return;
-    }
-    document.querySelector("#home-banner-image").src = data.banner.bg_image;
-    const wrap = document.querySelector("#home-modules-wrap");
-    let html = "";
-    data.modules.forEach(item=>{
-      html += `
-      <div class="home-entry-item" onclick="location.href='${item.link}'">
-        <img src="${item.cover}" alt="">
-      </div>`;
+    loadData("data/home.json", function(err, data){
+        if(err){
+            document.body.innerHTML += `<div style="color:red;padding:16px">首页数据加载失败：${err.message}</div>`;
+            return;
+        }
+        // 设置横幅背景与文字
+        document.getElementById("home-banner").style.backgroundImage = `url(${data.banner_bg})`;
+        document.getElementById("h-home-title").innerText = data.main_title;
+        document.getElementById("h-home-desc").innerText = data.sub_title;
+
+        // 渲染三个入口卡片
+        const wrap = document.getElementById("entry-container");
+        let html = "";
+        data.entry_list.forEach(item=>{
+            html += `
+<div class="home-entry-item" onclick="window.location.href='${item.link}'">
+    <div class="home-entry-title">${item.title}</div>
+    < img class="home-entry-bg" src="${item.img}" alt="${item.alt}">
+</div>`;
+        });
+        wrap.innerHTML = html;
     })
-    wrap.innerHTML = html;
-  })
 })
 </script>
 </body>
