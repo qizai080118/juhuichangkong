@@ -1,95 +1,158 @@
 *{
-  margin:0;
-  padding:0;
-  box-sizing:border-box;
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:"Microsoft Yahei",sans-serif;
 }
-.banner{
-  width:100%;
+body{
+    background-color:#f7fbff;
+    color:#223355;
 }
-.banner img{
-  width:100%;
-  height:auto;
-  display:block;
-}
-.back-home{
-  display:inline-block;
-  margin:20px 30px;
-  padding:8px 16px;
-  background:#4080dd;
-  color:#fff;
-  border-radius:8px;
-  text-decoration:none;
-}
-.category-wrap{
-  display:flex;
-  gap:16px;
-  padding:0 30px 20px;
-  flex-wrap:wrap;
-}
-.category-item{
-  padding:12px 20px;
-  background:#f0f6ff;
-  border-radius:12px;
-  display:flex;
-  align-items:center;
-  gap:10px;
-}
-.category-item img{
-  width:36px;
-  height:36px;
-}
-.card-list{
-  display:grid;
-  grid-template-columns:repeat(auto-fill,minmax(280px,1fr));
-  gap:24px;
-  padding:0 30px 40px;
-}
-.item-card{
-  border-radius:16px;
-  overflow:hidden;
-  box-shadow:0 3px 10px #00000015;
-  cursor:pointer;
-}
-.item-card img{
-  width:100%;
-  aspect-ratio:16/9;
-  object-fit:cover;
-}
-.item-info{
-  padding:0;
+a{
+    text-decoration:none;
 }
 
-/* ==========首页纯图片卡片布局（新增，不改动其他代码）========== */
-.home-entry-wrap{
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  gap: 24px;
-  padding: 30px;
-}
-.home-entry-item{
-  border-radius:16px;
-  overflow:hidden;
-  cursor:pointer;
-  box-shadow:0 3px 10px rgba(0,0,0,0.12);
-}
-.home-entry-item img{
-  width:100%;
-  height:auto;
-  display:block;
-}
-/* 手机端自动变成一列 */
-@media (max-width:768px){
-  .home-entry-wrap{
-    grid-template-columns:1fr;
-  }
+/* ==========首页入口卡片 ========== */
+.home-entry-wrap {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+    padding: 30px 20px;
+    max-width: 1200px;
+    margin: 0 auto;
 }
 
+.home-entry-item {
+    aspect-ratio: 1 / 1;
+    border-radius: 20px;
+    overflow: hidden;
+    position: relative;
+    cursor: pointer;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.12);
+    transition: transform 0.25s ease;
+}
+
+.home-entry-item:hover {
+    transform: translateY(-6px);
+}
+
+.home-entry-title {
+    position: absolute;
+    top:12px;
+    left:0;
+    right:0;
+    text-align:center;
+    font-size: 2.4rem;
+    font-weight:bold;
+    color:#223355;
+    text-shadow: 1px 1px 2px #ffffff;
+    z-index: 2;
+}
+
+.home-entry-bg {
+    width:100%;
+    height:100%;
+    object-fit: cover;
+}
+
+@media (max-width:992px) {
+    .home-entry-wrap {
+        grid-template-columns: repeat(2,1fr);
+        gap:18px;
+    }
+}
+@media (max-width:576px) {
+    .home-entry-wrap {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* ========== 子页面通用banner ========== */
+.page-banner {
+    width:100%;
+    height:280px;
+    background-size: cover;
+    background-position: center;
+    position: relative;
+}
+.page-banner-text {
+    position:absolute;
+    bottom:30px;
+    left:40px;
+    color:#fff;
+}
+.page-banner-text h1 {
+    font-size:3rem;
+    margin:0;
+    text-shadow: 2px 2px 4px #0004;
+}
+.page-banner-text p {
+    font-size:1.2rem;
+    margin:8px 0 0;
+}
+
+.back-btn {
+    display: inline-block;
+    margin:20px 30px;
+    padding:8px 16px;
+    background:#4080dd;
+    color:#fff;
+    border-radius:8px;
+    text-decoration:none;
+}
+
+/* 分类栏 */
+.category-wrap {
+    display:flex;
+    gap:16px;
+    padding:0 30px 20px;
+    flex-wrap:wrap;
+}
+.category-item {
+    padding:12px 20px;
+    background:#f0f6ff;
+    border-radius:12px;
+    display:flex;
+    align-items:center;
+    gap:10px;
+}
+.category-item img {
+    width:36px;
+    height:36px;
+}
+
+/* 卡片列表 */
+.card-list {
+    display:grid;
+    grid-template-columns:repeat(auto-fill,minmax(280px,1fr));
+    gap:24px;
+    padding:0 30px 40px;
+}
+.item-card {
+    border-radius:16px;
+    overflow:hidden;
+    box-shadow:0 3px 10px #00000015;
+}
+.item-card img {
+    width:100%;
+    aspect-ratio:16/9;
+    object-fit:cover;
+}
+.item-info {
+    padding:16px;
+}
+.item-info h3 a {
+    color:#223355;
+    text-decoration:none;
+}
+
+/* 视频播放页 */
 .player-wrap{
-  max-width:1000px;
-  margin:0 auto;
-  padding:20px;
+    max-width:1000px;
+    margin:0 auto;
+    padding:20px;
 }
 video{
-  width:100%;
-  border-radius:12px;
+    width:100%;
+    border-radius:12px;
 }
