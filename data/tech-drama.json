@@ -6,19 +6,19 @@ loadCallback({
   "search_placeholder": "",
   "category_list": [
     {
-      "icon": "assets/images/icon_know.jpg",
+      "icon": "assets/images/caed02.jpg",
       "name": "航空航天冷知识",
       "desc": "航天趣味科普"
     },
     {
-      "icon": "assets/images/icon_hero.jpg",
+      "icon": "assets/images/card01.jpg",
       "name": "两弹一星科学家传记",
       "desc": "元勋人物故事"
     }
   ],
   "hot_courses": [
     {
-      "cover": "assets/images/card_d01.jpg",
+      "cover": "assets/images/class01.jpg",
       "title": "第1集｜太空中为什么不能哭？",
       "desc": "太空中有趣的物理现象",
       "age": "科普向",
@@ -26,7 +26,7 @@ loadCallback({
       "bvid": "BVxxxxxx"
     },
     {
-      "cover": "assets/images/card_d02.jpg",
+      "cover": "assets/images/cclass02.jpg",
       "title": "第4集｜两弹元勋郭永怀",
       "desc": "两弹一星元勋郭永怀生平故事",
       "age": "科普向",
@@ -34,7 +34,7 @@ loadCallback({
       "bvid": "BVxxxxxx"
     },
     {
-      "cover": "assets/images/card_d03.jpg",
+      "cover": "assets/images/class01.jpg",
       "title": "第5集｜飞机尾迹云是什么",
       "desc": "飞机划过天空白色尾迹科普",
       "age": "科普向",
@@ -42,7 +42,7 @@ loadCallback({
       "bvid": "BVxxxxxx"
     },
     {
-      "cover": "assets/images/card_d04.jpg",
+      "cover": "assets/images/class02.jpg",
       "title": "第1集｜两弹一星元勋｜钱学森",
       "desc": "放弃海外优厚条件，投身祖国导弹事业",
       "age": "科普向",
