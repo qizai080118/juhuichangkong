@@ -8,6 +8,14 @@
 <script src="assets/js/main.js"></script>
 </head>
 <body>
+<!-- 首页横幅banner -->
+<section class="page-banner" id="home-banner">
+    <div class="banner-text">
+        <h1 id="home-title"></h1>
+        <p id="home-sub"></p>
+    </div>
+</section>
+
 <section class="home-entry-wrap" id="home-wrap">
 <!-- 首页卡片由json动态渲染 -->
 </section>
@@ -19,6 +27,12 @@ document.addEventListener('DOMContentLoaded', ()=>{
             document.body.innerHTML += `<div style="color:red;padding:16px">加载异常：${err.message}</div>`;
             return;
         }
+        // 渲染首页banner
+        document.getElementById("home-banner").style.backgroundImage = `url(${pageData.banner_bg})`;
+        document.getElementById("home-title").innerText = pageData.slogan_main;
+        document.getElementById("home-sub").innerText = pageData.slogan_sub;
+
+        // 渲染入口卡片
         let html = "";
         pageData.home_list.forEach(item=>{
             html += `
