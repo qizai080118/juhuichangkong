@@ -9,9 +9,9 @@ loadCallback({
     {"icon":"assets/images/icon_all.jpg","name":"航空历史","desc":"航空发展故事"}
   ],
   "hot_courses": [
-    {"cover":"assets/images/card01.jpg","title":"飞机的飞行秘密","desc":"了解升力与机翼原理","age":"科普向","class_num":"点赞980｜收藏245","bvid":"BVxxxxxx","category":0},
-    {"cover":"assets/images/card03.jpg","title":"人类飞天的梦想","desc":"早期飞行器发展简史","age":"科普向","class_num":"点赞860｜收藏210","bvid":"BVxxxxxx","category":1},
-    {"cover":"assets/images/caed02.jpg","title":"火箭发射小科普","desc":"认识航天运载火箭","age":"科普向","class_num":"点赞1120｜收藏310","bvid":"BVxxxxxx","category":0},
-    {"cover":"assets/images/card04.jpg","title":"民航飞机发展历程","desc":"现代客机的演变故事","age":"科普向","class_num":"点赞740｜收藏180","bvid":"BVxxxxxx","category":1}
+    {"cover":"assets/images/card01.jpg","title":"歼-20","desc":"国产第五代隐形战机","age":"科普向","class_num":"点赞980｜收藏245","bvid":"BVxxxxxx","category":0},
+    {"cover":"assets/images/card01.jpg","title":"C919","desc":"国产大型民用客机","age":"科普向","class_num":"点赞860｜收藏210","bvid":"BVxxxxxx","category":1},
+    {"cover":"assets/images/caed02.jpg","title":"神州七号","desc":"翟志刚出舱，实现中国太空行走零的突破","age":"科普向","class_num":"点赞1120｜收藏310","bvid":"BVxxxxxx","category":0},
+    {"cover":"assets/images/card02.jpg","title":"神州九号","desc":"刘洋出征，书写中国女航天员太空传奇","age":"科普向","class_num":"点赞740｜收藏180","bvid":"BVxxxxxx","category":1}
   ]
 });
