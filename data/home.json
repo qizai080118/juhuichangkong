@@ -1,19 +1,22 @@
-loadback({
-  "banner": {
-    "bg_image": "assets/images/banner_home.jpg"
-  },
-  "modules": [
-    {
-      "cover":"assets/images/home_card01.jpg",
-      "link": "aviation-class.html"
-    },
-    {
-      "cover":"assets/images/home_card02.jpg",
-      "link": "tech-drama.html"
-    },
-    {
-      "cover":"assets/images/home_card04.jpg",
-      "link": "course-shop.html"
-    }
-  ]
-})
+loadCallback({
+    "banner_bg":"assets/images/banner_home.jpg",
+    "slogan_main":"",
+    "slogan_sub":"",
+    "home_list": [
+        {
+            "title":"航空课堂",
+            "link":"aviation-class.html",
+            "bg_img":"assets/images/home_card01.jpg"
+        },
+        {
+            "title":"科技漫剧",
+            "link":"tech-drama.html",
+            "bg_img":"assets/images/home_card02.jpg"
+        },
+        {
+            "title":"课程商城",
+            "link":"course-shop.html",
+            "bg_img":"assets/images/home_card04.jpg"
+        }
+    ]
+});
