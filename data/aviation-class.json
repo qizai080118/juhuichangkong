@@ -12,6 +12,6 @@ loadCallback({
     {"cover":"assets/images/card01.jpg","title":"歼-20","desc":"国产第五代隐形战机","age":"科普向","class_num":"点赞980｜收藏245","bvid":"BVxxxxxx","category":0},
     {"cover":"assets/images/card01.jpg","title":"C919","desc":"国产大型民用客机","age":"科普向","class_num":"点赞860｜收藏210","bvid":"BVxxxxxx","category":0},
     {"cover":"assets/images/caed02.jpg","title":"神州七号","desc":"翟志刚出舱，实现中国太空行走零的突破","age":"科普向","class_num":"点赞1120｜收藏310","bvid":"BVxxxxxx","category":1},
-    {"cover":"assets/images/card02.jpg","title":"神州九号","desc":"刘洋出征，书写中国女航天员太空传奇","age":"科普向","class_num":"点赞740｜收藏180","bvid":"BVxxxxxx","category":1}
+    {"cover":"assets/images/caed02.jpg","title":"神州九号","desc":"刘洋出征，书写中国女航天员太空传奇","age":"科普向","class_num":"点赞740｜收藏180","bvid":"BVxxxxxx","category":1}
   ]
 });
