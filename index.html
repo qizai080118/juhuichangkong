@@ -22,17 +22,18 @@
 
 <script>
 document.addEventListener('DOMContentLoaded', ()=>{
-    loadData("data/index.json", function(err, pageData){
+    // 读取 data/home.json
+    loadData("data/home.json", function(err, pageData){
         if(err){
             document.body.innerHTML += `<div style="color:red;padding:16px">加载异常：${err.message}</div>`;
             return;
         }
-        // 渲染首页banner
+        // 渲染首页banner横幅
         document.getElementById("home-banner").style.backgroundImage = `url(${pageData.banner_bg})`;
         document.getElementById("home-title").innerText = pageData.slogan_main;
         document.getElementById("home-sub").innerText = pageData.slogan_sub;
 
-        // 渲染入口卡片
+        // 渲染首页入口卡片
         let html = "";
         pageData.home_list.forEach(item=>{
             html += `
